@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ecomoda - Moda Sostenible</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo">Ecomoda</div>
+    <nav class="main-menu" id="mainMenu">
+      <a href="#home">Home</a>
+      <a href="#quienes-somos">¿Quiénes somos?</a>
+      <a href="#actualidad">Actualidad</a>
+      <a href="#guias">Guías de estilo</a>
+      <a href="#marcas">Marcas sostenibles</a>
+      <a href="#comunidad">Comunidad</a>
+    </nav>
+    <div class="search-bar">
+      <input type="text" placeholder="Buscar...">
+      <button>🔍</button>
+    </div>
+    <div class="menu-toggle" id="menuToggle">☰</div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="container">
+    <!-- COLUMN 1: CONTENIDO PRINCIPAL -->
+    <section class="column main-content">
+      <h2>Últimas Noticias</h2>
+      <article class="news-card">
+        <img src="https://via.placeholder.com/300x200?text=Noticia+1" alt="Noticia 1">
+        <h3>La moda circular gana terreno en Latinoamérica</h3>
+        <p>Descubre cómo marcas emergentes están revolucionando la industria textil con modelos de economía circular.</p>
+        <small>21 Ene 2026</small>
+      </article>
+      <article class="news-card">
+        <img src="https://via.placeholder.com/300x200?text=Noticia+2" alt="Noticia 2">
+        <h3>Nuevo certificado para textiles orgánicos</h3>
+        <p>El estándar Global Organic Textile Standard (GOTS) se actualiza para garantizar mayor transparencia.</p>
+        <small>20 Ene 2026</small>
+      </article>
+    </section>
+
+    <!-- COLUMN 2: DESTACADOS (CARRUSEL) -->
+    <section class="column highlights">
+      <h2>Destacados</h2>
+      <div class="carousel" id="carousel">
+        <div class="carousel-item active">
+          <img src="https://via.placeholder.com/400x250?text=DIY+Upcycling" alt="DIY Upcycling">
+          <div class="carousel-caption">Tutorial: Transforma tu camisa vieja en una bolsa</div>
+        </div>
+        <div class="carousel-item">
+          <img src="https://via.placeholder.com/400x250?text=Marca+Ecológica" alt="Marca Ecológica">
+          <div class="carousel-caption">Marque del mes: TerraTextiles, 100% algodón orgánico</div>
+        </div>
+        <div class="carousel-item">
+          <img src="https://via.placeholder.com/400x250?text=Evento+Ecológico" alt="Evento Ecológico">
+          <div class="carousel-caption">Próximo evento: Feria de Moda Sostenible Caracas 2026</div>
+        </div>
+      </div>
+      <div class="carousel-controls">
+        <button id="prevBtn">‹</button>
+        <button id="nextBtn">›</button>
+      </div>
+    </section>
+
+    <!-- COLUMN 3: BARRA LATERAL -->
+    <aside class="column sidebar">
+      <h2>Enlaces Rápidos</h2>
+      <ul>
+        <li><a href="#guias">Guía de Upcycling</a></li>
+        <li><a href="#marcas">Directorio de Marcas</a></li>
+        <li><a href="#comunidad">Foro de Comunidad</a></li>
+        <li><a href="#actualidad">Noticias Internacionales</a></li>
+      </ul>
+
+      <h2>Síguenos</h2>
+      <div class="social-icons">
+        <a href="#" style="background-color: #4A7C59;">IG</a>
+        <a href="#" style="background-color: #B8A99A;">TT</a>
+        <a href="#" style="background-color: #F4F1ED; color: #2D2D2D;">LI</a>
+      </div>
+
+      <div class="cta-box">
+        <h3>Únete a la comunidad</h3>
+        <p>Recibe consejos semanales y accede a talleres exclusivos.</p>
+        <button>👉 Suscríbete</button>
+      </div>
+    </aside>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-col">
+      <h4>Ecomoda</h4>
+      <p>Promoviendo la moda sostenible desde 2026.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <p>contacto@ecomoda.com</p>
+      <p>+58 XXX XXX XX XX</p>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="#">Términos</a>
+      <a href="#">Política de privacidad</a>
+      <a href="#">Cookies</a>
+    </div>
+    <div class="footer-col">
+      <h4>Síguenos</h4>
+      <div class="social-icons">
+        <a href="#" style="background-color: #4A7C59;">IG</a>
+        <a href="#" style="background-color: #B8A99A;">TT</a>
+        <a href="#" style="background-color: #F4F1ED; color: #2D2D2D;">LI</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
