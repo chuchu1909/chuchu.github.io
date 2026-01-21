@@ -15,7 +15,6 @@
       --text-gray: #6C6C6C;
       --white: #FFFFFF;
       --border-color: #B8A99A;
-      --ad-bg: #FF3B30; /* Rojo vibrante para publicidad */
     }
 
     * {
@@ -115,73 +114,9 @@
       cursor: pointer;
     }
 
-    /* ===== AD BANNER ===== */
-    .ad-banner {
-      background: linear-gradient(135deg, var(--ad-bg), #FF6B6B);
-      border-radius: 1rem;
-      padding: 1.5rem;
-      margin: 1rem 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 2rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      color: white;
-      text-align: center;
-    }
-
-    .ad-content {
-      flex: 1;
-    }
-
-    .ad-content h3 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-      font-weight: 700;
-    }
-
-    .ad-content p {
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
-      opacity: 0.9;
-    }
-
-    .ad-image {
-      flex-shrink: 0;
-      width: 200px;
-      height: 150px;
-      border-radius: 0.75rem;
-      overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-
-    .ad-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .ad-btn {
-      display: inline-block;
-      background: white;
-      color: var(--ad-bg);
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.2s ease;
-      border: none;
-      cursor: pointer;
-    }
-
-    .ad-btn:hover {
-      background: #f8f8f8;
-      transform: scale(1.05);
-    }
-
     /* ===== MAIN CONTENT ===== */
     main {
-      padding: 0 0 2rem 0;
+      padding: 2rem 0;
     }
 
     .section {
@@ -431,16 +366,6 @@
       .footer-grid {
         grid-template-columns: repeat(2, 1fr);
       }
-
-      .ad-banner {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .ad-image {
-        width: 100%;
-        height: 120px;
-      }
     }
 
     @media (max-width: 768px) {
@@ -517,18 +442,6 @@
   <main class="container">
     <!-- Home Section -->
     <section id="home" class="section active">
-      <!-- 👇 BANNER PUBLICITARIO AGREGADO AQUÍ 👇 -->
-      <div class="ad-banner">
-        <div class="ad-content">
-          <h3>🔥 OFERTA EXCLUSIVA: ZAPATILLAS DEPORTIVAS SOSTENIBLES</h3>
-          <p>¡Hasta 40% de descuento en la nueva colección ecológica de Nike! Ideal para quienes buscan rendimiento y conciencia ambiental.</p>
-          <a href="#" class="ad-btn">Ver Oferta</a>
-        </div>
-        <div class="ad-image">
-          <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Zapatillas Nike rojas">
-        </div>
-      </div>
-
       <div class="home-grid">
         <div>
           <div class="hero">
