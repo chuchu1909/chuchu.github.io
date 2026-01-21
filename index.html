@@ -161,6 +161,11 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      background-image: url('https://images.unsplash.com/photo-1607082349566-187342175e2f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     }
 
     .hero i {
@@ -172,6 +177,8 @@
     .hero h2 {
       font-size: 1.875rem;
       margin-bottom: 0.5rem;
+      color: var(--gray-900);
+      text-shadow: none;
     }
 
     .news-item {
@@ -445,7 +452,7 @@
       <div class="home-grid">
         <div>
           <div class="hero">
-            <i class="fas fa-leaf"></i>
+            <i class="fas fa-leaf" style="display: none;"></i>
             <h2>Moda con Conciencia</h2>
             <p>Descubre cómo tu elección de vestimenta puede transformar el planeta</p>
           </div>
@@ -453,6 +460,7 @@
           <h2 class="section-title"><i class="fas fa-globe-americas"></i> Actualidad</h2>
           <div class="news-list">
             <div class="news-item">
+              <img src="https://images.unsplash.com/photo-1618125883241-b9b5a1c0d0c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Fibras regenerativas" style="width:100%; border-radius:0.5rem; margin-bottom:0.75rem;">
               <div class="news-meta">
                 <span class="news-category">Internacional</span>
                 <span>20 Ene 2026</span>
@@ -460,6 +468,7 @@
               <h3>Nuevas fibras regenerativas revolucionan la industria textil</h3>
             </div>
             <div class="news-item">
+              <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Feria de moda sostenible" style="width:100%; border-radius:0.5rem; margin-bottom:0.75rem;">
               <div class="news-meta">
                 <span class="news-category">Nacional</span>
                 <span>18 Ene 2026</span>
@@ -467,6 +476,7 @@
               <h3>Feria de Moda Sostenible en Caracas reúne a más de 50 marcas locales</h3>
             </div>
             <div class="news-item">
+              <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Armario cápsula" style="width:100%; border-radius:0.5rem; margin-bottom:0.75rem;">
               <div class="news-meta">
                 <span class="news-category">Guías</span>
                 <span>15 Ene 2026</span>
@@ -487,6 +497,7 @@
                 </div>
                 <span style="color: var(--green-600); font-weight: bold;">4.8</span>
               </div>
+              <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Verde Hilos" style="width:100%; border-radius:0.5rem; margin-top:0.5rem;">
             </div>
             <div class="brand-item">
               <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
@@ -496,6 +507,7 @@
                 </div>
                 <span style="color: var(--green-600); font-weight: bold;">4.6</span>
               </div>
+              <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="EcoTextil" style="width:100%; border-radius:0.5rem; margin-top:0.5rem;">
             </div>
             <div class="brand-item">
               <div style="display: flex; justify-content: space-between;">
@@ -505,6 +517,7 @@
                 </div>
                 <span style="color: var(--green-600); font-weight: bold;">4.9</span>
               </div>
+              <img src="https://images.unsplash.com/photo-1618125883241-b9b5a1c0d0c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="GreenWeave" style="width:100%; border-radius:0.5rem; margin-top:0.5rem;">
             </div>
           </div>
 
@@ -585,33 +598,36 @@
       <h2 class="section-title"><i class="fas fa-newspaper"></i> Actualidad</h2>
       <div class="card-grid">
         <div class="card">
+          <img src="https://images.unsplash.com/photo-1618125883241-b9b5a1c0d0c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Fibras regenerativas" style="width:100%; height:150px; object-fit:cover; border-radius:0.5rem; margin-bottom:1rem;">
           <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
             <span class="news-category">Internacional</span>
             <span>20 Ene 2026</span>
           </div>
           <h3>Nuevas fibras regenerativas revolucionan la industria textil</h3>
           <p style="margin-top: 0.5rem; color: var(--gray-600);">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Descubre cómo materiales innovadores están cambiando la forma en que producimos y consumimos ropa.
           </p>
         </div>
         <div class="card">
+          <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Feria de moda sostenible" style="width:100%; height:150px; object-fit:cover; border-radius:0.5rem; margin-bottom:1rem;">
           <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
             <span class="news-category">Nacional</span>
             <span>18 Ene 2026</span>
           </div>
           <h3>Feria de Moda Sostenible en Caracas reúne a más de 50 marcas locales</h3>
           <p style="margin-top: 0.5rem; color: var(--gray-600);">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Un evento que celebra la creatividad venezolana con textiles éticos y procesos transparentes.
           </p>
         </div>
         <div class="card">
+          <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Armario cápsula" style="width:100%; height:150px; object-fit:cover; border-radius:0.5rem; margin-bottom:1rem;">
           <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
             <span class="news-category">Guías</span>
             <span>15 Ene 2026</span>
           </div>
           <h3>Guía definitiva para crear tu propio armario cápsula sostenible</h3>
           <p style="margin-top: 0.5rem; color: var(--gray-600);">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Aprende a reducir tu guardarropa y maximizar tu estilo con prendas versátiles y duraderas.
           </p>
         </div>
       </div>
@@ -622,17 +638,17 @@
       <h2 class="section-title"><i class="fas fa-book"></i> Guías de Estilo</h2>
       <div class="card-grid">
         <div class="card">
-          <i class="fas fa-recycle"></i>
+          <img src="https://images.unsplash.com/photo-1600185365413-d0ff5f11e5d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Moda circular" style="width:100%; height:150px; object-fit:cover; border-radius:0.5rem; margin-bottom:1rem;">
           <h3>Moda Circular</h3>
           <p>Aprende a cerrar el ciclo de vida de tus prendas</p>
         </div>
         <div class="card">
-          <i class="fas fa-cut"></i>
+          <img src="https://images.unsplash.com/photo-1583743815517-41a5e6d55b2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Upcycling" style="width:100%; height:150px; object-fit:cover; border-radius:0.5rem; margin-bottom:1rem;">
           <h3>Upcycling Creativo</h3>
           <p>Transforma prendas viejas en nuevas creaciones</p>
         </div>
         <div class="card">
-          <i class="fas fa-tshirt"></i>
+          <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="DIY sostenible" style="width:100%; height:150px; object-fit:cover; border-radius:0.5rem; margin-bottom:1rem;">
           <h3>DIY Sostenible</h3>
           <p>Proyectos caseros para reducir tu huella textil</p>
         </div>
@@ -644,27 +660,24 @@
       <h2 class="section-title"><i class="fas fa-store"></i> Marcas Sostenibles</h2>
       <div class="card-grid">
         <div class="card">
+          <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Verde Hilos" style="width:100%; height:150px; object-fit:cover; border-radius:0.5rem; margin-bottom:1rem;">
           <h3>Verde Hilos</h3>
           <p style="color: var(--gray-600); margin: 0.5rem 0;">Venezuela</p>
-          <p style="color: var(--gray-600); margin-bottom: 1rem;">
-            Especializada en tejidos orgánicos
-          </p>
+          <p style="color: var(--gray-600); margin-bottom: 1rem;">Especializada en tejidos orgánicos</p>
           <button class="btn">Ver Perfil</button>
         </div>
         <div class="card">
+          <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="EcoTextil" style="width:100%; height:150px; object-fit:cover; border-radius:0.5rem; margin-bottom:1rem;">
           <h3>EcoTextil</h3>
           <p style="color: var(--gray-600); margin: 0.5rem 0;">Colombia</p>
-          <p style="color: var(--gray-600); margin-bottom: 1rem;">
-            Especializada en prendas recicladas
-          </p>
+          <p style="color: var(--gray-600); margin-bottom: 1rem;">Especializada en prendas recicladas</p>
           <button class="btn">Ver Perfil</button>
         </div>
         <div class="card">
+          <img src="https://images.unsplash.com/photo-1618125883241-b9b5a1c0d0c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="GreenWeave" style="width:100%; height:150px; object-fit:cover; border-radius:0.5rem; margin-bottom:1rem;">
           <h3>GreenWeave</h3>
           <p style="color: var(--gray-600); margin: 0.5rem 0;">Internacional</p>
-          <p style="color: var(--gray-600); margin-bottom: 1rem;">
-            Especializada en materiales innovadores
-          </p>
+          <p style="color: var(--gray-600); margin-bottom: 1rem;">Especializada en materiales innovadores</p>
           <button class="btn">Ver Perfil</button>
         </div>
       </div>
@@ -676,6 +689,7 @@
         <div>
           <h2 class="section-title"><i class="fas fa-users"></i> Comunidad</h2>
           <div class="sidebar-card">
+            <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Taller comunitario" style="width:100%; border-radius:0.5rem; margin-bottom:1rem;">
             <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
               <i class="fas fa-users" style="color: var(--green-600);"></i>
               <h3 style="font-size: 1.25rem; font-weight: 700;">Foros Activos</h3>
@@ -811,4 +825,3 @@
   </script>
 </body>
 </html>
-
