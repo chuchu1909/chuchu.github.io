@@ -134,26 +134,6 @@
       transform: scale(1.01);
     }
 
-    /* Para banners verticales (sidebars) */
-    .ad-banner-vertical {
-      width: 100%;
-      height: 250px;
-      background: url('https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80') center/cover;
-      margin: 1rem 0;
-      border-radius: 0.75rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: 700;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-      transition: transform 0.2s ease;
-    }
-
-    .ad-banner-vertical:hover {
-      transform: scale(1.01);
-    }
-
     /* ===== MAIN CONTENT ===== */
     main {
       padding: 2rem 0;
@@ -199,7 +179,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background-image: url('https://images.unsplash.com/photo-1593079831268-5784e93b93d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+      background-image: url('https://images.unsplash.com/photo-1598700426772-1e9d5f354c1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
       background-size: cover;
       background-position: center;
       color: white;
@@ -406,16 +386,6 @@
       .footer-grid {
         grid-template-columns: repeat(2, 1fr);
       }
-
-      .ad-banner {
-        height: 80px;
-        font-size: 0.9rem;
-      }
-
-      .ad-banner-vertical {
-        height: 180px;
-        font-size: 0.9rem;
-      }
     }
 
     @media (max-width: 768px) {
@@ -461,11 +431,6 @@
         height: 80px;
         font-size: 0.9rem;
       }
-
-      .ad-banner-vertical {
-        height: 180px;
-        font-size: 0.9rem;
-      }
     }
   </style>
 </head>
@@ -502,7 +467,7 @@
   <main class="container">
     <!-- Home Section -->
     <section id="home" class="section active">
-      <!-- BANNER DE PUBLICIDAD (estilo del ejemplo) -->
+      <!-- BANNER DE PUBLICIDAD -->
       <div class="ad-banner">
         🛍️ ¡Nueva colección sostenible! | Diseño ético, materiales reciclados | Descubre ahora
       </div>
@@ -517,7 +482,7 @@
           <h2 class="section-title"><i class="fas fa-globe-americas"></i> Actualidad</h2>
           <div class="news-list">
             <div class="news-item">
-              <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ropa urbana" style="width:100%; border-radius:0.5rem; margin-bottom:0.75rem;">
+              <img src="https://images.unsplash.com/photo-1609081189750-7d2e0b6c2e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ropa vintage sostenible" style="width:100%; border-radius:0.5rem; margin-bottom:0.75rem;">
               <div class="news-meta">
                 <span class="news-category">Tendencias</span>
                 <span>20 Ene 2026</span>
@@ -525,7 +490,7 @@
               <h3>El auge del vintage: por qué comprar ropa usada es la mejor decisión sostenible</h3>
             </div>
             <div class="news-item">
-              <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Zapatillas urbanas" style="width:100%; border-radius:0.5rem; margin-bottom:0.75rem;">
+              <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Zapatillas sostenibles" style="width:100%; border-radius:0.5rem; margin-bottom:0.75rem;">
               <div class="news-meta">
                 <span class="news-category">Nacional</span>
                 <span>18 Ene 2026</span>
@@ -533,7 +498,7 @@
               <h3>Feria de Moda Sostenible en Caracas reúne a más de 50 marcas locales</h3>
             </div>
             <div class="news-item">
-              <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camiseta streetwear" style="width:100%; border-radius:0.5rem; margin-bottom:0.75rem;">
+              <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camiseta cápsula" style="width:100%; border-radius:0.5rem; margin-bottom:0.75rem;">
               <div class="news-meta">
                 <span class="news-category">Guías</span>
                 <span>15 Ene 2026</span>
@@ -551,21 +516,21 @@
                 <div><h4>Verde Hilos</h4><p style="font-size:0.875rem;color:var(--text-gray);">Venezuela</p></div>
                 <span style="color:var(--green-main);font-weight:bold;">4.8</span>
               </div>
-              <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camiseta urbana" style="width:100%;border-radius:0.5rem;">
+              <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camiseta Verde Hilos" style="width:100%;border-radius:0.5rem;">
             </div>
             <div class="brand-item" style="margin-bottom:1rem;">
               <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;">
                 <div><h4>EcoTextil</h4><p style="font-size:0.875rem;color:var(--text-gray);">Colombia</p></div>
                 <span style="color:var(--green-main);font-weight:bold;">4.6</span>
               </div>
-              <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Zapatillas urbanas" style="width:100%;border-radius:0.5rem;">
+              <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Zapatillas EcoTextil" style="width:100%;border-radius:0.5rem;">
             </div>
             <div class="brand-item">
               <div style="display:flex;justify-content:space-between;">
                 <div><h4>GreenWeave</h4><p style="font-size:0.875rem;color:var(--text-gray);">Internacional</p></div>
                 <span style="color:var(--green-main);font-weight:bold;">4.9</span>
               </div>
-              <img src="https://images.unsplash.com/photo-1618125883241-b9b5a1c0d0c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tejido moderno" style="width:100%;border-radius:0.5rem;">
+              <img src="https://images.unsplash.com/photo-1618125883241-b9b5a1c0d0c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tejido GreenWeave" style="width:100%;border-radius:0.5rem;">
             </div>
           </div>
 
@@ -644,50 +609,39 @@
     <!-- News Section -->
     <section id="news" class="section">
       <h2 class="section-title"><i class="fas fa-newspaper"></i> Actualidad</h2>
-      <div class="section-grid">
-        <div>
-          <div class="card-grid">
-            <div class="card">
-              <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ropa urbana">
-              <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;">
-                <span class="news-category">Tendencias</span>
-                <span>20 Ene 2026</span>
-              </div>
-              <h3>El auge del vintage: por qué comprar ropa usada es la mejor decisión sostenible</h3>
-              <p style="margin-top:0.5rem;color:var(--text-gray);">
-                Descubre cómo elegir piezas únicas de segunda mano no solo reduce residuos textiles, sino que también construye un estilo personal auténtico y con historia.
-              </p>
-            </div>
-            <div class="card">
-              <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Zapatillas urbanas">
-              <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;">
-                <span class="news-category">Nacional</span>
-                <span>18 Ene 2026</span>
-              </div>
-              <h3>Feria de Moda Sostenible en Caracas reúne a más de 50 marcas locales</h3>
-              <p style="margin-top:0.5rem;color:var(--text-gray);">
-                Un evento que celebra la creatividad venezolana con textiles éticos y procesos transparentes.
-              </p>
-            </div>
-            <div class="card">
-              <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camiseta streetwear">
-              <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;">
-                <span class="news-category">Guías</span>
-                <span>15 Ene 2026</span>
-              </div>
-              <h3>Guía definitiva para crear tu propio armario cápsula sostenible</h3>
-              <p style="margin-top:0.5rem;color:var(--text-gray);">
-                Aprende a reducir tu guardarropa y maximizar tu estilo con prendas versátiles y duraderas.
-              </p>
-            </div>
+      <div class="card-grid">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1609081189750-7d2e0b6c2e8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ropa vintage sostenible">
+          <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;">
+            <span class="news-category">Tendencias</span>
+            <span>20 Ene 2026</span>
           </div>
+          <h3>El auge del vintage: por qué comprar ropa usada es la mejor decisión sostenible</h3>
+          <p style="margin-top:0.5rem;color:var(--text-gray);">
+            Descubre cómo elegir piezas únicas de segunda mano no solo reduce residuos textiles, sino que también construye un estilo personal auténtico y con historia.
+          </p>
         </div>
-
-        <!-- Publicidad derecha (banner vertical) -->
-        <div>
-          <div class="ad-banner-vertical">
-            👟 ¡Zapatillas sostenibles ya disponibles! | Compra consciente, camina con estilo
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Zapatillas sostenibles">
+          <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;">
+            <span class="news-category">Nacional</span>
+            <span>18 Ene 2026</span>
           </div>
+          <h3>Feria de Moda Sostenible en Caracas reúne a más de 50 marcas locales</h3>
+          <p style="margin-top:0.5rem;color:var(--text-gray);">
+            Un evento que celebra la creatividad venezolana con textiles éticos y procesos transparentes.
+          </p>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camiseta cápsula">
+          <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;">
+            <span class="news-category">Guías</span>
+            <span>15 Ene 2026</span>
+          </div>
+          <h3>Guía definitiva para crear tu propio armario cápsula sostenible</h3>
+          <p style="margin-top:0.5rem;color:var(--text-gray);">
+            Aprende a reducir tu guardarropa y maximizar tu estilo con prendas versátiles y duraderas.
+          </p>
         </div>
       </div>
     </section>
@@ -695,33 +649,21 @@
     <!-- Guides Section -->
     <section id="guides" class="section">
       <h2 class="section-title"><i class="fas fa-book"></i> Guías de Estilo</h2>
-      <div class="section-grid">
-        <!-- Publicidad izquierda (banner vertical) -->
-        <div>
-          <div class="ad-banner-vertical">
-            🌿 Transforma tu armario | Ideas DIY para renovar tu ropa sin gastar nada
-          </div>
+      <div class="card-grid">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1600185365413-d0ff5f11e5d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Moda circular">
+          <h3>Moda Circular</h3>
+          <p>Aprende a cerrar el ciclo de vida de tus prendas</p>
         </div>
-
-        <!-- Contenido restante -->
-        <div>
-          <div class="card-grid">
-            <div class="card">
-              <img src="https://images.unsplash.com/photo-1600185365413-d0ff5f11e5d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Moda urbana">
-              <h3>Moda Circular</h3>
-              <p>Aprende a cerrar el ciclo de vida de tus prendas</p>
-            </div>
-            <div class="card">
-              <img src="https://images.unsplash.com/photo-1583743815517-41a5e6d55b2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Upcycling urbano">
-              <h3>Upcycling Creativo</h3>
-              <p>Transforma prendas viejas en nuevas creaciones</p>
-            </div>
-            <div class="card">
-              <img src="https://images.unsplash.com/photo-1598700426772-1e9d5f354c1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="DIY moderno">
-              <h3>DIY Sostenible</h3>
-              <p>Proyectos caseros para reducir tu huella textil</p>
-            </div>
-          </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Upcycling">
+          <h3>Upcycling Creativo</h3>
+          <p>Transforma prendas viejas en nuevas creaciones</p>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1583743815517-41a5e6d55b2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="DIY sostenible">
+          <h3>DIY Sostenible</h3>
+          <p>Proyectos caseros para reducir tu huella textil</p>
         </div>
       </div>
     </section>
@@ -731,31 +673,26 @@
       <h2 class="section-title"><i class="fas fa-store"></i> Marcas Sostenibles</h2>
       <div class="card-grid">
         <div class="card">
-          <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camiseta urbana">
+          <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camiseta Verde Hilos">
           <h3>Verde Hilos</h3>
           <p style="color:var(--text-gray);margin:0.5rem 0;">Venezuela</p>
           <p style="color:var(--text-gray);margin-bottom:1rem;">Especializada en tejidos orgánicos</p>
           <button class="btn">Ver Perfil</button>
         </div>
         <div class="card">
-          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Zapatillas urbanas">
+          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Zapatillas EcoTextil">
           <h3>EcoTextil</h3>
           <p style="color:var(--text-gray);margin:0.5rem 0;">Colombia</p>
           <p style="color:var(--text-gray);margin-bottom:1rem;">Especializada en prendas recicladas</p>
           <button class="btn">Ver Perfil</button>
         </div>
         <div class="card">
-          <img src="https://images.unsplash.com/photo-1618125883241-b9b5a1c0d0c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tejido moderno">
+          <img src="https://images.unsplash.com/photo-1618125883241-b9b5a1c0d0c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tejido GreenWeave">
           <h3>GreenWeave</h3>
           <p style="color:var(--text-gray);margin:0.5rem 0;">Internacional</p>
           <p style="color:var(--text-gray);margin-bottom:1rem;">Especializada en materiales innovadores</p>
           <button class="btn">Ver Perfil</button>
         </div>
-      </div>
-
-      <!-- Publicidad inferior (banner horizontal) -->
-      <div class="ad-banner">
-        🌎 Moda que respeta el planeta | Descubre marcas con certificación ética y ecológica
       </div>
     </section>
 
@@ -856,16 +793,23 @@
       const menuToggle = document.getElementById('menuToggle');
       const mainMenu = document.getElementById('mainMenu');
 
+      // Mostrar sección específica
       function showSection(sectionId) {
+        // Ocultar todas
         sections.forEach(section => section.classList.remove('active'));
+        // Mostrar la seleccionada
         document.getElementById(sectionId).classList.add('active');
+        // Actualizar enlace activo
         navLinks.forEach(link => {
           link.classList.toggle('active', link.getAttribute('data-section') === sectionId);
         });
+        // Cerrar menú móvil
         mainMenu.classList.remove('active');
+        // Scroll suave al inicio
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
 
+      // Eventos para enlaces de navegación
       navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
           e.preventDefault();
@@ -873,12 +817,14 @@
         });
       });
 
+      // Menú hamburguesa móvil
       if (menuToggle) {
         menuToggle.addEventListener('click', () => {
           mainMenu.classList.toggle('active');
         });
       }
 
+      // Iniciar en Home
       showSection('home');
     });
   </script>
