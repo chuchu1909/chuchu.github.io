@@ -6,25 +6,15 @@
   <title>Ecomoda - Moda Sostenible</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    /* ===== Base Styles ===== */
+    /* ===== Paleta de Colores Ecológica ===== */
     :root {
-      --green-900: #064e3b;
-      --green-700: #047857;
-      --green-600: #059669;
-      --green-500: #10b981;
-      --green-100: #dcfce7;
-      --green-50: #f0fdf4;
-      --gray-900: #111827;
-      --gray-800: #1f2937;
-      --gray-700: #374151;
-      --gray-600: #4b5563;
-      --gray-500: #6b7280;
-      --gray-400: #9ca3af;
-      --gray-300: #d1d5db;
-      --gray-200: #e5e7eb;
-      --gray-100: #f3f4f6;
-      --gray-50: #f9fafb;
-      --white: #ffffff;
+      --green-main: #4A7C59;
+      --green-light: #B8A99A;
+      --beige-bg: #F4F1ED;
+      --text-dark: #2D2D2D;
+      --text-gray: #6C6C6C;
+      --white: #FFFFFF;
+      --border-color: #B8A99A;
     }
 
     * {
@@ -34,9 +24,9 @@
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--gray-50);
-      color: var(--gray-800);
+      font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--beige-bg);
+      color: var(--text-dark);
       line-height: 1.6;
     }
 
@@ -46,62 +36,62 @@
       padding: 0 1rem;
     }
 
-    /* ===== Header ===== */
+    /* ===== HEADER ===== */
     header {
       background-color: var(--white);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
+      padding: 1rem 2rem;
     }
 
     .header-content {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      height: 4rem;
+      gap: 1.5rem;
     }
 
     .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--green-main);
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--gray-900);
     }
 
     .logo i {
-      color: var(--green-600);
+      color: var(--green-main);
     }
 
-    nav ul {
+    .main-menu {
       display: flex;
       list-style: none;
       gap: 1.5rem;
     }
 
-    nav a {
+    .main-menu a {
       text-decoration: none;
-      color: var(--gray-600);
+      color: var(--text-dark);
       font-weight: 500;
-      font-size: 0.9rem;
       padding: 0.5rem 0.75rem;
       border-radius: 0.5rem;
       transition: all 0.2s ease;
     }
 
-    nav a:hover,
-    nav a.active {
-      background-color: var(--green-50);
-      color: var(--green-700);
+    .main-menu a:hover,
+    .main-menu a.active {
+      background-color: var(--beige-bg);
+      color: var(--green-main);
     }
 
     .search-bar {
       display: flex;
       align-items: center;
       background: var(--white);
-      border: 1px solid var(--gray-300);
+      border: 1px solid var(--border-color);
       border-radius: 0.5rem;
       padding: 0.5rem 1rem;
       width: 200px;
@@ -111,36 +101,44 @@
       border: none;
       outline: none;
       width: 100%;
-      margin-left: 0.5rem;
       font-size: 0.9rem;
+      color: var(--text-dark);
     }
 
     .mobile-menu-btn {
       display: none;
       background: none;
       border: none;
-      font-size: 1.25rem;
-      color: var(--gray-700);
+      font-size: 1.5rem;
+      color: var(--text-dark);
       cursor: pointer;
     }
 
-    /* ===== Main Content ===== */
+    /* ===== MAIN CONTENT ===== */
     main {
       padding: 2rem 0;
+    }
+
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
     }
 
     .section-title {
       font-size: 1.875rem;
       font-weight: 700;
       margin-bottom: 1.5rem;
-      color: var(--gray-900);
+      color: var(--text-dark);
       display: flex;
       align-items: center;
       gap: 0.5rem;
     }
 
     .section-title i {
-      color: var(--green-600);
+      color: var(--green-main);
     }
 
     /* Home Grid */
@@ -151,7 +149,7 @@
     }
 
     .hero {
-      background: linear-gradient(to right, var(--green-50), var(--gray-50));
+      background: linear-gradient(to right, var(--beige-bg), #ffffff);
       border-radius: 1rem;
       padding: 2rem;
       text-align: center;
@@ -168,16 +166,10 @@
       text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     }
 
-    .hero i {
-      font-size: 2.5rem;
-      color: var(--green-700);
-      margin-bottom: 1rem;
-    }
-
     .hero h2 {
       font-size: 1.875rem;
       margin-bottom: 0.5rem;
-      color: var(--gray-900);
+      color: var(--text-dark);
       text-shadow: none;
     }
 
@@ -185,7 +177,7 @@
       background: var(--white);
       padding: 1rem;
       border-radius: 0.75rem;
-      border: 1px solid var(--gray-200);
+      border: 1px solid var(--border-color);
       margin-bottom: 1rem;
       transition: box-shadow 0.2s ease;
     }
@@ -202,8 +194,8 @@
     }
 
     .news-category {
-      background: var(--green-100);
-      color: var(--green-700);
+      background: #dcfce7;
+      color: var(--green-main);
       padding: 0.25rem 0.5rem;
       border-radius: 9999px;
       font-weight: 600;
@@ -213,7 +205,7 @@
       background: var(--white);
       padding: 1.5rem;
       border-radius: 0.75rem;
-      border: 1px solid var(--gray-200);
+      border: 1px solid var(--border-color);
       margin-bottom: 1.5rem;
     }
 
@@ -222,13 +214,13 @@
       padding: 0.5rem;
       border-radius: 0.5rem;
       text-decoration: none;
-      color: var(--gray-700);
+      color: var(--text-dark);
       transition: background 0.2s ease;
     }
 
     .quick-link:hover {
-      background: var(--green-50);
-      color: var(--green-700);
+      background: var(--beige-bg);
+      color: var(--green-main);
     }
 
     .social-icons {
@@ -238,13 +230,13 @@
     }
 
     .social-icons i {
-      color: var(--gray-600);
+      color: var(--text-gray);
       font-size: 1.25rem;
       transition: color 0.2s ease;
     }
 
     .social-icons i:hover {
-      color: var(--green-600);
+      color: var(--green-main);
     }
 
     /* Section Grid (2 columns) */
@@ -254,7 +246,7 @@
       gap: 2rem;
     }
 
-    /* Card Grid (for guides, brands, etc.) */
+    /* Card Grid */
     .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -265,7 +257,7 @@
       background: var(--white);
       padding: 1.5rem;
       border-radius: 0.75rem;
-      border: 1px solid var(--gray-200);
+      border: 1px solid var(--border-color);
       text-align: center;
       transition: transform 0.2s ease;
     }
@@ -274,19 +266,17 @@
       transform: translateY(-2px);
     }
 
-    .card i {
-      font-size: 2rem;
-      color: var(--green-600);
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 0.5rem;
       margin-bottom: 1rem;
-    }
-
-    .card h3 {
-      margin-bottom: 0.5rem;
     }
 
     .btn {
       display: inline-block;
-      background: var(--green-600);
+      background: var(--green-main);
       color: var(--white);
       padding: 0.5rem 1rem;
       border-radius: 0.5rem;
@@ -298,12 +288,12 @@
     }
 
     .btn:hover {
-      background: var(--green-700);
+      background: #3A6549;
     }
 
-    /* ===== Footer ===== */
+    /* ===== FOOTER ===== */
     footer {
-      background: var(--gray-800);
+      background: var(--text-dark);
       color: var(--white);
       padding: 3rem 0 2rem;
       margin-top: 4rem;
@@ -323,10 +313,6 @@
       font-size: 1.25rem;
       font-weight: 700;
       margin-bottom: 1rem;
-    }
-
-    .footer-logo i {
-      color: var(--green-400);
     }
 
     .footer-links h3,
@@ -352,7 +338,7 @@
     }
 
     .footer-links a:hover {
-      color: var(--green-400);
+      color: #4A7C59;
     }
 
     .footer-contact p,
@@ -370,7 +356,7 @@
       border-top: 1px solid #374151;
     }
 
-    /* ===== Responsive ===== */
+    /* ===== RESPONSIVE ===== */
     @media (max-width: 1024px) {
       .home-grid,
       .section-grid {
@@ -387,21 +373,22 @@
         display: block;
       }
 
-      nav ul {
+      .main-menu {
         display: none;
-      }
-
-      nav.active ul {
-        display: flex;
         flex-direction: column;
         position: absolute;
-        top: 4rem;
+        top: calc(4rem + 1rem);
         left: 0;
         right: 0;
         background: var(--white);
         padding: 1rem;
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         z-index: 99;
+        gap: 0.5rem;
+      }
+
+      .main-menu.active {
+        display: flex;
       }
 
       .search-bar {
@@ -410,6 +397,14 @@
 
       .footer-grid {
         grid-template-columns: 1fr;
+      }
+
+      header {
+        padding: 1rem;
+      }
+
+      .header-content {
+        flex-wrap: wrap;
       }
     }
   </style>
@@ -423,15 +418,13 @@
         <span>Ecomoda</span>
       </div>
 
-      <nav id="mainNav">
-        <ul>
-          <li><a href="#" class="active" data-section="home">Home</a></li>
-          <li><a href="#" data-section="about">¿Quiénes somos?</a></li>
-          <li><a href="#" data-section="news">Actualidad</a></li>
-          <li><a href="#" data-section="guides">Guías</a></li>
-          <li><a href="#" data-section="brands">Marcas</a></li>
-          <li><a href="#" data-section="community">Comunidad</a></li>
-        </ul>
+      <nav class="main-menu" id="mainMenu">
+        <a href="#" class="active" data-section="home">Home</a>
+        <a href="#" data-section="about">¿Quiénes somos?</a>
+        <a href="#" data-section="news">Actualidad</a>
+        <a href="#" data-section="guides">Guías</a>
+        <a href="#" data-section="brands">Marcas</a>
+        <a href="#" data-section="community">Comunidad</a>
       </nav>
 
       <div class="search-bar">
@@ -439,7 +432,7 @@
         <input type="text" placeholder="Buscar..." />
       </div>
 
-      <button class="mobile-menu-btn" id="mobileMenuBtn">
+      <button class="mobile-menu-btn" id="menuToggle">
         <i class="fas fa-bars"></i>
       </button>
     </div>
@@ -452,7 +445,6 @@
       <div class="home-grid">
         <div>
           <div class="hero">
-            <i class="fas fa-leaf" style="display: none;"></i>
             <h2>Moda con Conciencia</h2>
             <p>Descubre cómo tu elección de vestimenta puede transformar el planeta</p>
           </div>
@@ -489,35 +481,26 @@
         <div>
           <div class="sidebar-card">
             <h3 class="section-title"><i class="fas fa-tshirt"></i> Marcas Destacadas</h3>
-            <div class="brand-item">
-              <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
-                <div>
-                  <h4>Verde Hilos</h4>
-                  <p style="font-size: 0.875rem; color: var(--gray-600);">Venezuela</p>
-                </div>
-                <span style="color: var(--green-600); font-weight: bold;">4.8</span>
+            <div class="brand-item" style="margin-bottom:1rem;">
+              <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;">
+                <div><h4>Verde Hilos</h4><p style="font-size:0.875rem;color:var(--text-gray);">Venezuela</p></div>
+                <span style="color:var(--green-main);font-weight:bold;">4.8</span>
               </div>
-              <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Verde Hilos" style="width:100%; border-radius:0.5rem; margin-top:0.5rem;">
+              <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Verde Hilos" style="width:100%;border-radius:0.5rem;">
+            </div>
+            <div class="brand-item" style="margin-bottom:1rem;">
+              <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;">
+                <div><h4>EcoTextil</h4><p style="font-size:0.875rem;color:var(--text-gray);">Colombia</p></div>
+                <span style="color:var(--green-main);font-weight:bold;">4.6</span>
+              </div>
+              <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="EcoTextil" style="width:100%;border-radius:0.5rem;">
             </div>
             <div class="brand-item">
-              <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
-                <div>
-                  <h4>EcoTextil</h4>
-                  <p style="font-size: 0.875rem; color: var(--gray-600);">Colombia</p>
-                </div>
-                <span style="color: var(--green-600); font-weight: bold;">4.6</span>
+              <div style="display:flex;justify-content:space-between;">
+                <div><h4>GreenWeave</h4><p style="font-size:0.875rem;color:var(--text-gray);">Internacional</p></div>
+                <span style="color:var(--green-main);font-weight:bold;">4.9</span>
               </div>
-              <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="EcoTextil" style="width:100%; border-radius:0.5rem; margin-top:0.5rem;">
-            </div>
-            <div class="brand-item">
-              <div style="display: flex; justify-content: space-between;">
-                <div>
-                  <h4>GreenWeave</h4>
-                  <p style="font-size: 0.875rem; color: var(--gray-600);">Internacional</p>
-                </div>
-                <span style="color: var(--green-600); font-weight: bold;">4.9</span>
-              </div>
-              <img src="https://images.unsplash.com/photo-1618125883241-b9b5a1c0d0c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="GreenWeave" style="width:100%; border-radius:0.5rem; margin-top:0.5rem;">
+              <img src="https://images.unsplash.com/photo-1618125883241-b9b5a1c0d0c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="GreenWeave" style="width:100%;border-radius:0.5rem;">
             </div>
           </div>
 
@@ -546,20 +529,20 @@
       <div class="section-grid">
         <div>
           <h2 class="section-title">¿Quiénes Somos?</h2>
-          <p style="margin-bottom: 1rem; color: var(--gray-600);">
+          <p style="margin-bottom:1rem;color:var(--text-gray);">
             Ecomoda nace como una iniciativa universitaria de la Universidad Santa María FACES, 
             con el propósito de fomentar el consumo responsable y la concienciación ambiental 
             en la industria de la moda.
           </p>
-          <p style="margin-bottom: 1.5rem; color: var(--gray-600);">
+          <p style="margin-bottom:1.5rem;color:var(--text-gray);">
             Nuestra misión es conectar a personas interesadas en la sostenibilidad con información 
             útil, recursos educativos y contenido visual atractivo que inspire un cambio positivo 
             en sus hábitos de consumo.
           </p>
           
-          <div style="background: var(--green-50); padding: 1.5rem; border-radius: 0.75rem; border: 1px solid var(--green-100);">
-            <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--green-800); margin-bottom: 0.5rem;">Nuestra Misión</h3>
-            <p style="color: var(--green-700);">
+          <div style="background:#dcfce7;padding:1.5rem;border-radius:0.75rem;border:1px solid #dcfce7;">
+            <h3 style="font-size:1.25rem;font-weight:700;color:var(--green-main);margin-bottom:0.5rem;">Nuestra Misión</h3>
+            <p style="color:var(--green-main);">
               Promover una cultura de vestimenta ética y sostenible que respete tanto al planeta 
               como a las personas involucradas en la cadena de producción textil.
             </p>
@@ -568,25 +551,25 @@
         
         <div>
           <h2 class="section-title">Contáctanos</h2>
-          <div style="display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 1rem;">
-            <i class="fas fa-envelope" style="color: var(--green-600); margin-top: 0.25rem;"></i>
+          <div style="display:flex;align-items:flex-start;gap:0.75rem;margin-bottom:1rem;">
+            <i class="fas fa-envelope" style="color:var(--green-main);margin-top:0.25rem;"></i>
             <div>
-              <p style="font-weight: 600;">Email</p>
-              <p style="color: var(--gray-600);">contacto@ecomoda.com</p>
+              <p style="font-weight:600;">Email</p>
+              <p style="color:var(--text-gray);">contacto@ecomoda.com</p>
             </div>
           </div>
-          <div style="display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 1rem;">
-            <i class="fas fa-phone" style="color: var(--green-600); margin-top: 0.25rem;"></i>
+          <div style="display:flex;align-items:flex-start;gap:0.75rem;margin-bottom:1rem;">
+            <i class="fas fa-phone" style="color:var(--green-main);margin-top:0.25rem;"></i>
             <div>
-              <p style="font-weight: 600;">Teléfono</p>
-              <p style="color: var(--gray-600);">+58 212-123-4567</p>
+              <p style="font-weight:600;">Teléfono</p>
+              <p style="color:var(--text-gray);">+58 212-123-4567</p>
             </div>
           </div>
-          <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-            <i class="fas fa-map-marker-alt" style="color: var(--green-600); margin-top: 0.25rem;"></i>
+          <div style="display:flex;align-items:flex-start;gap:0.75rem;">
+            <i class="fas fa-map-marker-alt" style="color:var(--green-main);margin-top:0.25rem;"></i>
             <div>
-              <p style="font-weight: 600;">Dirección</p>
-              <p style="color: var(--gray-600);">Universidad Santa María, Caracas, Venezuela</p>
+              <p style="font-weight:600;">Dirección</p>
+              <p style="color:var(--text-gray);">Universidad Santa María, Caracas, Venezuela</p>
             </div>
           </div>
         </div>
@@ -598,35 +581,35 @@
       <h2 class="section-title"><i class="fas fa-newspaper"></i> Actualidad</h2>
       <div class="card-grid">
         <div class="card">
-          <img src="https://images.unsplash.com/photo-1618125883241-b9b5a1c0d0c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Fibras regenerativas" style="width:100%; height:150px; object-fit:cover; border-radius:0.5rem; margin-bottom:1rem;">
-          <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
+          <img src="https://images.unsplash.com/photo-1618125883241-b9b5a1c0d0c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Fibras regenerativas">
+          <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;">
             <span class="news-category">Internacional</span>
             <span>20 Ene 2026</span>
           </div>
           <h3>Nuevas fibras regenerativas revolucionan la industria textil</h3>
-          <p style="margin-top: 0.5rem; color: var(--gray-600);">
+          <p style="margin-top:0.5rem;color:var(--text-gray);">
             Descubre cómo materiales innovadores están cambiando la forma en que producimos y consumimos ropa.
           </p>
         </div>
         <div class="card">
-          <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Feria de moda sostenible" style="width:100%; height:150px; object-fit:cover; border-radius:0.5rem; margin-bottom:1rem;">
-          <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
+          <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Feria de moda sostenible">
+          <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;">
             <span class="news-category">Nacional</span>
             <span>18 Ene 2026</span>
           </div>
           <h3>Feria de Moda Sostenible en Caracas reúne a más de 50 marcas locales</h3>
-          <p style="margin-top: 0.5rem; color: var(--gray-600);">
+          <p style="margin-top:0.5rem;color:var(--text-gray);">
             Un evento que celebra la creatividad venezolana con textiles éticos y procesos transparentes.
           </p>
         </div>
         <div class="card">
-          <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Armario cápsula" style="width:100%; height:150px; object-fit:cover; border-radius:0.5rem; margin-bottom:1rem;">
-          <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
+          <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Armario cápsula">
+          <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;">
             <span class="news-category">Guías</span>
             <span>15 Ene 2026</span>
           </div>
           <h3>Guía definitiva para crear tu propio armario cápsula sostenible</h3>
-          <p style="margin-top: 0.5rem; color: var(--gray-600);">
+          <p style="margin-top:0.5rem;color:var(--text-gray);">
             Aprende a reducir tu guardarropa y maximizar tu estilo con prendas versátiles y duraderas.
           </p>
         </div>
@@ -638,17 +621,17 @@
       <h2 class="section-title"><i class="fas fa-book"></i> Guías de Estilo</h2>
       <div class="card-grid">
         <div class="card">
-          <img src="https://images.unsplash.com/photo-1600185365413-d0ff5f11e5d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Moda circular" style="width:100%; height:150px; object-fit:cover; border-radius:0.5rem; margin-bottom:1rem;">
+          <img src="https://images.unsplash.com/photo-1600185365413-d0ff5f11e5d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Moda circular">
           <h3>Moda Circular</h3>
           <p>Aprende a cerrar el ciclo de vida de tus prendas</p>
         </div>
         <div class="card">
-          <img src="https://images.unsplash.com/photo-1583743815517-41a5e6d55b2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Upcycling" style="width:100%; height:150px; object-fit:cover; border-radius:0.5rem; margin-bottom:1rem;">
+          <img src="https://images.unsplash.com/photo-1583743815517-41a5e6d55b2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Upcycling">
           <h3>Upcycling Creativo</h3>
           <p>Transforma prendas viejas en nuevas creaciones</p>
         </div>
         <div class="card">
-          <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="DIY sostenible" style="width:100%; height:150px; object-fit:cover; border-radius:0.5rem; margin-bottom:1rem;">
+          <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="DIY sostenible">
           <h3>DIY Sostenible</h3>
           <p>Proyectos caseros para reducir tu huella textil</p>
         </div>
@@ -660,24 +643,24 @@
       <h2 class="section-title"><i class="fas fa-store"></i> Marcas Sostenibles</h2>
       <div class="card-grid">
         <div class="card">
-          <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Verde Hilos" style="width:100%; height:150px; object-fit:cover; border-radius:0.5rem; margin-bottom:1rem;">
+          <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Verde Hilos">
           <h3>Verde Hilos</h3>
-          <p style="color: var(--gray-600); margin: 0.5rem 0;">Venezuela</p>
-          <p style="color: var(--gray-600); margin-bottom: 1rem;">Especializada en tejidos orgánicos</p>
+          <p style="color:var(--text-gray);margin:0.5rem 0;">Venezuela</p>
+          <p style="color:var(--text-gray);margin-bottom:1rem;">Especializada en tejidos orgánicos</p>
           <button class="btn">Ver Perfil</button>
         </div>
         <div class="card">
-          <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="EcoTextil" style="width:100%; height:150px; object-fit:cover; border-radius:0.5rem; margin-bottom:1rem;">
+          <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="EcoTextil">
           <h3>EcoTextil</h3>
-          <p style="color: var(--gray-600); margin: 0.5rem 0;">Colombia</p>
-          <p style="color: var(--gray-600); margin-bottom: 1rem;">Especializada en prendas recicladas</p>
+          <p style="color:var(--text-gray);margin:0.5rem 0;">Colombia</p>
+          <p style="color:var(--text-gray);margin-bottom:1rem;">Especializada en prendas recicladas</p>
           <button class="btn">Ver Perfil</button>
         </div>
         <div class="card">
-          <img src="https://images.unsplash.com/photo-1618125883241-b9b5a1c0d0c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="GreenWeave" style="width:100%; height:150px; object-fit:cover; border-radius:0.5rem; margin-bottom:1rem;">
+          <img src="https://images.unsplash.com/photo-1618125883241-b9b5a1c0d0c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="GreenWeave">
           <h3>GreenWeave</h3>
-          <p style="color: var(--gray-600); margin: 0.5rem 0;">Internacional</p>
-          <p style="color: var(--gray-600); margin-bottom: 1rem;">Especializada en materiales innovadores</p>
+          <p style="color:var(--text-gray);margin:0.5rem 0;">Internacional</p>
+          <p style="color:var(--text-gray);margin-bottom:1rem;">Especializada en materiales innovadores</p>
           <button class="btn">Ver Perfil</button>
         </div>
       </div>
@@ -689,36 +672,36 @@
         <div>
           <h2 class="section-title"><i class="fas fa-users"></i> Comunidad</h2>
           <div class="sidebar-card">
-            <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Taller comunitario" style="width:100%; border-radius:0.5rem; margin-bottom:1rem;">
-            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
-              <i class="fas fa-users" style="color: var(--green-600);"></i>
-              <h3 style="font-size: 1.25rem; font-weight: 700;">Foros Activos</h3>
+            <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Taller comunitario" style="width:100%;border-radius:0.5rem;margin-bottom:1rem;">
+            <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;">
+              <i class="fas fa-users" style="color:var(--green-main);"></i>
+              <h3 style="font-size:1.25rem;font-weight:700;">Foros Activos</h3>
             </div>
-            <div style="background: var(--gray-50); padding: 0.75rem; border-radius: 0.5rem; margin-bottom: 0.5rem;">
-              <span style="font-weight: 600;">Intercambio de Ropa</span>
-              <span style="float: right; color: var(--green-600);">Activo</span>
+            <div style="background:var(--beige-bg);padding:0.75rem;border-radius:0.5rem;margin-bottom:0.5rem;">
+              <span style="font-weight:600;">Intercambio de Ropa</span>
+              <span style="float:right;color:var(--green-main);">Activo</span>
             </div>
-            <div style="background: var(--gray-50); padding: 0.75rem; border-radius: 0.5rem; margin-bottom: 0.5rem;">
-              <span style="font-weight: 600;">Talleres DIY</span>
-              <span style="float: right; color: var(--green-600);">Activo</span>
+            <div style="background:var(--beige-bg);padding:0.75rem;border-radius:0.5rem;margin-bottom:0.5rem;">
+              <span style="font-weight:600;">Talleres DIY</span>
+              <span style="float:right;color:var(--green-main);">Activo</span>
             </div>
-            <div style="background: var(--gray-50); padding: 0.75rem; border-radius: 0.5rem;">
-              <span style="font-weight: 600;">Eventos Locales</span>
-              <span style="float: right; color: var(--green-600);">Activo</span>
+            <div style="background:var(--beige-bg);padding:0.75rem;border-radius:0.5rem;">
+              <span style="font-weight:600;">Eventos Locales</span>
+              <span style="float:right;color:var(--green-main);">Activo</span>
             </div>
           </div>
         </div>
         
         <div>
           <h2 class="section-title">Consejos Ecológicos</h2>
-          <div style="background: var(--green-50); padding: 1rem; border-radius: 0.75rem; border: 1px solid var(--green-100); margin-bottom: 1rem;">
-            <p style="color: var(--green-800);">• Lava tus prendas con agua fría para ahorrar energía</p>
+          <div style="background:#dcfce7;padding:1rem;border-radius:0.75rem;border:1px solid #dcfce7;margin-bottom:1rem;">
+            <p style="color:var(--green-main);">• Lava tus prendas con agua fría para ahorrar energía</p>
           </div>
-          <div style="background: var(--green-50); padding: 1rem; border-radius: 0.75rem; border: 1px solid var(--green-100); margin-bottom: 1rem;">
-            <p style="color: var(--green-800);">• Repara en lugar de reemplazar: extiende la vida de tus prendas</p>
+          <div style="background:#dcfce7;padding:1rem;border-radius:0.75rem;border:1px solid #dcfce7;margin-bottom:1rem;">
+            <p style="color:var(--green-main);">• Repara en lugar de reemplazar: extiende la vida de tus prendas</p>
           </div>
-          <div style="background: var(--green-50); padding: 1rem; border-radius: 0.75rem; border: 1px solid var(--green-100);">
-            <p style="color: var(--green-800);">• Compra de segunda mano: reduce la demanda de producción nueva</p>
+          <div style="background:#dcfce7;padding:1rem;border-radius:0.75rem;border:1px solid #dcfce7;">
+            <p style="color:var(--green-main);">• Compra de segunda mano: reduce la demanda de producción nueva</p>
           </div>
         </div>
       </div>
@@ -734,7 +717,7 @@
             <i class="fas fa-leaf"></i>
             <span>Ecomoda</span>
           </div>
-          <p style="color: #9ca3af;">
+          <p style="color:#9ca3af;">
             Promoviendo la moda sostenible y el consumo responsable desde Venezuela.
           </p>
         </div>
@@ -773,53 +756,45 @@
   </footer>
 
   <script>
-    // Navigation functionality
+    // ===== FUNCIONALIDAD DE NAVEGACIÓN =====
     document.addEventListener('DOMContentLoaded', function() {
       const sections = document.querySelectorAll('.section');
       const navLinks = document.querySelectorAll('[data-section]');
-      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-      const mainNav = document.getElementById('mainNav');
+      const menuToggle = document.getElementById('menuToggle');
+      const mainMenu = document.getElementById('mainMenu');
 
-      // Show section function
+      // Mostrar sección específica
       function showSection(sectionId) {
-        // Hide all sections
-        sections.forEach(section => {
-          section.classList.remove('active');
-        });
-        
-        // Show selected section
+        // Ocultar todas
+        sections.forEach(section => section.classList.remove('active'));
+        // Mostrar la seleccionada
         document.getElementById(sectionId).classList.add('active');
-        
-        // Update active nav link
+        // Actualizar enlace activo
         navLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('data-section') === sectionId) {
-            link.classList.add('active');
-          }
+          link.classList.toggle('active', link.getAttribute('data-section') === sectionId);
         });
-        
-        // Close mobile menu if open
-        mainNav.classList.remove('active');
+        // Cerrar menú móvil
+        mainMenu.classList.remove('active');
+        // Scroll suave al inicio
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
 
-      // Set up click handlers for navigation
+      // Eventos para enlaces de navegación
       navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', (e) => {
           e.preventDefault();
-          const sectionId = this.getAttribute('data-section');
-          showSection(sectionId);
-          
-          // Scroll to top
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          showSection(link.getAttribute('data-section'));
         });
       });
 
-      // Mobile menu toggle
-      mobileMenuBtn.addEventListener('click', function() {
-        mainNav.classList.toggle('active');
-      });
+      // Menú hamburguesa móvil
+      if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+          mainMenu.classList.toggle('active');
+        });
+      }
 
-      // Initialize with home section
+      // Iniciar en Home
       showSection('home');
     });
   </script>
