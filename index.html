@@ -114,7 +114,7 @@
       cursor: pointer;
     }
 
-    /* ===== BANNERS PUBLICIDAD ===== */
+    /* ===== PUBLICIDAD BANNER ===== */
     .ad-banner {
       width: 100%;
       height: 120px;
@@ -129,9 +129,12 @@
       text-shadow: 0 2px 4px rgba(0,0,0,0.5);
       transition: transform 0.2s ease;
     }
-    
-    .ad-banner:hover { transform: scale(1.01); }
 
+    .ad-banner:hover {
+      transform: scale(1.01);
+    }
+
+    /* Para banners verticales (sidebars) */
     .ad-banner-vertical {
       width: 100%;
       height: 250px;
@@ -146,8 +149,10 @@
       text-shadow: 0 2px 4px rgba(0,0,0,0.5);
       transition: transform 0.2s ease;
     }
-    
-    .ad-banner-vertical:hover { transform: scale(1.01); }
+
+    .ad-banner-vertical:hover {
+      transform: scale(1.01);
+    }
 
     /* ===== MAIN CONTENT ===== */
     main {
@@ -176,26 +181,157 @@
       color: var(--green-main);
     }
 
-    /* Layout Grids Originales (Para Home, News, etc) */
+    /* Home Grid */
     .home-grid {
       display: grid;
       grid-template-columns: 2fr 1fr;
       gap: 2rem;
     }
 
+    .hero {
+      background: linear-gradient(to right, var(--beige-bg), #ffffff);
+      border-radius: 1rem;
+      padding: 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      height: 20rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-image: url('https://images.unsplash.com/photo-1593079831268-5784e93b93d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .hero h2 {
+      font-size: 1.875rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-dark);
+      text-shadow: none;
+    }
+
+    .news-item {
+      background: var(--white);
+      padding: 1rem;
+      border-radius: 0.75rem;
+      border: 1px solid var(--border-color);
+      margin-bottom: 1rem;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .news-item:hover {
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+
+    .news-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-size: 0.875rem;
+    }
+
+    .news-category {
+      background: #dcfce7;
+      color: var(--green-main);
+      padding: 0.25rem 0.5rem;
+      border-radius: 9999px;
+      font-weight: 600;
+    }
+
+    .sidebar-card {
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      border: 1px solid var(--border-color);
+      margin-bottom: 1.5rem;
+    }
+
+    .quick-link {
+      display: block;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      color: var(--text-dark);
+      transition: background 0.2s ease;
+    }
+
+    .quick-link:hover {
+      background: var(--beige-bg);
+      color: var(--green-main);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-icons i {
+      color: var(--text-gray);
+      font-size: 1.25rem;
+      transition: color 0.2s ease;
+    }
+
+    .social-icons i:hover {
+      color: var(--green-main);
+    }
+
+    /* Section Grid (2 columns) */
     .section-grid {
       display: grid;
       grid-template-columns: 2fr 1fr;
       gap: 2rem;
     }
-    
+
+    /* Card Grid */
     .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 1.5rem;
     }
 
-    /* ===== NUEVO CSS ESPECÍFICO PARA "MARCAS" (El arreglo solicitado) ===== */
+    .card {
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      border: 1px solid var(--border-color);
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--green-main);
+      color: var(--white);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.2s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #3A6549;
+    }
+    
+    /* ===== CSS NUEVO PARA ARREGLAR MARCAS ===== */
     .brands-layout {
       display: grid;
       grid-template-columns: 3fr 1fr; /* Izquierda grande, Derecha pequeña */
@@ -208,6 +344,11 @@
       justify-content: center; /* Centrar las cartas */
       gap: 2rem;
       flex-wrap: wrap;
+    }
+    
+    .cards-centered .card {
+      width: 100%;
+      max-width: 320px; /* Para que no se estiren demasiado */
     }
 
     .contact-sidebar {
@@ -241,125 +382,7 @@
       justify-content: center;
       font-size: 1.2rem;
     }
-
-    /* Hero Styles */
-    .hero {
-      background: linear-gradient(to right, var(--beige-bg), #ffffff);
-      border-radius: 1rem;
-      padding: 2rem;
-      text-align: center;
-      margin-bottom: 2rem;
-      height: 20rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background-image: url('https://images.unsplash.com/photo-1593079831268-5784e93b93d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-    }
-
-    .hero h2 {
-      font-size: 1.875rem;
-      margin-bottom: 0.5rem;
-      color: var(--text-dark);
-      text-shadow: none;
-    }
-
-    /* Cards & Items Styles */
-    .news-item {
-      background: var(--white);
-      padding: 1rem;
-      border-radius: 0.75rem;
-      border: 1px solid var(--border-color);
-      margin-bottom: 1rem;
-      transition: box-shadow 0.2s ease;
-    }
-
-    .news-item:hover { box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-
-    .news-meta {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.5rem;
-      font-size: 0.875rem;
-    }
-
-    .news-category {
-      background: #dcfce7;
-      color: var(--green-main);
-      padding: 0.25rem 0.5rem;
-      border-radius: 9999px;
-      font-weight: 600;
-    }
-
-    .sidebar-card {
-      background: var(--white);
-      padding: 1.5rem;
-      border-radius: 0.75rem;
-      border: 1px solid var(--border-color);
-      margin-bottom: 1.5rem;
-    }
-
-    .quick-link {
-      display: block;
-      padding: 0.5rem;
-      border-radius: 0.5rem;
-      text-decoration: none;
-      color: var(--text-dark);
-      transition: background 0.2s ease;
-    }
     
-    .quick-link:hover { background: var(--beige-bg); color: var(--green-main); }
-
-    .social-icons {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    
-    .social-icons i { color: var(--text-gray); font-size: 1.25rem; transition: color 0.2s ease; }
-    .social-icons i:hover { color: var(--green-main); }
-
-    .card {
-      background: var(--white);
-      padding: 1.5rem;
-      border-radius: 0.75rem;
-      border: 1px solid var(--border-color);
-      text-align: center;
-      transition: transform 0.2s ease;
-      /* Asegura dimensiones para la sección de marcas */
-      max-width: 320px;
-      width: 100%;
-    }
-
-    .card:hover { transform: translateY(-2px); }
-
-    .card img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 0.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .btn {
-      display: inline-block;
-      background: var(--green-main);
-      color: var(--white);
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background 0.2s ease;
-      border: none;
-      cursor: pointer;
-    }
-    
-    .btn:hover { background: #3A6549; }
-
     .btn-outline {
       display: inline-block;
       background: transparent;
@@ -401,18 +424,34 @@
       margin-bottom: 1rem;
     }
 
-    .footer-links h3, .footer-contact h3, .footer-social h3 {
+    .footer-links h3,
+    .footer-contact h3,
+    .footer-social h3 {
       font-size: 1.125rem;
       margin-bottom: 1rem;
       font-weight: 600;
     }
 
-    .footer-links ul { list-style: none; }
-    .footer-links li { margin-bottom: 0.5rem; }
-    .footer-links a { color: #9ca3af; text-decoration: none; transition: color 0.2s ease; }
-    .footer-links a:hover { color: #4A7C59; }
+    .footer-links ul {
+      list-style: none;
+    }
 
-    .footer-contact p, .footer-copyright {
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-links a {
+      color: #9ca3af;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: #4A7C59;
+    }
+
+    .footer-contact p,
+    .footer-copyright {
       color: #9ca3af;
       margin-bottom: 0.5rem;
       display: flex;
@@ -424,35 +463,79 @@
       text-align: center;
       padding-top: 2rem;
       border-top: 1px solid #374151;
-      justify-content: center;
     }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 1024px) {
-      .home-grid, .section-grid, .brands-layout { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: repeat(2, 1fr); }
-      .cards-centered { justify-content: center; }
+      .home-grid,
+      .section-grid,
+      .brands-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .ad-banner {
+        height: 80px;
+        font-size: 0.9rem;
+      }
+
+      .ad-banner-vertical {
+        height: 180px;
+        font-size: 0.9rem;
+      }
     }
 
     @media (max-width: 768px) {
-      .mobile-menu-btn { display: block; }
+      .mobile-menu-btn {
+        display: block;
+      }
+
       .main-menu {
         display: none;
         flex-direction: column;
         position: absolute;
         top: calc(4rem + 1rem);
-        left: 0; right: 0;
+        left: 0;
+        right: 0;
         background: var(--white);
         padding: 1rem;
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         z-index: 99;
         gap: 0.5rem;
       }
-      .main-menu.active { display: flex; }
-      .search-bar { display: none; }
-      .footer-grid { grid-template-columns: 1fr; }
-      header { padding: 1rem; }
-      .header-content { flex-wrap: wrap; }
+
+      .main-menu.active {
+        display: flex;
+      }
+
+      .search-bar {
+        display: none;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        padding: 1rem;
+      }
+
+      .header-content {
+        flex-wrap: wrap;
+      }
+
+      .ad-banner {
+        height: 80px;
+        font-size: 0.9rem;
+      }
+
+      .ad-banner-vertical {
+        height: 180px;
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
@@ -489,7 +572,7 @@
         🛍️ ¡Nueva colección sostenible! | Diseño ético, materiales reciclados | Descubre ahora
       </div>
 
-      <div class="home-grid" style="margin-top:2rem;">
+      <div class="home-grid">
         <div>
           <div class="hero">
             <h2>Moda con Conciencia</h2>
@@ -514,6 +597,14 @@
               </div>
               <h3>Feria de Moda Sostenible en Caracas reúne a más de 50 marcas locales</h3>
             </div>
+            <div class="news-item">
+              <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camiseta streetwear" style="width:100%; border-radius:0.5rem; margin-bottom:0.75rem;">
+              <div class="news-meta">
+                <span class="news-category">Guías</span>
+                <span>15 Ene 2026</span>
+              </div>
+              <h3>Guía definitiva para crear tu propio armario cápsula sostenible</h3>
+            </div>
           </div>
         </div>
 
@@ -525,12 +616,21 @@
                 <div><h4>Verde Hilos</h4><p style="font-size:0.875rem;color:var(--text-gray);">Venezuela</p></div>
                 <span style="color:var(--green-main);font-weight:bold;">4.8</span>
               </div>
+              <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camiseta urbana" style="width:100%;border-radius:0.5rem;">
             </div>
             <div class="brand-item" style="margin-bottom:1rem;">
               <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;">
                 <div><h4>EcoTextil</h4><p style="font-size:0.875rem;color:var(--text-gray);">Colombia</p></div>
                 <span style="color:var(--green-main);font-weight:bold;">4.6</span>
               </div>
+              <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Zapatillas urbanas" style="width:100%;border-radius:0.5rem;">
+            </div>
+            <div class="brand-item">
+              <div style="display:flex;justify-content:space-between;">
+                <div><h4>GreenWeave</h4><p style="font-size:0.875rem;color:var(--text-gray);">Internacional</p></div>
+                <span style="color:var(--green-main);font-weight:bold;">4.9</span>
+              </div>
+              <img src="https://images.unsplash.com/photo-1620799140408-ed5341cd2431?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tejido moderno" style="width:100%;border-radius:0.5rem;">
             </div>
           </div>
 
@@ -561,7 +661,13 @@
             con el propósito de fomentar el consumo responsable y la concienciación ambiental 
             en la industria de la moda.
           </p>
-          <div style="background:#dcfce7;padding:1.5rem;border-radius:0.75rem;border:1px solid #dcfce7; margin-top:1rem;">
+          <p style="margin-bottom:1.5rem;color:var(--text-gray);">
+            Nuestra misión es conectar a personas interesadas en la sostenibilidad con información 
+            útil, recursos educativos y contenido visual atractivo que inspire un cambio positivo 
+            en sus hábitos de consumo.
+          </p>
+            
+          <div style="background:#dcfce7;padding:1.5rem;border-radius:0.75rem;border:1px solid #dcfce7;">
             <h3 style="font-size:1.25rem;font-weight:700;color:var(--green-main);margin-bottom:0.5rem;">Nuestra Misión</h3>
             <p style="color:var(--green-main);">
               Promover una cultura de vestimenta ética y sostenible que respete tanto al planeta 
@@ -586,6 +692,13 @@
               <p style="color:var(--text-gray);">+58 212-123-4567</p>
             </div>
           </div>
+          <div style="display:flex;align-items:flex-start;gap:0.75rem;">
+            <i class="fas fa-map-marker-alt" style="color:var(--green-main);margin-top:0.25rem;"></i>
+            <div>
+              <p style="font-weight:600;">Dirección</p>
+              <p style="color:var(--text-gray);">Universidad Santa María, Caracas, Venezuela</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -601,9 +714,9 @@
                 <span class="news-category">Tendencias</span>
                 <span>20 Ene 2026</span>
               </div>
-              <h3>El auge del vintage</h3>
+              <h3>El auge del vintage: por qué comprar ropa usada es la mejor decisión sostenible</h3>
               <p style="margin-top:0.5rem;color:var(--text-gray);">
-                Descubre cómo elegir piezas únicas de segunda mano.
+                Descubre cómo elegir piezas únicas de segunda mano no solo reduce residuos textiles, sino que también construye un estilo personal auténtico y con historia.
               </p>
             </div>
             <div class="card">
@@ -612,9 +725,9 @@
                 <span class="news-category">Nacional</span>
                 <span>18 Ene 2026</span>
               </div>
-              <h3>Feria de Moda Sostenible</h3>
+              <h3>Feria de Moda Sostenible en Caracas reúne a más de 50 marcas locales</h3>
               <p style="margin-top:0.5rem;color:var(--text-gray);">
-                Un evento que celebra la creatividad venezolana.
+                Un evento que celebra la creatividad venezolana con textiles éticos y procesos transparentes.
               </p>
             </div>
             <div class="card">
@@ -623,16 +736,17 @@
                 <span class="news-category">Guías</span>
                 <span>15 Ene 2026</span>
               </div>
-              <h3>Guía del armario cápsula</h3>
+              <h3>Guía definitiva para crear tu propio armario cápsula sostenible</h3>
               <p style="margin-top:0.5rem;color:var(--text-gray);">
-                Aprende a reducir tu guardarropa y maximizar tu estilo.
+                Aprende a reducir tu guardarropa y maximizar tu estilo con prendas versátiles y duraderas.
               </p>
             </div>
           </div>
         </div>
+
         <div>
           <div class="ad-banner-vertical">
-            👟 ¡Zapatillas sostenibles! | Compra consciente
+            👟 ¡Zapatillas sostenibles ya disponibles! | Compra consciente, camina con estilo
           </div>
         </div>
       </div>
@@ -651,7 +765,6 @@
             <p style="color:var(--text-gray);margin-bottom:1rem;">Especializada en tejidos orgánicos</p>
             <button class="btn">Ver Perfil</button>
           </div>
-          
           <div class="card">
             <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Zapatillas urbanas">
             <h3>EcoTextil</h3>
@@ -659,8 +772,7 @@
             <p style="color:var(--text-gray);margin-bottom:1rem;">Especializada en prendas recicladas</p>
             <button class="btn">Ver Perfil</button>
           </div>
-          
-          </div>
+        </div>
 
         <div class="contact-sidebar">
           <h3 style="color:var(--green-main); margin-bottom:1.5rem; font-size:1.1rem;">¿Tienes una marca sostenible?</h3>
@@ -715,8 +827,12 @@
               <span style="font-weight:600;">Intercambio de Ropa</span>
               <span style="float:right;color:var(--green-main);">Activo</span>
             </div>
-            <div style="background:var(--beige-bg);padding:0.75rem;border-radius:0.5rem;">
+            <div style="background:var(--beige-bg);padding:0.75rem;border-radius:0.5rem;margin-bottom:0.5rem;">
               <span style="font-weight:600;">Talleres DIY</span>
+              <span style="float:right;color:var(--green-main);">Activo</span>
+            </div>
+            <div style="background:var(--beige-bg);padding:0.75rem;border-radius:0.5rem;">
+              <span style="font-weight:600;">Eventos Locales</span>
               <span style="float:right;color:var(--green-main);">Activo</span>
             </div>
           </div>
@@ -727,8 +843,11 @@
           <div style="background:#dcfce7;padding:1rem;border-radius:0.75rem;border:1px solid #dcfce7;margin-bottom:1rem;">
             <p style="color:var(--green-main);">• Lava tus prendas con agua fría para ahorrar energía</p>
           </div>
+          <div style="background:#dcfce7;padding:1rem;border-radius:0.75rem;border:1px solid #dcfce7;margin-bottom:1rem;">
+            <p style="color:var(--green-main);">• Repara en lugar de reemplazar: extiende la vida de tus prendas</p>
+          </div>
           <div style="background:#dcfce7;padding:1rem;border-radius:0.75rem;border:1px solid #dcfce7;">
-            <p style="color:var(--green-main);">• Repara en lugar de reemplazar</p>
+            <p style="color:var(--green-main);">• Compra de segunda mano: reduce la demanda de producción nueva</p>
           </div>
         </div>
       </div>
@@ -790,13 +909,11 @@
 
       function showSection(sectionId) {
         sections.forEach(section => section.classList.remove('active'));
-        const activeSection = document.getElementById(sectionId);
-        if(activeSection) activeSection.classList.add('active');
-        
+        document.getElementById(sectionId).classList.add('active');
         navLinks.forEach(link => {
           link.classList.toggle('active', link.getAttribute('data-section') === sectionId);
         });
-        if(mainMenu) mainMenu.classList.remove('active');
+        mainMenu.classList.remove('active');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
 
@@ -813,7 +930,7 @@
         });
       }
 
-      // Iniciamos en HOME para que veas que todo cargó bien
+      // Aseguramos que inicie en HOME
       showSection('home');
     });
   </script>
