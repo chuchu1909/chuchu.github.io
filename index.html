@@ -115,54 +115,45 @@
       cursor: pointer;
     }
 
-    /* ===== AD BANNER ===== */
-    .ad-banner {
+    /* ===== AD BANNER EN SIDEBAR DERECHO ===== */
+    .ad-sidebar {
       background: linear-gradient(135deg, var(--ad-bg), #FF6B6B);
       border-radius: 1rem;
       padding: 1.5rem;
-      margin: 1rem 0;
+      margin-bottom: 1.5rem;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      gap: 2rem;
+      justify-content: center;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       color: white;
       text-align: center;
+      height: 400px;
+      overflow: hidden;
     }
 
-    .ad-content {
-      flex: 1;
+    .ad-sidebar img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 0.75rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
 
-    .ad-content h3 {
-      font-size: 1.5rem;
+    .ad-sidebar h3 {
+      font-size: 1.25rem;
       margin-bottom: 0.5rem;
       font-weight: 700;
     }
 
-    .ad-content p {
-      font-size: 0.95rem;
+    .ad-sidebar p {
+      font-size: 0.9rem;
       margin-bottom: 1rem;
       opacity: 0.9;
     }
 
-    .ad-image {
-      flex-shrink: 0;
-      width: 200px;
-      height: 150px;
-      border-radius: 0.75rem;
-      overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-
-    .ad-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .ad-btn {
-      display: inline-block;
+    .ad-sidebar .btn {
       background: white;
       color: var(--ad-bg);
       padding: 0.5rem 1rem;
@@ -174,14 +165,14 @@
       cursor: pointer;
     }
 
-    .ad-btn:hover {
+    .ad-sidebar .btn:hover {
       background: #f8f8f8;
       transform: scale(1.05);
     }
 
     /* ===== MAIN CONTENT ===== */
     main {
-      padding: 0 0 2rem 0;
+      padding: 2rem 0;
     }
 
     .section {
@@ -206,7 +197,7 @@
       color: var(--green-main);
     }
 
-    /* Home Grid */
+    /* Home Grid: 1 columna principal + 1 columna publicidad */
     .home-grid {
       display: grid;
       grid-template-columns: 2fr 1fr;
@@ -264,44 +255,6 @@
       padding: 0.25rem 0.5rem;
       border-radius: 9999px;
       font-weight: 600;
-    }
-
-    .sidebar-card {
-      background: var(--white);
-      padding: 1.5rem;
-      border-radius: 0.75rem;
-      border: 1px solid var(--border-color);
-      margin-bottom: 1.5rem;
-    }
-
-    .quick-link {
-      display: block;
-      padding: 0.5rem;
-      border-radius: 0.5rem;
-      text-decoration: none;
-      color: var(--text-dark);
-      transition: background 0.2s ease;
-    }
-
-    .quick-link:hover {
-      background: var(--beige-bg);
-      color: var(--green-main);
-    }
-
-    .social-icons {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .social-icons i {
-      color: var(--text-gray);
-      font-size: 1.25rem;
-      transition: color 0.2s ease;
-    }
-
-    .social-icons i:hover {
-      color: var(--green-main);
     }
 
     /* Section Grid (2 columns) */
@@ -432,14 +385,9 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .ad-banner {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .ad-image {
-        width: 100%;
-        height: 120px;
+      .ad-sidebar {
+        height: auto;
+        margin-bottom: 1rem;
       }
     }
 
@@ -517,19 +465,8 @@
   <main class="container">
     <!-- Home Section -->
     <section id="home" class="section active">
-      <!-- 👇 BANNER PUBLICITARIO AGREGADO AQUÍ 👇 -->
-      <div class="ad-banner">
-        <div class="ad-content">
-          <h3>🔥 OFERTA EXCLUSIVA: ZAPATILLAS DEPORTIVAS SOSTENIBLES</h3>
-          <p>¡Hasta 40% de descuento en la nueva colección ecológica de Nike! Ideal para quienes buscan rendimiento y conciencia ambiental.</p>
-          <a href="#" class="ad-btn">Ver Oferta</a>
-        </div>
-        <div class="ad-image">
-          <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Zapatillas Nike rojas">
-        </div>
-      </div>
-
       <div class="home-grid">
+        <!-- Contenido Principal -->
         <div>
           <div class="hero">
             <h2>Moda con Conciencia</h2>
@@ -537,75 +474,50 @@
           </div>
 
           <h2 class="section-title"><i class="fas fa-globe-americas"></i> Actualidad</h2>
-          <div class="news-list">
-            <div class="news-item">
-              <img src="https://images.unsplash.com/photo-1618125883241-b9b5a1c0d0c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Fibras regenerativas" style="width:100%; border-radius:0.5rem; margin-bottom:0.75rem;">
-              <div class="news-meta">
+          <div class="card-grid">
+            <div class="card">
+              <img src="https://images.unsplash.com/photo-1618125883241-b9b5a1c0d0c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Fibras regenerativas">
+              <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;">
                 <span class="news-category">Internacional</span>
                 <span>20 Ene 2026</span>
               </div>
               <h3>Nuevas fibras regenerativas revolucionan la industria textil</h3>
+              <p style="margin-top:0.5rem;color:var(--text-gray);">
+                Descubre cómo materiales innovadores están cambiando la forma en que producimos y consumimos ropa.
+              </p>
             </div>
-            <div class="news-item">
-              <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Feria de moda sostenible" style="width:100%; border-radius:0.5rem; margin-bottom:0.75rem;">
-              <div class="news-meta">
+            <div class="card">
+              <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Feria de moda sostenible">
+              <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;">
                 <span class="news-category">Nacional</span>
                 <span>18 Ene 2026</span>
               </div>
               <h3>Feria de Moda Sostenible en Caracas reúne a más de 50 marcas locales</h3>
+              <p style="margin-top:0.5rem;color:var(--text-gray);">
+                Un evento que celebra la creatividad venezolana con textiles éticos y procesos transparentes.
+              </p>
             </div>
-            <div class="news-item">
-              <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Armario cápsula" style="width:100%; border-radius:0.5rem; margin-bottom:0.75rem;">
-              <div class="news-meta">
+            <div class="card">
+              <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Armario cápsula">
+              <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;">
                 <span class="news-category">Guías</span>
                 <span>15 Ene 2026</span>
               </div>
               <h3>Guía definitiva para crear tu propio armario cápsula sostenible</h3>
+              <p style="margin-top:0.5rem;color:var(--text-gray);">
+                Aprende a reducir tu guardarropa y maximizar tu estilo con prendas versátiles y duraderas.
+              </p>
             </div>
           </div>
         </div>
 
+        <!-- Publicidad en Sidebar Derecho -->
         <div>
-          <div class="sidebar-card">
-            <h3 class="section-title"><i class="fas fa-tshirt"></i> Marcas Destacadas</h3>
-            <div class="brand-item" style="margin-bottom:1rem;">
-              <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;">
-                <div><h4>Verde Hilos</h4><p style="font-size:0.875rem;color:var(--text-gray);">Venezuela</p></div>
-                <span style="color:var(--green-main);font-weight:bold;">4.8</span>
-              </div>
-              <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Verde Hilos" style="width:100%;border-radius:0.5rem;">
-            </div>
-            <div class="brand-item" style="margin-bottom:1rem;">
-              <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;">
-                <div><h4>EcoTextil</h4><p style="font-size:0.875rem;color:var(--text-gray);">Colombia</p></div>
-                <span style="color:var(--green-main);font-weight:bold;">4.6</span>
-              </div>
-              <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="EcoTextil" style="width:100%;border-radius:0.5rem;">
-            </div>
-            <div class="brand-item">
-              <div style="display:flex;justify-content:space-between;">
-                <div><h4>GreenWeave</h4><p style="font-size:0.875rem;color:var(--text-gray);">Internacional</p></div>
-                <span style="color:var(--green-main);font-weight:bold;">4.9</span>
-              </div>
-              <img src="https://images.unsplash.com/photo-1618125883241-b9b5a1c0d0c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="GreenWeave" style="width:100%;border-radius:0.5rem;">
-            </div>
-          </div>
-
-          <div class="sidebar-card">
-            <h3 class="section-title">Acceso Rápido</h3>
-            <a href="#" class="quick-link" data-section="guides">Moda Circular</a>
-            <a href="#" class="quick-link" data-section="guides">Upcycling Creativo</a>
-            <a href="#" class="quick-link" data-section="brands">Directorio de Marcas</a>
-            <a href="#" class="quick-link" data-section="news">Eventos Ecológicos</a>
-          </div>
-
-          <div class="sidebar-card">
-            <h3 class="section-title">Síguenos</h3>
-            <div class="social-icons">
-              <i class="fab fa-instagram"></i>
-              <i class="fab fa-twitter"></i>
-              <i class="fab fa-facebook-f"></i>
-            </div>
+          <div class="ad-sidebar">
+            <img src="https://images.unsplash.com/photo-1542390786-7eee253c63f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Publicidad Reebok">
+            <h3>🔥 NUEVA COLECCIÓN REEBOK</h3>
+            <p>Zapatillas ecológicas con tecnología de reciclaje avanzado.</p>
+            <a href="#" class="btn">Ver Colección</a>
           </div>
         </div>
       </div>
