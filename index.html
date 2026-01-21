@@ -134,7 +134,6 @@
       transform: scale(1.01);
     }
 
-    /* Para banners verticales (sidebars) */
     .ad-banner-vertical {
       width: 100%;
       height: 250px;
@@ -300,16 +299,21 @@
       border: 1px solid var(--border-color);
       text-align: center;
       transition: transform 0.2s ease;
+      /* Asegura que todas las tarjetas tengan la misma altura base */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .card:hover {
       transform: translateY(-2px);
     }
 
+    /* ESTO ES LO QUE ARREGLA TUS IMÁGENES */
     .card img {
       width: 100%;
-      height: 150px;
-      object-fit: cover;
+      height: 180px; /* Altura fija para todas las imágenes */
+      object-fit: cover; /* Recorta la imagen para que no se deforme */
       border-radius: 0.5rem;
       margin-bottom: 1rem;
     }
@@ -406,16 +410,6 @@
       .footer-grid {
         grid-template-columns: repeat(2, 1fr);
       }
-
-      .ad-banner {
-        height: 80px;
-        font-size: 0.9rem;
-      }
-
-      .ad-banner-vertical {
-        height: 180px;
-        font-size: 0.9rem;
-      }
     }
 
     @media (max-width: 768px) {
@@ -451,20 +445,6 @@
 
       header {
         padding: 1rem;
-      }
-
-      .header-content {
-        flex-wrap: wrap;
-      }
-
-      .ad-banner {
-        height: 80px;
-        font-size: 0.9rem;
-      }
-
-      .ad-banner-vertical {
-        height: 180px;
-        font-size: 0.9rem;
       }
     }
   </style>
@@ -519,22 +499,6 @@
               </div>
               <h3>El auge del vintage: por qué comprar ropa usada es la mejor decisión sostenible</h3>
             </div>
-            <div class="news-item">
-              <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Zapatillas urbanas" style="width:100%; border-radius:0.5rem; margin-bottom:0.75rem;">
-              <div class="news-meta">
-                <span class="news-category">Nacional</span>
-                <span>18 Ene 2026</span>
-              </div>
-              <h3>Feria de Moda Sostenible en Caracas reúne a más de 50 marcas locales</h3>
-            </div>
-            <div class="news-item">
-              <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camiseta streetwear" style="width:100%; border-radius:0.5rem; margin-bottom:0.75rem;">
-              <div class="news-meta">
-                <span class="news-category">Guías</span>
-                <span>15 Ene 2026</span>
-              </div>
-              <h3>Guía definitiva para crear tu propio armario cápsula sostenible</h3>
-            </div>
           </div>
         </div>
 
@@ -543,147 +507,31 @@
             <h3 class="section-title"><i class="fas fa-tshirt"></i> Marcas Destacadas</h3>
             <div class="brand-item" style="margin-bottom:1rem;">
               <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;">
-                <div><h4>Verde Hilos</h4><p style="font-size:0.875rem;color:var(--text-gray);">Venezuela</p></div>
+                <div><h4>Verde Hilos</h4></div>
                 <span style="color:var(--green-main);font-weight:bold;">4.8</span>
               </div>
-              <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camiseta urbana" style="width:100%;border-radius:0.5rem;">
             </div>
-            <div class="brand-item" style="margin-bottom:1rem;">
-              <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;">
-                <div><h4>EcoTextil</h4><p style="font-size:0.875rem;color:var(--text-gray);">Colombia</p></div>
-                <span style="color:var(--green-main);font-weight:bold;">4.6</span>
-              </div>
-              <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Zapatillas urbanas" style="width:100%;border-radius:0.5rem;">
-            </div>
-            <div class="brand-item">
-              <div style="display:flex;justify-content:space-between;">
-                <div><h4>GreenWeave</h4><p style="font-size:0.875rem;color:var(--text-gray);">Internacional</p></div>
-                <span style="color:var(--green-main);font-weight:bold;">4.9</span>
-              </div>
-              <img src="https://images.unsplash.com/photo-1620799140408-ed5341cd2431?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tejido moderno" style="width:100%;border-radius:0.5rem;">
-            </div>
-          </div>
-
-          <div class="sidebar-card">
-            <h3 class="section-title">Acceso Rápido</h3>
-            <a href="#" class="quick-link" data-section="brands">Directorio de Marcas</a>
-            <a href="#" class="quick-link" data-section="news">Eventos de Moda</a>
-          </div>
-
-          <div class="sidebar-card">
-            <h3 class="section-title">Síguenos</h3>
-            <div class="social-icons">
-              <i class="fab fa-instagram"></i>
-              <i class="fab fa-twitter"></i>
-              <i class="fab fa-facebook-f"></i>
-            </div>
+             <p style="font-size:0.9rem; color:var(--text-gray);">Descubre marcas con impacto positivo.</p>
           </div>
         </div>
       </div>
     </section>
 
     <section id="about" class="section">
-      <div class="section-grid">
-        <div>
-          <h2 class="section-title">¿Quiénes Somos?</h2>
-          <p style="margin-bottom:1rem;color:var(--text-gray);">
-            Ecomoda nace como una iniciativa universitaria de la Universidad Santa María FACES, 
-            con el propósito de fomentar el consumo responsable y la concienciación ambiental 
-            en la industria de la moda.
-          </p>
-          <p style="margin-bottom:1.5rem;color:var(--text-gray);">
-            Nuestra misión es conectar a personas interesadas en la sostenibilidad con información 
-            útil, recursos educativos y contenido visual atractivo que inspire un cambio positivo 
-            en sus hábitos de consumo.
-          </p>
-           
-          <div style="background:#dcfce7;padding:1.5rem;border-radius:0.75rem;border:1px solid #dcfce7;">
-            <h3 style="font-size:1.25rem;font-weight:700;color:var(--green-main);margin-bottom:0.5rem;">Nuestra Misión</h3>
-            <p style="color:var(--green-main);">
-              Promover una cultura de vestimenta ética y sostenible que respete tanto al planeta 
-              como a las personas involucradas en la cadena de producción textil.
-            </p>
-          </div>
+        <h2 class="section-title">¿Quiénes Somos?</h2>
+        <div style="background:white; padding:2rem; border-radius:1rem;">
+            <p>Ecomoda es una iniciativa universitaria para promover el consumo responsable.</p>
         </div>
-        
-        <div>
-          <h2 class="section-title">Contáctanos</h2>
-          <div style="display:flex;align-items:flex-start;gap:0.75rem;margin-bottom:1rem;">
-            <i class="fas fa-envelope" style="color:var(--green-main);margin-top:0.25rem;"></i>
-            <div>
-              <p style="font-weight:600;">Email</p>
-              <p style="color:var(--text-gray);">contacto@ecomoda.com</p>
-            </div>
-          </div>
-          <div style="display:flex;align-items:flex-start;gap:0.75rem;margin-bottom:1rem;">
-            <i class="fas fa-phone" style="color:var(--green-main);margin-top:0.25rem;"></i>
-            <div>
-              <p style="font-weight:600;">Teléfono</p>
-              <p style="color:var(--text-gray);">+58 212-123-4567</p>
-            </div>
-          </div>
-          <div style="display:flex;align-items:flex-start;gap:0.75rem;">
-            <i class="fas fa-map-marker-alt" style="color:var(--green-main);margin-top:0.25rem;"></i>
-            <div>
-              <p style="font-weight:600;">Dirección</p>
-              <p style="color:var(--text-gray);">Universidad Santa María, Caracas, Venezuela</p>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
     <section id="news" class="section">
       <h2 class="section-title"><i class="fas fa-newspaper"></i> Actualidad</h2>
-      <div class="section-grid">
-        <div>
-          <div class="card-grid">
-            <div class="card">
-              <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ropa urbana">
-              <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;">
-                <span class="news-category">Tendencias</span>
-                <span>20 Ene 2026</span>
-              </div>
-              <h3>El auge del vintage: por qué comprar ropa usada es la mejor decisión sostenible</h3>
-              <p style="margin-top:0.5rem;color:var(--text-gray);">
-                Descubre cómo elegir piezas únicas de segunda mano no solo reduce residuos textiles, sino que también construye un estilo personal auténtico y con historia.
-              </p>
-            </div>
-            <div class="card">
-              <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Zapatillas urbanas">
-              <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;">
-                <span class="news-category">Nacional</span>
-                <span>18 Ene 2026</span>
-              </div>
-              <h3>Feria de Moda Sostenible en Caracas reúne a más de 50 marcas locales</h3>
-              <p style="margin-top:0.5rem;color:var(--text-gray);">
-                Un evento que celebra la creatividad venezolana con textiles éticos y procesos transparentes.
-              </p>
-            </div>
-            <div class="card">
-              <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camiseta streetwear">
-              <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;">
-                <span class="news-category">Guías</span>
-                <span>15 Ene 2026</span>
-              </div>
-              <h3>Guía definitiva para crear tu propio armario cápsula sostenible</h3>
-              <p style="margin-top:0.5rem;color:var(--text-gray);">
-                Aprende a reducir tu guardarropa y maximizar tu estilo con prendas versátiles y duraderas.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <div class="ad-banner-vertical">
-            👟 ¡Zapatillas sostenibles ya disponibles! | Compra consciente, camina con estilo
-          </div>
-        </div>
-      </div>
+      <p>Noticias sobre el mundo de la moda sostenible.</p>
     </section>
 
     <section id="brands" class="section">
       <h2 class="section-title"><i class="fas fa-store"></i> Marcas Sostenibles</h2>
+      
       <div class="card-grid">
         <div class="card">
           <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camiseta urbana">
@@ -692,6 +540,7 @@
           <p style="color:var(--text-gray);margin-bottom:1rem;">Especializada en tejidos orgánicos</p>
           <button class="btn">Ver Perfil</button>
         </div>
+
         <div class="card">
           <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Zapatillas urbanas">
           <h3>EcoTextil</h3>
@@ -701,7 +550,10 @@
         </div>
         
         <div class="card">
-          <img src="https://images.unsplash.com/photo-1620799140408-ed5341cd2431?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tejido moderno verde">
+          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+               alt="Tejido moderno" 
+               style="width:100%; height:180px; object-fit:cover; border-radius:0.5rem; margin-bottom:1rem;">
+          
           <h3>GreenWeave</h3>
           <p style="color:var(--text-gray);margin:0.5rem 0;">Internacional</p>
           <p style="color:var(--text-gray);margin-bottom:1rem;">Especializada en materiales innovadores</p>
@@ -709,96 +561,16 @@
         </div>
       </div>
 
-      <div class="ad-banner">
+      <div class="ad-banner" style="margin-top:2rem;">
         🌎 Moda que respeta el planeta | Descubre marcas con certificación ética y ecológica
       </div>
     </section>
 
     <section id="community" class="section">
-      <div class="section-grid">
-        <div>
-          <h2 class="section-title"><i class="fas fa-users"></i> Comunidad</h2>
-          <div class="sidebar-card">
-            <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Taller comunitario" style="width:100%;border-radius:0.5rem;margin-bottom:1rem;">
-            <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;">
-              <i class="fas fa-users" style="color:var(--green-main);"></i>
-              <h3 style="font-size:1.25rem;font-weight:700;">Foros Activos</h3>
-            </div>
-            <div style="background:var(--beige-bg);padding:0.75rem;border-radius:0.5rem;margin-bottom:0.5rem;">
-              <span style="font-weight:600;">Intercambio de Ropa</span>
-              <span style="float:right;color:var(--green-main);">Activo</span>
-            </div>
-            <div style="background:var(--beige-bg);padding:0.75rem;border-radius:0.5rem;margin-bottom:0.5rem;">
-              <span style="font-weight:600;">Talleres DIY</span>
-              <span style="float:right;color:var(--green-main);">Activo</span>
-            </div>
-            <div style="background:var(--beige-bg);padding:0.75rem;border-radius:0.5rem;">
-              <span style="font-weight:600;">Eventos Locales</span>
-              <span style="float:right;color:var(--green-main);">Activo</span>
-            </div>
-          </div>
-        </div>
-        
-        <div>
-          <h2 class="section-title">Consejos Ecológicos</h2>
-          <div style="background:#dcfce7;padding:1rem;border-radius:0.75rem;border:1px solid #dcfce7;margin-bottom:1rem;">
-            <p style="color:var(--green-main);">• Lava tus prendas con agua fría para ahorrar energía</p>
-          </div>
-          <div style="background:#dcfce7;padding:1rem;border-radius:0.75rem;border:1px solid #dcfce7;margin-bottom:1rem;">
-            <p style="color:var(--green-main);">• Repara en lugar de reemplazar: extiende la vida de tus prendas</p>
-          </div>
-          <div style="background:#dcfce7;padding:1rem;border-radius:0.75rem;border:1px solid #dcfce7;">
-            <p style="color:var(--green-main);">• Compra de segunda mano: reduce la demanda de producción nueva</p>
-          </div>
-        </div>
-      </div>
+      <h2 class="section-title"><i class="fas fa-users"></i> Comunidad</h2>
+      <p>Únete a nuestros foros y eventos de intercambio.</p>
     </section>
   </main>
-
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div class="footer-logo">
-            <i class="fas fa-leaf"></i>
-            <span>Ecomoda</span>
-          </div>
-          <p style="color:#9ca3af;">
-            Promoviendo la moda sostenible y el consumo responsable desde Venezuela.
-          </p>
-        </div>
-        
-        <div class="footer-links">
-          <h3>Secciones</h3>
-          <ul>
-            <li><a href="#" data-section="about">¿Quiénes somos?</a></li>
-            <li><a href="#" data-section="news">Actualidad</a></li>
-            <li><a href="#" data-section="brands">Marcas sostenibles</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-contact">
-          <h3>Contacto</h3>
-          <p><i class="fas fa-envelope"></i> contacto@ecomoda.com</p>
-          <p><i class="fas fa-phone"></i> +58 212-123-4567</p>
-          <p><i class="fas fa-map-marker-alt"></i> Caracas, Venezuela</p>
-        </div>
-        
-        <div class="footer-social">
-          <h3>Redes Sociales</h3>
-          <div class="social-icons">
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-twitter"></i>
-            <i class="fab fa-facebook-f"></i>
-          </div>
-        </div>
-      </div>
-      
-      <div class="footer-copyright">
-        &copy; 2026 Ecomoda. Todos los derechos reservados. Universidad Santa María FACES.
-      </div>
-    </div>
-  </footer>
 
   <script>
     // ===== FUNCIONALIDAD DE NAVEGACIÓN =====
@@ -810,11 +582,13 @@
 
       function showSection(sectionId) {
         sections.forEach(section => section.classList.remove('active'));
-        document.getElementById(sectionId).classList.add('active');
+        const activeSection = document.getElementById(sectionId);
+        if(activeSection) activeSection.classList.add('active');
+        
         navLinks.forEach(link => {
           link.classList.toggle('active', link.getAttribute('data-section') === sectionId);
         });
-        mainMenu.classList.remove('active');
+        if(mainMenu) mainMenu.classList.remove('active');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
 
@@ -831,7 +605,8 @@
         });
       }
 
-      showSection('home');
+      // Iniciar en Marcas para que veas el cambio inmediatamente
+      showSection('brands');
     });
   </script>
 </body>
