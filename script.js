@@ -1,44 +1,53 @@
-// MENÚ HAMBURGUESA
-const menuToggle = document.getElementById('menuToggle');
-const mainMenu = document.getElementById('mainMenu');
+document.addEventListener('DOMContentLoaded', function() {
+    // 1. Elementos
+    const navLinks = document.querySelectorAll('[data-section]');
+    const sections = document.querySelectorAll('.section');
+    const menuToggle = document.getElementById('menuToggle');
+    const mainMenu = document.getElementById('mainMenu');
 
-menuToggle.addEventListener('click', () => {
-  mainMenu.classList.toggle('active');
-});
+    // 2. Función para cambiar sección
+    function switchSection(sectionId) {
+        // Ocultar todas
+        sections.forEach(sec => sec.classList.remove('active'));
+        
+        // Mostrar la elegida
+        const target = document.getElementById(sectionId);
+        if(target) {
+            target.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
-// CARRUSEL AUTOMÁTICO
-const carousel = document.getElementById('carousel');
-const items = document.querySelectorAll('.carousel-item');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
+        // Actualizar menú activo
+        navLinks.forEach(link => {
+            if(link.getAttribute('data-section') === sectionId) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
 
-let currentIndex = 0;
-
-function showItem(index) {
-  items.forEach((item, i) => {
-    item.classList.remove('active');
-    if (i === index) {
-      item.classList.add('active');
+        // Cerrar menú móvil si está abierto
+        if(mainMenu.classList.contains('active')) {
+            mainMenu.classList.remove('active');
+        }
     }
-  });
-}
 
-function nextItem() {
-  currentIndex = (currentIndex + 1) % items.length;
-  showItem(currentIndex);
-}
+    // 3. Event Listeners para clicks en menú
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('data-section');
+            switchSection(targetId);
+        });
+    });
 
-function prevItem() {
-  currentIndex = (currentIndex - 1 + items.length) % items.length;
-  showItem(currentIndex);
-}
+    // 4. Menú Hamburguesa (Móvil)
+    if(menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            mainMenu.classList.toggle('active');
+        });
+    }
 
-// Botones
-nextBtn.addEventListener('click', nextItem);
-prevBtn.addEventListener('click', prevItem);
-
-// Carrusel automático cada 5 segundos
-setInterval(nextItem, 5000);
-
-// Asegurar que el primer ítem esté activo al cargar
-showItem(currentIndex);
+    // 5. Iniciar en Home
+    switchSection('home');
+});
