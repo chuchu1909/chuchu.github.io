@@ -1,15 +1,28 @@
 /* =========================================
-   1. VARIABLES Y RESET
+   1. VARIABLES Y RESET (PALETA TIERRA/NATURAL)
    ========================================= */
 :root {
-    --green-main: #4A7C59;
-    --green-dark: #3A6549;
-    --green-light: #dcfce7;
-    --beige-bg: #F4F1ED;
-    --text-dark: #2D2D2D;
-    --text-gray: #6C6C6C;
-    --white: #FFFFFF;
-    --border-color: #B8A99A;
+    /* --- NUEVA PALETA DE COLORES --- */
+    /* Extraída de tu imagen de referencia */
+    
+    /* Verdes (Identidad) */
+    --sage-green: #94A187;      /* Verde Salvia (Principal) */
+    --forest-green: #5D6F52;    /* Verde Bosque (Hover y Textos fuertes) */
+    
+    /* Tierras (Acentos) */
+    --terracotta: #DE8F68;      /* Terracota suave (Botones, Destacados) */
+    --rust: #BF624C;            /* Óxido/Rojizo (Detalles, Alertas) */
+    
+    /* Neutros (Fondos y Textos) */
+    --cream-bg: #EAE7D6;        /* Crema (Fondo Principal más cálido) */
+    --white: #FFFFFF;           /* Blanco puro (Tarjetas) */
+    
+    /* Textos */
+    --text-dark: #4A3C32;       /* Marrón Café (Texto principal - reemplaza al negro) */
+    --text-soft: #7C7065;       /* Marrón grisáceo (Texto secundario) */
+    
+    /* Bordes */
+    --border-color: #D6D2C4;
 }
 
 * {
@@ -20,8 +33,8 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: var(--beige-bg);
-    color: var(--text-dark);
+    background-color: var(--cream-bg); /* Fondo crema cálido */
+    color: var(--text-dark);           /* Texto café elegante */
     line-height: 1.6;
 }
 
@@ -30,7 +43,7 @@ body {
    ========================================= */
 header {
     background-color: var(--white);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 20px rgba(74, 60, 50, 0.05); /* Sombra marrón muy suave */
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -52,12 +65,14 @@ header {
 .logo {
     font-size: 1.6rem;
     font-weight: 800;
-    color: var(--green-main);
+    color: var(--sage-green); /* Logo en Verde Salvia */
     display: flex;
     align-items: center;
     gap: 0.5rem;
     text-decoration: none;
+    transition: color 0.3s;
 }
+.logo:hover { color: var(--forest-green); }
 
 .main-menu {
     display: flex;
@@ -75,10 +90,11 @@ header {
     transition: all 0.2s ease;
 }
 
+/* Hover menú: Fondo verde salvia muy suave */
 .main-menu a:hover,
 .main-menu a.active {
-    background-color: var(--green-light);
-    color: var(--green-main);
+    background-color: rgba(148, 161, 135, 0.15); 
+    color: var(--forest-green);
 }
 
 /* Botón móvil */
@@ -95,10 +111,16 @@ header {
 .search-bar {
     display: flex;
     align-items: center;
-    background: var(--beige-bg);
+    background: var(--cream-bg);
     border-radius: 2rem;
     padding: 0.4rem 1rem;
     width: 200px;
+    border: 1px solid transparent;
+    transition: border 0.3s;
+}
+
+.search-bar:focus-within {
+    border-color: var(--sage-green);
 }
 
 .search-bar input {
@@ -122,12 +144,10 @@ main {
 /* Secciones SPA */
 .section {
     display: none;
-    animation: fadeIn 0.4s ease;
+    animation: fadeIn 0.5s ease;
 }
 
-.section.active {
-    display: block;
-}
+.section.active { display: block; }
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
@@ -138,36 +158,40 @@ main {
     font-size: 1.8rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
-    color: var(--text-dark);
+    color: var(--forest-green); /* Títulos en verde bosque */
     display: flex;
     align-items: center;
     gap: 0.75rem;
 }
 
-.section-title i { color: var(--green-main); }
+.section-title i { color: var(--terracotta); /* Iconos de título en Terracota */ }
 
-/* Botones */
+/* --- BOTONES (Aquí aplicamos el Terracota y Salvia) --- */
 .btn {
     display: inline-block;
-    background: var(--green-main);
+    background: var(--terracotta); /* Botón principal Terracota (Llama la atención) */
     color: var(--white);
-    padding: 0.6rem 1.2rem;
-    border-radius: 0.5rem;
+    padding: 0.7rem 1.4rem;
+    border-radius: 2rem;
     text-decoration: none;
     font-weight: 600;
-    transition: background 0.2s ease;
+    transition: transform 0.2s, background 0.2s;
     border: none;
     cursor: pointer;
+    box-shadow: 0 4px 10px rgba(222, 143, 104, 0.3);
 }
-.btn:hover { background: var(--green-dark); }
+.btn:hover { 
+    background: var(--rust); 
+    transform: translateY(-2px);
+}
 
 .btn-outline {
     display: inline-block;
     background: transparent;
-    color: var(--green-main);
-    border: 2px solid var(--green-main);
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
+    color: var(--sage-green);
+    border: 2px solid var(--sage-green);
+    padding: 0.6rem 1.2rem;
+    border-radius: 2rem;
     text-decoration: none;
     font-weight: 600;
     width: 100%;
@@ -175,28 +199,35 @@ main {
     margin-top: 1rem;
     transition: all 0.2s;
 }
-.btn-outline:hover { background: var(--green-main); color: var(--white); }
+.btn-outline:hover { 
+    background: var(--sage-green); 
+    color: var(--white); 
+}
 
 /* Cards Generales */
 .card {
     background: var(--white);
     padding: 1.5rem;
-    border-radius: 0.75rem;
-    border: 1px solid rgba(0,0,0,0.05);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-    transition: transform 0.2s ease;
+    border-radius: 1rem;
+    border: 1px solid rgba(0,0,0,0.03);
+    box-shadow: 0 10px 25px rgba(74, 60, 50, 0.05); /* Sombra cálida */
+    transition: transform 0.3s ease;
 }
-.card:hover { transform: translateY(-3px); }
+.card:hover { transform: translateY(-5px); }
 
 .card img {
     width: 100%;
-    height: 180px;
+    height: 200px;
     object-fit: cover;
-    border-radius: 0.5rem;
+    border-radius: 0.8rem;
     margin-bottom: 1rem;
 }
 
-.card h3 { margin-bottom: 0.5rem; font-size: 1.1rem; }
+.card h3 { 
+    margin-bottom: 0.5rem; 
+    font-size: 1.2rem; 
+    color: var(--text-dark);
+}
 
 /* =========================================
    4. SECCIONES ESPECÍFICAS
@@ -210,56 +241,67 @@ main {
 }
 
 .hero {
-    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1593079831268-5784e93b93d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+    /* Gradiente con los nuevos verdes y café */
+    background-image: linear-gradient(rgba(74, 60, 50, 0.5), rgba(93, 111, 82, 0.6)), url('https://images.unsplash.com/photo-1593079831268-5784e93b93d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
     background-size: cover;
     background-position: center;
-    border-radius: 1rem;
-    padding: 3rem;
+    border-radius: 1.5rem;
+    padding: 4rem 2rem;
     text-align: center;
     margin-bottom: 2rem;
-    height: 22rem;
+    height: 24rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     color: var(--white);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
 
-.hero h2 { font-size: 2.5rem; margin-bottom: 0.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
-.hero p { font-size: 1.1rem; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+.hero h2 { 
+    font-size: 2.8rem; 
+    margin-bottom: 0.5rem; 
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
 
 /* Noticias lista */
 .news-item {
     background: var(--white);
     padding: 1rem;
-    border-radius: 0.75rem;
-    border-bottom: 1px solid #eee;
+    border-radius: 1rem;
+    border: 1px solid var(--border-color);
     margin-bottom: 1rem;
     display: flex;
     gap: 1rem;
     align-items: center;
+    transition: border-color 0.2s;
 }
+.news-item:hover { border-color: var(--sage-green); }
+
 .news-item img {
     width: 80px;
     height: 80px;
     object-fit: cover;
-    border-radius: 0.5rem;
+    border-radius: 0.6rem;
 }
 .news-category {
     font-size: 0.75rem;
-    background: var(--green-light);
-    color: var(--green-main);
-    padding: 0.2rem 0.5rem;
+    background: var(--cream-bg);
+    color: var(--rust);
+    padding: 0.2rem 0.6rem;
     border-radius: 1rem;
-    font-weight: 600;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 /* Sidebar */
 .sidebar-card {
     background: var(--white);
     padding: 1.5rem;
-    border-radius: 0.75rem;
+    border-radius: 1rem;
     margin-bottom: 1.5rem;
+    border: 1px solid rgba(0,0,0,0.03);
 }
 
 .brand-item {
@@ -268,7 +310,7 @@ main {
     gap: 1rem;
     margin-bottom: 1rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid var(--cream-bg);
 }
 .brand-item:last-child { border-bottom: none; }
 .brand-item img {
@@ -276,21 +318,24 @@ main {
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
+    border: 2px solid var(--cream-bg);
 }
 
-/* Banners Publicidad */
+/* Banners Publicidad (Usamos el gradiente de la paleta) */
 .ad-banner {
     width: 100%;
-    padding: 1.5rem;
-    background: linear-gradient(45deg, var(--green-main), #2c3e50);
+    padding: 1.2rem;
+    /* Gradiente Salvia -> Terracota */
+    background: linear-gradient(135deg, var(--sage-green), var(--forest-green));
     margin: 1rem 0 2rem 0;
-    border-radius: 0.75rem;
+    border-radius: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-weight: 700;
+    font-weight: 600;
     text-align: center;
+    box-shadow: 0 5px 15px rgba(93, 111, 82, 0.3);
 }
 
 /* Grid Layouts Generales */
@@ -323,29 +368,38 @@ main {
 .contact-sidebar {
     background: var(--white);
     padding: 1.5rem;
-    border-radius: 0.75rem;
+    border-radius: 1rem;
     position: sticky;
-    top: 5rem;
+    top: 6rem;
+    border: 1px solid var(--border-color);
 }
+.contact-sidebar h3 { color: var(--terracotta); }
 
 .contact-item {
     display: flex;
     gap: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
 }
 .contact-icon {
-    color: var(--green-main);
+    color: var(--sage-green);
     font-size: 1.2rem;
+    background: var(--cream-bg);
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
 }
 
 /* =========================================
-   5. FOOTER
+   5. FOOTER (Color Café oscuro de la paleta)
    ========================================= */
 footer {
-    background: var(--text-dark);
+    background: var(--text-dark); /* Marrón Café */
     color: #d1d5db;
-    padding: 3rem 0 1rem;
-    margin-top: 4rem;
+    padding: 4rem 0 2rem;
+    margin-top: 5rem;
 }
 
 .footer-grid {
@@ -357,23 +411,25 @@ footer {
 
 .footer-logo {
     color: var(--white);
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
     display: block;
 }
+.footer-logo i { color: var(--sage-green); }
 
-.footer h3 { color: var(--white); margin-bottom: 1rem; }
+.footer h3 { color: var(--terracotta); margin-bottom: 1rem; font-size: 1.1rem; }
 .footer ul { list-style: none; }
-.footer ul li { margin-bottom: 0.5rem; }
-.footer a { color: #9ca3af; text-decoration: none; }
-.footer a:hover { color: var(--green-main); }
+.footer ul li { margin-bottom: 0.6rem; }
+.footer a { color: #aaa; text-decoration: none; transition: 0.3s; }
+.footer a:hover { color: var(--terracotta); padding-left: 5px; }
 
 .footer-copyright {
     text-align: center;
-    border-top: 1px solid #374151;
-    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 2rem;
     font-size: 0.9rem;
+    color: #888;
 }
 
 /* =========================================
@@ -381,7 +437,7 @@ footer {
    ========================================= */
 @media (max-width: 1024px) {
     .home-grid, .section-grid, .brands-layout, .footer-grid {
-        grid-template-columns: 1fr; /* Todo a una columna */
+        grid-template-columns: 1fr;
     }
     .contact-sidebar { position: static; }
 }
@@ -397,8 +453,9 @@ footer {
         left: 0;
         right: 0;
         background: var(--white);
-        padding: 1rem;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        padding: 1.5rem;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        border-bottom: 4px solid var(--terracotta);
     }
     
     .main-menu.active { display: flex; }
