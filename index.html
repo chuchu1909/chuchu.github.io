@@ -1,938 +1,733 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ecomoda - Moda Sostenible</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <style>
-    /* ===== Paleta de Colores Ecológica ===== */
-    :root {
-      --green-main: #4A7C59;
-      --green-light: #B8A99A;
-      --beige-bg: #F4F1ED;
-      --text-dark: #2D2D2D;
-      --text-gray: #6C6C6C;
-      --white: #FFFFFF;
-      --border-color: #B8A99A;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--beige-bg);
-      color: var(--text-dark);
-      line-height: 1.6;
-    }
-
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-
-    /* ===== HEADER ===== */
-    header {
-      background-color: var(--white);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      padding: 1rem 2rem;
-    }
-
-    .header-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    .logo {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--green-main);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .logo i {
-      color: var(--green-main);
-    }
-
-    .main-menu {
-      display: flex;
-      list-style: none;
-      gap: 1.5rem;
-    }
-
-    .main-menu a {
-      text-decoration: none;
-      color: var(--text-dark);
-      font-weight: 500;
-      padding: 0.5rem 0.75rem;
-      border-radius: 0.5rem;
-      transition: all 0.2s ease;
-    }
-
-    .main-menu a:hover,
-    .main-menu a.active {
-      background-color: var(--beige-bg);
-      color: var(--green-main);
-    }
-
-    .search-bar {
-      display: flex;
-      align-items: center;
-      background: var(--white);
-      border: 1px solid var(--border-color);
-      border-radius: 0.5rem;
-      padding: 0.5rem 1rem;
-      width: 200px;
-    }
-
-    .search-bar input {
-      border: none;
-      outline: none;
-      width: 100%;
-      font-size: 0.9rem;
-      color: var(--text-dark);
-    }
-
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      color: var(--text-dark);
-      cursor: pointer;
-    }
-
-    /* ===== PUBLICIDAD BANNER ===== */
-    .ad-banner {
-      width: 100%;
-      height: 120px;
-      background: url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center/cover;
-      margin: 1rem 0;
-      border-radius: 0.75rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: 700;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-      transition: transform 0.2s ease;
-    }
-
-    .ad-banner:hover {
-      transform: scale(1.01);
-    }
-
-    /* Para banners verticales (sidebars) */
-    .ad-banner-vertical {
-      width: 100%;
-      height: 250px;
-      background: url('https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80') center/cover;
-      margin: 1rem 0;
-      border-radius: 0.75rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: 700;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-      transition: transform 0.2s ease;
-    }
-
-    .ad-banner-vertical:hover {
-      transform: scale(1.01);
-    }
-
-    /* ===== MAIN CONTENT ===== */
-    main {
-      padding: 2rem 0;
-    }
-
-    .section {
-      display: none;
-    }
-
-    .section.active {
-      display: block;
-    }
-
-    .section-title {
-      font-size: 1.875rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      color: var(--text-dark);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .section-title i {
-      color: var(--green-main);
-    }
-
-    /* Home Grid */
-    .home-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 2rem;
-    }
-
-    .hero {
-      background: linear-gradient(to right, var(--beige-bg), #ffffff);
-      border-radius: 1rem;
-      padding: 2rem;
-      text-align: center;
-      margin-bottom: 2rem;
-      height: 20rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background-image: url('https://images.unsplash.com/photo-1593079831268-5784e93b93d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-    }
-
-    .hero h2 {
-      font-size: 1.875rem;
-      margin-bottom: 0.5rem;
-      color: var(--text-dark);
-      text-shadow: none;
-    }
-
-    .news-item {
-      background: var(--white);
-      padding: 1rem;
-      border-radius: 0.75rem;
-      border: 1px solid var(--border-color);
-      margin-bottom: 1rem;
-      transition: box-shadow 0.2s ease;
-    }
-
-    .news-item:hover {
-      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    }
-
-    .news-meta {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.5rem;
-      font-size: 0.875rem;
-    }
-
-    .news-category {
-      background: #dcfce7;
-      color: var(--green-main);
-      padding: 0.25rem 0.5rem;
-      border-radius: 9999px;
-      font-weight: 600;
-    }
-
-    .sidebar-card {
-      background: var(--white);
-      padding: 1.5rem;
-      border-radius: 0.75rem;
-      border: 1px solid var(--border-color);
-      margin-bottom: 1.5rem;
-    }
-
-    .quick-link {
-      display: block;
-      padding: 0.5rem;
-      border-radius: 0.5rem;
-      text-decoration: none;
-      color: var(--text-dark);
-      transition: background 0.2s ease;
-    }
-
-    .quick-link:hover {
-      background: var(--beige-bg);
-      color: var(--green-main);
-    }
-
-    .social-icons {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .social-icons i {
-      color: var(--text-gray);
-      font-size: 1.25rem;
-      transition: color 0.2s ease;
-    }
-
-    .social-icons i:hover {
-      color: var(--green-main);
-    }
-
-    /* Section Grid (2 columns) */
-    .section-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 2rem;
-    }
-
-    /* Card Grid */
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .card {
-      background: var(--white);
-      padding: 1.5rem;
-      border-radius: 0.75rem;
-      border: 1px solid var(--border-color);
-      text-align: center;
-      transition: transform 0.2s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-2px);
-    }
-
-    .card img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 0.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .btn {
-      display: inline-block;
-      background: var(--green-main);
-      color: var(--white);
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background 0.2s ease;
-      border: none;
-      cursor: pointer;
-    }
-
-    .btn:hover {
-      background: #3A6549;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Ecomoda - Moda Sostenible</title>
     
-    /* ===== CSS NUEVO PARA ARREGLAR MARCAS ===== */
-    .brands-layout {
-      display: grid;
-      grid-template-columns: 3fr 1fr; /* Izquierda grande, Derecha pequeña */
-      gap: 2rem;
-      align-items: start;
-    }
-
-    .cards-centered {
-      display: flex;
-      justify-content: center; /* Centrar las cartas */
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     
-    .cards-centered .card {
-      width: 100%;
-      max-width: 320px; /* Para que no se estiren demasiado */
-    }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-    .contact-sidebar {
-      background: var(--white);
-      padding: 1.5rem;
-      border-radius: 0.75rem;
-      border: 1px solid var(--border-color);
-      position: sticky;
-      top: 6rem;
-    }
+    <style>
+        /* =========================================
+           1. VARIABLES Y RESET
+           ========================================= */
+        :root {
+            --green-main: #4A7C59;
+            --green-dark: #3A6549;
+            --green-light: #dcfce7;
+            --beige-bg: #F4F1ED;
+            --text-dark: #2D2D2D;
+            --text-gray: #6C6C6C;
+            --white: #FFFFFF;
+            --border-color: #B8A99A;
+        }
 
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid #eee;
-    }
-    
-    .contact-item:last-child { border-bottom: none; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .contact-icon {
-      background: #dcfce7;
-      color: var(--green-main);
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-    }
-    
-    .btn-outline {
-      display: inline-block;
-      background: transparent;
-      color: var(--green-main);
-      border: 2px solid var(--green-main);
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      text-decoration: none;
-      font-weight: 600;
-      width: 100%;
-      text-align: center;
-      margin-top: 1rem;
-      transition: all 0.2s;
-    }
-    
-    .btn-outline:hover { background: var(--green-main); color: white; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--beige-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
 
-    /* ===== FOOTER ===== */
-    footer {
-      background: var(--text-dark);
-      color: var(--white);
-      padding: 3rem 0 2rem;
-      margin-top: 4rem;
-    }
+        /* =========================================
+           2. HEADER Y NAVEGACIÓN
+           ========================================= */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0.8rem 0;
+        }
 
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
 
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .footer-links h3,
-    .footer-contact h3,
-    .footer-social h3 {
-      font-size: 1.125rem;
-      margin-bottom: 1rem;
-      font-weight: 600;
-    }
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--green-main);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
 
-    .footer-links ul {
-      list-style: none;
-    }
+        .main-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
 
-    .footer-links li {
-      margin-bottom: 0.5rem;
-    }
+        .main-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.5rem 0.8rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+        }
 
-    .footer-links a {
-      color: #9ca3af;
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
+        .main-menu a:hover,
+        .main-menu a.active {
+            background-color: var(--green-light);
+            color: var(--green-main);
+        }
 
-    .footer-links a:hover {
-      color: #4A7C59;
-    }
+        /* Botón móvil */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
 
-    .footer-contact p,
-    .footer-copyright {
-      color: #9ca3af;
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
+        /* Buscador */
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: var(--beige-bg);
+            border-radius: 2rem;
+            padding: 0.4rem 1rem;
+            width: 200px;
+        }
 
-    .footer-copyright {
-      text-align: center;
-      padding-top: 2rem;
-      border-top: 1px solid #374151;
-    }
+        .search-bar input {
+            border: none;
+            background: transparent;
+            outline: none;
+            width: 100%;
+            margin-left: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
 
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 1024px) {
-      .home-grid,
-      .section-grid,
-      .brands-layout {
-        grid-template-columns: 1fr;
-      }
+        /* =========================================
+           3. ESTRUCTURA PRINCIPAL Y COMPONENTES
+           ========================================= */
+        main {
+            padding: 2rem 0;
+            min-height: 80vh;
+        }
 
-      .footer-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+        /* Secciones SPA */
+        .section {
+            display: none; /* Oculto por defecto */
+            animation: fadeIn 0.4s ease;
+        }
 
-      .ad-banner {
-        height: 80px;
-        font-size: 0.9rem;
-      }
+        .section.active {
+            display: block; /* Visible si tiene clase active */
+        }
 
-      .ad-banner-vertical {
-        height: 180px;
-        font-size: 0.9rem;
-      }
-    }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-    @media (max-width: 768px) {
-      .mobile-menu-btn {
-        display: block;
-      }
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .section-title i { color: var(--green-main); }
 
-      .main-menu {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: calc(4rem + 1rem);
-        left: 0;
-        right: 0;
-        background: var(--white);
-        padding: 1rem;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        z-index: 99;
-        gap: 0.5rem;
-      }
+        /* Botones */
+        .btn {
+            display: inline-block;
+            background: var(--green-main);
+            color: var(--white);
+            padding: 0.6rem 1.2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover { background: var(--green-dark); }
 
-      .main-menu.active {
-        display: flex;
-      }
+        .btn-outline {
+            display: inline-block;
+            background: transparent;
+            color: var(--green-main);
+            border: 2px solid var(--green-main);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            width: 100%;
+            text-align: center;
+            margin-top: 1rem;
+            transition: all 0.2s;
+        }
+        .btn-outline:hover { background: var(--green-main); color: var(--white); }
 
-      .search-bar {
-        display: none;
-      }
+        /* Cards Generales */
+        .card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: transform 0.2s ease;
+        }
+        .card:hover { transform: translateY(-3px); }
+        
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
 
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
+        .card h3 { margin-bottom: 0.5rem; font-size: 1.1rem; }
 
-      header {
-        padding: 1rem;
-      }
+        /* =========================================
+           4. SECCIONES ESPECÍFICAS
+           ========================================= */
 
-      .header-content {
-        flex-wrap: wrap;
-      }
+        /* HOME: Hero Section */
+        .home-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
 
-      .ad-banner {
-        height: 80px;
-        font-size: 0.9rem;
-      }
+        .hero {
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1593079831268-5784e93b93d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 1rem;
+            padding: 3rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            height: 22rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+        }
 
-      .ad-banner-vertical {
-        height: 180px;
-        font-size: 0.9rem;
-      }
-    }
-  </style>
+        .hero h2 { font-size: 2.5rem; margin-bottom: 0.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.1rem; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+
+        /* Noticias lista */
+        .news-item {
+            background: var(--white);
+            padding: 1rem;
+            border-radius: 0.75rem;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        .news-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+        }
+        .news-category {
+            font-size: 0.75rem;
+            background: var(--green-light);
+            color: var(--green-main);
+            padding: 0.2rem 0.5rem;
+            border-radius: 1rem;
+            font-weight: 600;
+        }
+
+        /* Sidebar */
+        .sidebar-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .brand-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .brand-item:last-child { border-bottom: none; }
+        .brand-item img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* Banners Publicidad */
+        .ad-banner {
+            width: 100%;
+            padding: 1.5rem;
+            background: linear-gradient(45deg, var(--green-main), #2c3e50);
+            margin: 1rem 0 2rem 0;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        /* Grid Layouts Generales */
+        .section-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* MARCAS LAYOUT (Corrección específica) */
+        .brands-layout {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .cards-centered {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .contact-sidebar {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            position: sticky;
+            top: 5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .contact-icon {
+            color: var(--green-main);
+            font-size: 1.2rem;
+        }
+
+        /* =========================================
+           5. FOOTER
+           ========================================= */
+        footer {
+            background: var(--text-dark);
+            color: #d1d5db;
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            color: var(--white);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .footer h3 { color: var(--white); margin-bottom: 1rem; }
+        .footer ul { list-style: none; }
+        .footer ul li { margin-bottom: 0.5rem; }
+        .footer a { color: #9ca3af; text-decoration: none; }
+        .footer a:hover { color: var(--green-main); }
+        
+        .footer-copyright {
+            text-align: center;
+            border-top: 1px solid #374151;
+            padding-top: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* =========================================
+           6. RESPONSIVE
+           ========================================= */
+        @media (max-width: 1024px) {
+            .home-grid, .section-grid, .brands-layout, .footer-grid {
+                grid-template-columns: 1fr; /* Todo a una columna */
+            }
+            .contact-sidebar { position: static; }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn { display: block; }
+            
+            .main-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                padding: 1rem;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            }
+            
+            .main-menu.active { display: flex; }
+            .search-bar { display: none; }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="container header-content">
-      <div class="logo">
-        <i class="fas fa-leaf"></i>
-        <span>Ecomoda</span>
-      </div>
 
-      <nav class="main-menu" id="mainMenu">
-        <a href="#" class="active" data-section="home">Home</a>
-        <a href="#" data-section="about">¿Quiénes somos?</a>
-        <a href="#" data-section="news">Actualidad</a>
-        <a href="#" data-section="brands">Marcas</a>
-        <a href="#" data-section="community">Comunidad</a>
-      </nav>
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo" onclick="location.reload()">
+                <i class="fas fa-leaf"></i> Ecomoda
+            </a>
 
-      <div class="search-bar">
-        <i class="fas fa-search"></i>
-        <input type="text" placeholder="Buscar..." />
-      </div>
+            <nav>
+                <ul class="main-menu" id="mainMenu">
+                    <li><a href="#" class="active" data-section="home">Home</a></li>
+                    <li><a href="#" data-section="about">¿Quiénes somos?</a></li>
+                    <li><a href="#" data-section="news">Actualidad</a></li>
+                    <li><a href="#" data-section="brands">Marcas</a></li>
+                    <li><a href="#" data-section="community">Comunidad</a></li>
+                </ul>
+            </nav>
 
-      <button class="mobile-menu-btn" id="menuToggle">
-        <i class="fas fa-bars"></i>
-      </button>
-    </div>
-  </header>
-
-  <main class="container">
-    <section id="home" class="section active">
-      <div class="ad-banner">
-        🛍️ ¡Nueva colección sostenible! | Diseño ético, materiales reciclados | Descubre ahora
-      </div>
-
-      <div class="home-grid">
-        <div>
-          <div class="hero">
-            <h2>Moda con Conciencia</h2>
-            <p>Descubre cómo tu elección de vestimenta puede transformar el planeta</p>
-          </div>
-
-          <h2 class="section-title"><i class="fas fa-globe-americas"></i> Actualidad</h2>
-          <div class="news-list">
-            <div class="news-item">
-              <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ropa urbana" style="width:100%; border-radius:0.5rem; margin-bottom:0.75rem;">
-              <div class="news-meta">
-                <span class="news-category">Tendencias</span>
-                <span>20 Ene 2026</span>
-              </div>
-              <h3>El auge del vintage: por qué comprar ropa usada es la mejor decisión sostenible</h3>
+            <div class="search-bar">
+                <i class="fas fa-search" style="color:var(--text-gray)"></i>
+                <input type="text" placeholder="Buscar..." />
             </div>
-            <div class="news-item">
-              <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Zapatillas urbanas" style="width:100%; border-radius:0.5rem; margin-bottom:0.75rem;">
-              <div class="news-meta">
-                <span class="news-category">Nacional</span>
-                <span>18 Ene 2026</span>
-              </div>
-              <h3>Feria de Moda Sostenible en Caracas reúne a más de 50 marcas locales</h3>
-            </div>
-            <div class="news-item">
-              <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camiseta streetwear" style="width:100%; border-radius:0.5rem; margin-bottom:0.75rem;">
-              <div class="news-meta">
-                <span class="news-category">Guías</span>
-                <span>15 Ene 2026</span>
-              </div>
-              <h3>Guía definitiva para crear tu propio armario cápsula sostenible</h3>
-            </div>
-          </div>
+
+            <button class="mobile-menu-btn" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
+    </header>
 
-        <div>
-          <div class="sidebar-card">
-            <h3 class="section-title"><i class="fas fa-tshirt"></i> Marcas Destacadas</h3>
-            <div class="brand-item" style="margin-bottom:1rem;">
-              <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;">
-                <div><h4>Verde Hilos</h4><p style="font-size:0.875rem;color:var(--text-gray);">Venezuela</p></div>
-                <span style="color:var(--green-main);font-weight:bold;">4.8</span>
-              </div>
-              <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camiseta urbana" style="width:100%;border-radius:0.5rem;">
+    <main class="container">
+        
+        <section id="home" class="section active">
+            <div class="ad-banner">
+                🛍️ ¡Nueva colección sostenible! | Diseño ético, materiales reciclados
             </div>
-            <div class="brand-item" style="margin-bottom:1rem;">
-              <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;">
-                <div><h4>EcoTextil</h4><p style="font-size:0.875rem;color:var(--text-gray);">Colombia</p></div>
-                <span style="color:var(--green-main);font-weight:bold;">4.6</span>
-              </div>
-              <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Zapatillas urbanas" style="width:100%;border-radius:0.5rem;">
-            </div>
-            <div class="brand-item">
-              <div style="display:flex;justify-content:space-between;">
-                <div><h4>GreenWeave</h4><p style="font-size:0.875rem;color:var(--text-gray);">Internacional</p></div>
-                <span style="color:var(--green-main);font-weight:bold;">4.9</span>
-              </div>
-              <img src="https://images.unsplash.com/photo-1620799140408-ed5341cd2431?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tejido moderno" style="width:100%;border-radius:0.5rem;">
-            </div>
-          </div>
 
-          <div class="sidebar-card">
-            <h3 class="section-title">Acceso Rápido</h3>
-            <a href="#" class="quick-link" data-section="brands">Directorio de Marcas</a>
-            <a href="#" class="quick-link" data-section="news">Eventos de Moda</a>
-          </div>
+            <div class="home-grid">
+                <div>
+                    <div class="hero">
+                        <h2>Moda con Conciencia</h2>
+                        <p>Descubre cómo tu elección de vestimenta puede transformar el planeta</p>
+                    </div>
 
-          <div class="sidebar-card">
-            <h3 class="section-title">Síguenos</h3>
-            <div class="social-icons">
-              <i class="fab fa-instagram"></i>
-              <i class="fab fa-twitter"></i>
-              <i class="fab fa-facebook-f"></i>
+                    <h2 class="section-title"><i class="fas fa-globe-americas"></i> Lo último</h2>
+                    
+                    <div class="news-list">
+                        <div class="news-item">
+                            <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=150&q=80" alt="Vintage">
+                            <div>
+                                <div class="news-category">Tendencias</div>
+                                <h3>El auge del vintage y la ropa usada</h3>
+                                <p style="font-size:0.9rem; color:var(--text-gray)">Una decisión inteligente y ecológica.</p>
+                            </div>
+                        </div>
+                        <div class="news-item">
+                            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=150&q=80" alt="Feria">
+                            <div>
+                                <div class="news-category">Eventos</div>
+                                <h3>Feria de Moda Sostenible en Caracas</h3>
+                                <p style="font-size:0.9rem; color:var(--text-gray)">Más de 50 marcas locales reunidas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="sidebar-card">
+                        <h3 class="section-title" style="font-size:1.3rem;"><i class="fas fa-star"></i> Top Marcas</h3>
+                        
+                        <div class="brand-item">
+                            <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=100&q=60" alt="Verde">
+                            <div>
+                                <h4>Verde Hilos</h4>
+                                <small style="color:var(--green-main)">★ 4.8</small>
+                            </div>
+                        </div>
+                        <div class="brand-item">
+                            <img src="https://images.unsplash.com/photo-1620799140408-ed5341cd2431?auto=format&fit=crop&w=100&q=60" alt="Green">
+                            <div>
+                                <h4>GreenWeave</h4>
+                                <small style="color:var(--green-main)">★ 4.9</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-card">
+                        <h3 class="section-title" style="font-size:1.3rem;">Síguenos</h3>
+                        <div style="font-size:1.5rem; display:flex; gap:1rem; color:var(--text-gray);">
+                            <i class="fab fa-instagram cursor-pointer hover-green"></i>
+                            <i class="fab fa-twitter cursor-pointer hover-green"></i>
+                            <i class="fab fa-facebook cursor-pointer hover-green"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <section id="about" class="section">
-      <div class="section-grid">
-        <div>
-          <h2 class="section-title">¿Quiénes Somos?</h2>
-          <p style="margin-bottom:1rem;color:var(--text-gray);">
-            Ecomoda nace como una iniciativa universitaria de la Universidad Santa María FACES, 
-            con el propósito de fomentar el consumo responsable y la concienciación ambiental 
-            en la industria de la moda.
-          </p>
-          <p style="margin-bottom:1.5rem;color:var(--text-gray);">
-            Nuestra misión es conectar a personas interesadas en la sostenibilidad con información 
-            útil, recursos educativos y contenido visual atractivo que inspire un cambio positivo 
-            en sus hábitos de consumo.
-          </p>
+        <section id="about" class="section">
+            <div class="section-grid">
+                <div>
+                    <h2 class="section-title">Nuestra Historia</h2>
+                    <p style="margin-bottom:1rem;">
+                        Ecomoda nace como una iniciativa universitaria de la <strong>Universidad Santa María FACES</strong>, 
+                        con el propósito de fomentar el consumo responsable y la concienciación ambiental 
+                        en la industria de la moda.
+                    </p>
+                    <div style="background:var(--green-light); padding:1.5rem; border-radius:0.75rem; border-left: 4px solid var(--green-main);">
+                        <h3 style="color:var(--green-main); margin-bottom:0.5rem;">Misión</h3>
+                        <p>Promover una cultura de vestimenta ética y sostenible que respete tanto al planeta como a las personas.</p>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?auto=format&fit=crop&w=600&q=80" alt="Equipo" style="width:100%; border-radius:1rem;">
+                </div>
+            </div>
+        </section>
+
+        <section id="news" class="section">
+            <h2 class="section-title"><i class="fas fa-newspaper"></i> Noticias Completas</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=600&q=80" alt="Ropa">
+                    <span class="news-category">Tendencias</span>
+                    <h3 style="margin-top:0.5rem;">El auge del vintage</h3>
+                    <p style="font-size:0.9rem; color:var(--text-gray);">Comprar ropa usada reduce residuos y crea estilo único.</p>
+                    <button class="btn-outline" style="border:none; text-align:left; padding-left:0;">Leer más →</button>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80" alt="Zapatillas">
+                    <span class="news-category">Nacional</span>
+                    <h3 style="margin-top:0.5rem;">Feria en Caracas</h3>
+                    <p style="font-size:0.9rem; color:var(--text-gray);">Evento masivo de moda ética en la capital.</p>
+                    <button class="btn-outline" style="border:none; text-align:left; padding-left:0;">Leer más →</button>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?auto=format&fit=crop&w=600&q=80" alt="Guía">
+                    <span class="news-category">Guías</span>
+                    <h3 style="margin-top:0.5rem;">Armario Cápsula</h3>
+                    <p style="font-size:0.9rem; color:var(--text-gray);">Menos ropa, más combinaciones. Aprende cómo.</p>
+                    <button class="btn-outline" style="border:none; text-align:left; padding-left:0;">Leer más →</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="brands" class="section">
+            <h2 class="section-title"><i class="fas fa-store"></i> Directorio de Marcas</h2>
             
-          <div style="background:#dcfce7;padding:1.5rem;border-radius:0.75rem;border:1px solid #dcfce7;">
-            <h3 style="font-size:1.25rem;font-weight:700;color:var(--green-main);margin-bottom:0.5rem;">Nuestra Misión</h3>
-            <p style="color:var(--green-main);">
-              Promover una cultura de vestimenta ética y sostenible que respete tanto al planeta 
-              como a las personas involucradas en la cadena de producción textil.
-            </p>
-          </div>
-        </div>
-        
-        <div>
-          <h2 class="section-title">Contáctanos</h2>
-          <div style="display:flex;align-items:flex-start;gap:0.75rem;margin-bottom:1rem;">
-            <i class="fas fa-envelope" style="color:var(--green-main);margin-top:0.25rem;"></i>
-            <div>
-              <p style="font-weight:600;">Email</p>
-              <p style="color:var(--text-gray);">contacto@ecomoda.com</p>
-            </div>
-          </div>
-          <div style="display:flex;align-items:flex-start;gap:0.75rem;margin-bottom:1rem;">
-            <i class="fas fa-phone" style="color:var(--green-main);margin-top:0.25rem;"></i>
-            <div>
-              <p style="font-weight:600;">Teléfono</p>
-              <p style="color:var(--text-gray);">+58 212-123-4567</p>
-            </div>
-          </div>
-          <div style="display:flex;align-items:flex-start;gap:0.75rem;">
-            <i class="fas fa-map-marker-alt" style="color:var(--green-main);margin-top:0.25rem;"></i>
-            <div>
-              <p style="font-weight:600;">Dirección</p>
-              <p style="color:var(--text-gray);">Universidad Santa María, Caracas, Venezuela</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+            <div class="brands-layout">
+                <div class="cards-centered">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=600&q=80" alt="Verde Hilos">
+                        <h3>Verde Hilos</h3>
+                        <p style="color:var(--text-gray);">Venezuela</p>
+                        <p style="font-size:0.9rem;">Tejidos 100% orgánicos y locales.</p>
+                        <button class="btn" style="width:100%; margin-top:1rem;">Ver Perfil</button>
+                    </div>
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80" alt="EcoTextil">
+                        <h3>EcoTextil</h3>
+                        <p style="color:var(--text-gray);">Colombia</p>
+                        <p style="font-size:0.9rem;">Expertos en reciclaje textil.</p>
+                        <button class="btn" style="width:100%; margin-top:1rem;">Ver Perfil</button>
+                    </div>
+                </div>
 
-    <section id="news" class="section">
-      <h2 class="section-title"><i class="fas fa-newspaper"></i> Actualidad</h2>
-      <div class="section-grid">
-        <div>
-          <div class="card-grid">
-            <div class="card">
-              <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ropa urbana">
-              <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;">
-                <span class="news-category">Tendencias</span>
-                <span>20 Ene 2026</span>
-              </div>
-              <h3>El auge del vintage: por qué comprar ropa usada es la mejor decisión sostenible</h3>
-              <p style="margin-top:0.5rem;color:var(--text-gray);">
-                Descubre cómo elegir piezas únicas de segunda mano no solo reduce residuos textiles, sino que también construye un estilo personal auténtico y con historia.
-              </p>
+                <div class="contact-sidebar">
+                    <h3>¿Tienes una marca?</h3>
+                    <p style="font-size:0.9rem; margin-bottom:1.5rem; color:var(--text-gray);">Únete a nuestra plataforma.</p>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope contact-icon"></i>
+                        <div>
+                            <strong>Email</strong><br>
+                            <small>partners@ecomoda.com</small>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone contact-icon"></i>
+                        <div>
+                            <strong>Teléfono</strong><br>
+                            <small>+58 212-999-0000</small>
+                        </div>
+                    </div>
+                    <button class="btn-outline">Solicitar Unión</button>
+                </div>
             </div>
-            <div class="card">
-              <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Zapatillas urbanas">
-              <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;">
-                <span class="news-category">Nacional</span>
-                <span>18 Ene 2026</span>
-              </div>
-              <h3>Feria de Moda Sostenible en Caracas reúne a más de 50 marcas locales</h3>
-              <p style="margin-top:0.5rem;color:var(--text-gray);">
-                Un evento que celebra la creatividad venezolana con textiles éticos y procesos transparentes.
-              </p>
+        </section>
+
+        <section id="community" class="section">
+            <h2 class="section-title"><i class="fas fa-users"></i> Comunidad Activa</h2>
+            <div class="section-grid">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=800&q=80" alt="Comunidad" style="width:100%; border-radius:1rem; margin-bottom:1rem;">
+                    <h3>Próximos Eventos</h3>
+                    <ul style="list-style:none; margin-top:1rem;">
+                        <li style="background:var(--white); padding:1rem; margin-bottom:0.5rem; border-radius:0.5rem; display:flex; justify-content:space-between;">
+                            <span>👕 Intercambio de Ropa (Swap Party)</span>
+                            <span style="color:var(--green-main); font-weight:bold;">Sáb 24</span>
+                        </li>
+                        <li style="background:var(--white); padding:1rem; margin-bottom:0.5rem; border-radius:0.5rem; display:flex; justify-content:space-between;">
+                            <span>🧵 Taller de Reparación</span>
+                            <span style="color:var(--green-main); font-weight:bold;">Dom 25</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Consejos Rápidos</h3>
+                    <div style="background:var(--green-light); padding:1rem; border-radius:0.5rem; margin-bottom:1rem;">
+                        <strong>Agua Fría</strong><br>Lava tus prendas con agua fría para ahorrar energía.
+                    </div>
+                    <div style="background:var(--green-light); padding:1rem; border-radius:0.5rem; margin-bottom:1rem;">
+                        <strong>Repara</strong><br>Un botón suelto no es el fin de una camisa.
+                    </div>
+                </div>
             </div>
-            <div class="card">
-              <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camiseta streetwear">
-              <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;">
-                <span class="news-category">Guías</span>
-                <span>15 Ene 2026</span>
-              </div>
-              <h3>Guía definitiva para crear tu propio armario cápsula sostenible</h3>
-              <p style="margin-top:0.5rem;color:var(--text-gray);">
-                Aprende a reducir tu guardarropa y maximizar tu estilo con prendas versátiles y duraderas.
-              </p>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <span class="footer-logo"><i class="fas fa-leaf"></i> Ecomoda</span>
+                    <p style="font-size:0.9rem;">Iniciativa de la Universidad Santa María FACES.</p>
+                </div>
+                <div>
+                    <h3 style="color:white; margin-bottom:1rem;">Enlaces</h3>
+                    <ul style="list-style:none;">
+                        <li><a href="#" onclick="document.querySelector('[data-section=home]').click()">Inicio</a></li>
+                        <li><a href="#" onclick="document.querySelector('[data-section=brands]').click()">Marcas</a></li>
+                        <li><a href="#" onclick="document.querySelector('[data-section=news]').click()">Noticias</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="color:white; margin-bottom:1rem;">Contacto</h3>
+                    <p style="font-size:0.9rem;">Caracas, Venezuela</p>
+                    <p style="font-size:0.9rem;">contacto@ecomoda.com</p>
+                </div>
+                <div>
+                    <h3 style="color:white; margin-bottom:1rem;">Redes</h3>
+                    <div style="font-size:1.2rem; display:flex; gap:1rem;">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-
-        <div>
-          <div class="ad-banner-vertical">
-            👟 ¡Zapatillas sostenibles ya disponibles! | Compra consciente, camina con estilo
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="brands" class="section">
-      <h2 class="section-title"><i class="fas fa-store"></i> Marcas Sostenibles</h2>
-      
-      <div class="brands-layout">
-        
-        <div class="cards-centered">
-          <div class="card">
-            <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Camiseta urbana">
-            <h3>Verde Hilos</h3>
-            <p style="color:var(--text-gray);margin:0.5rem 0;">Venezuela</p>
-            <p style="color:var(--text-gray);margin-bottom:1rem;">Especializada en tejidos orgánicos</p>
-            <button class="btn">Ver Perfil</button>
-          </div>
-          <div class="card">
-            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Zapatillas urbanas">
-            <h3>EcoTextil</h3>
-            <p style="color:var(--text-gray);margin:0.5rem 0;">Colombia</p>
-            <p style="color:var(--text-gray);margin-bottom:1rem;">Especializada en prendas recicladas</p>
-            <button class="btn">Ver Perfil</button>
-          </div>
-        </div>
-
-        <div class="contact-sidebar">
-          <h3 style="color:var(--green-main); margin-bottom:1.5rem; font-size:1.1rem;">¿Tienes una marca sostenible?</h3>
-          <p style="font-size:0.9rem; margin-bottom:1.5rem; color:var(--text-gray);">
-            Únete a nuestra plataforma y conecta con miles de consumidores conscientes.
-          </p>
-          
-          <div class="contact-item">
-            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-            <div>
-              <p style="font-weight:bold; font-size:0.9rem;">Escríbenos</p>
-              <p style="font-size:0.85rem; color:var(--text-gray);">partners@ecomoda.com</p>
+            <div class="footer-copyright">
+                &copy; 2026 Ecomoda. Todos los derechos reservados.
             </div>
-          </div>
-
-          <div class="contact-item">
-            <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
-            <div>
-              <p style="font-weight:bold; font-size:0.9rem;">Llámanos</p>
-              <p style="font-size:0.85rem; color:var(--text-gray);">+58 212-999-0000</p>
-            </div>
-          </div>
-
-          <div class="contact-item">
-            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-            <div>
-              <p style="font-weight:bold; font-size:0.9rem;">Visítanos</p>
-              <p style="font-size:0.85rem; color:var(--text-gray);">Oficinas USM, Caracas</p>
-            </div>
-          </div>
-
-          <a href="#" class="btn-outline">Solicitar Unión</a>
         </div>
-      </div>
+    </footer>
 
-      <div class="ad-banner" style="margin-top:2rem;">
-        🌎 Moda que respeta el planeta | Descubre marcas con certificación ética y ecológica
-      </div>
-    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 1. Elementos
+            const navLinks = document.querySelectorAll('[data-section]');
+            const sections = document.querySelectorAll('.section');
+            const menuToggle = document.getElementById('menuToggle');
+            const mainMenu = document.getElementById('mainMenu');
 
-    <section id="community" class="section">
-      <div class="section-grid">
-        <div>
-          <h2 class="section-title"><i class="fas fa-users"></i> Comunidad</h2>
-          <div class="sidebar-card">
-            <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Taller comunitario" style="width:100%;border-radius:0.5rem;margin-bottom:1rem;">
-            <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;">
-              <i class="fas fa-users" style="color:var(--green-main);"></i>
-              <h3 style="font-size:1.25rem;font-weight:700;">Foros Activos</h3>
-            </div>
-            <div style="background:var(--beige-bg);padding:0.75rem;border-radius:0.5rem;margin-bottom:0.5rem;">
-              <span style="font-weight:600;">Intercambio de Ropa</span>
-              <span style="float:right;color:var(--green-main);">Activo</span>
-            </div>
-            <div style="background:var(--beige-bg);padding:0.75rem;border-radius:0.5rem;margin-bottom:0.5rem;">
-              <span style="font-weight:600;">Talleres DIY</span>
-              <span style="float:right;color:var(--green-main);">Activo</span>
-            </div>
-            <div style="background:var(--beige-bg);padding:0.75rem;border-radius:0.5rem;">
-              <span style="font-weight:600;">Eventos Locales</span>
-              <span style="float:right;color:var(--green-main);">Activo</span>
-            </div>
-          </div>
-        </div>
-        
-        <div>
-          <h2 class="section-title">Consejos Ecológicos</h2>
-          <div style="background:#dcfce7;padding:1rem;border-radius:0.75rem;border:1px solid #dcfce7;margin-bottom:1rem;">
-            <p style="color:var(--green-main);">• Lava tus prendas con agua fría para ahorrar energía</p>
-          </div>
-          <div style="background:#dcfce7;padding:1rem;border-radius:0.75rem;border:1px solid #dcfce7;margin-bottom:1rem;">
-            <p style="color:var(--green-main);">• Repara en lugar de reemplazar: extiende la vida de tus prendas</p>
-          </div>
-          <div style="background:#dcfce7;padding:1rem;border-radius:0.75rem;border:1px solid #dcfce7;">
-            <p style="color:var(--green-main);">• Compra de segunda mano: reduce la demanda de producción nueva</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+            // 2. Función para cambiar sección
+            function switchSection(sectionId) {
+                // Ocultar todas
+                sections.forEach(sec => sec.classList.remove('active'));
+                
+                // Mostrar la elegida
+                const target = document.getElementById(sectionId);
+                if(target) {
+                    target.classList.add('active');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
 
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div class="footer-logo">
-            <i class="fas fa-leaf"></i>
-            <span>Ecomoda</span>
-          </div>
-          <p style="color:#9ca3af;">
-            Promoviendo la moda sostenible y el consumo responsable desde Venezuela.
-          </p>
-        </div>
-        
-        <div class="footer-links">
-          <h3>Secciones</h3>
-          <ul>
-            <li><a href="#" data-section="about">¿Quiénes somos?</a></li>
-            <li><a href="#" data-section="news">Actualidad</a></li>
-            <li><a href="#" data-section="brands">Marcas sostenibles</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer-contact">
-          <h3>Contacto</h3>
-          <p><i class="fas fa-envelope"></i> contacto@ecomoda.com</p>
-          <p><i class="fas fa-phone"></i> +58 212-123-4567</p>
-          <p><i class="fas fa-map-marker-alt"></i> Caracas, Venezuela</p>
-        </div>
-        
-        <div class="footer-social">
-          <h3>Redes Sociales</h3>
-          <div class="social-icons">
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-twitter"></i>
-            <i class="fab fa-facebook-f"></i>
-          </div>
-        </div>
-      </div>
-      
-      <div class="footer-copyright">
-        &copy; 2026 Ecomoda. Todos los derechos reservados. Universidad Santa María FACES.
-      </div>
-    </div>
-  </footer>
+                // Actualizar menú activo
+                navLinks.forEach(link => {
+                    if(link.getAttribute('data-section') === sectionId) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
 
-  <script>
-    // ===== FUNCIONALIDAD DE NAVEGACIÓN =====
-    document.addEventListener('DOMContentLoaded', function() {
-      const sections = document.querySelectorAll('.section');
-      const navLinks = document.querySelectorAll('[data-section]');
-      const menuToggle = document.getElementById('menuToggle');
-      const mainMenu = document.getElementById('mainMenu');
+                // Cerrar menú móvil si está abierto
+                if(mainMenu.classList.contains('active')) {
+                    mainMenu.classList.remove('active');
+                }
+            }
 
-      function showSection(sectionId) {
-        sections.forEach(section => section.classList.remove('active'));
-        document.getElementById(sectionId).classList.add('active');
-        navLinks.forEach(link => {
-          link.classList.toggle('active', link.getAttribute('data-section') === sectionId);
+            // 3. Event Listeners para clicks en menú
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('data-section');
+                    switchSection(targetId);
+                });
+            });
+
+            // 4. Menú Hamburguesa (Móvil)
+            if(menuToggle) {
+                menuToggle.addEventListener('click', () => {
+                    mainMenu.classList.toggle('active');
+                });
+            }
+
+            // 5. Iniciar en Home
+            switchSection('home');
         });
-        mainMenu.classList.remove('active');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-
-      navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-          e.preventDefault();
-          showSection(link.getAttribute('data-section'));
-        });
-      });
-
-      if (menuToggle) {
-        menuToggle.addEventListener('click', () => {
-          mainMenu.classList.toggle('active');
-        });
-      }
-
-      // Aseguramos que inicie en HOME
-      showSection('home');
-    });
-  </script>
+    </script>
 </body>
 </html>
