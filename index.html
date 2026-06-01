@@ -501,18 +501,21 @@
             align-items: center;
             justify-content: center;
             position: relative;
+            background: rgba(255, 255, 255, 0.02);
         }
 
         .logo-inner {
-            width: 120px;
-            height: 120px;
-            border: 3px solid var(--color-secondary);
-            border-radius: 50%;
+            width: 140px;
+            height: 140px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
-            color: var(--color-accent);
+        }
+
+        .logo-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
 
         /* Footer */
@@ -602,8 +605,7 @@
         <div class="hero-container">
             <div class="profile-section">
                 <div class="profile-img" id="profileImage">
-                    <!-- Aquí irá tu foto -->
-                    <span>👤</span>
+                    <img src="https://i.imgur.com/ghfgZHt.jpeg" alt="Carlos Fernández">
                 </div>
                 <span class="profile-label">Yo</span>
             </div>
@@ -800,7 +802,7 @@
                 <div class="contact-logo">
                     <div class="logo-circle">
                         <div class="logo-inner">
-                            <span>📊</span>
+                            <img src="https://i.imgur.com/WeTt3y5.png" alt="Logo Carlos Fernández">
                         </div>
                     </div>
                 </div>
@@ -902,7 +904,6 @@
         // Ejemplo de cómo agregarías las imágenes cuando las tengas:
         // addImage('workImage1', 'imagenes/proyecto1.jpg');
         // addImage('workImage2', 'imagenes/proyecto2.jpg');
-        // addImage('profileImage', 'imagenes/mi-foto.jpg');
 
         // Efecto de navbar al hacer scroll
         let lastScroll = 0;
