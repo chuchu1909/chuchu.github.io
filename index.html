@@ -12,10 +12,19 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --color-dark: #000022;
+            --color-primary: #000048;
+            --color-secondary: #11008f;
+            --color-accent: #2d1bff;
+            --color-light: #b8b8d9;
+            --color-white: #ffffff;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
+            background: var(--color-dark);
+            color: var(--color-white);
             line-height: 1.6;
         }
 
@@ -26,7 +35,7 @@
             align-items: center;
             justify-content: center;
             padding: 2rem;
-            background: rgba(255, 255, 255, 0.95);
+            background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-primary) 100%);
             position: relative;
             overflow: hidden;
         }
@@ -38,7 +47,8 @@
             right: -10%;
             width: 600px;
             height: 600px;
-            background: linear-gradient(135deg, #667eea20 0%, #764ba220 100%);
+            background: radial-gradient(circle, var(--color-secondary) 0%, transparent 70%);
+            opacity: 0.3;
             border-radius: 50%;
             z-index: 0;
         }
@@ -62,16 +72,17 @@
             width: 250px;
             height: 250px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1.5rem;
             font-size: 6rem;
             color: white;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 10px 30px rgba(17, 0, 143, 0.5);
             position: relative;
             overflow: hidden;
+            border: 4px solid var(--color-light);
         }
 
         .profile-img img {
@@ -81,7 +92,7 @@
         }
 
         .profile-label {
-            background: #667eea;
+            background: var(--color-secondary);
             color: white;
             padding: 0.3rem 1rem;
             border-radius: 20px;
@@ -92,20 +103,20 @@
 
         .hero-content h1 {
             font-size: 2.5rem;
-            color: #667eea;
+            color: var(--color-white);
             margin-bottom: 0.5rem;
             font-weight: 700;
         }
 
         .hero-content .subtitle {
             font-size: 1.3rem;
-            color: #764ba2;
+            color: var(--color-light);
             margin-bottom: 1.5rem;
             font-weight: 600;
         }
 
         .hero-content p {
-            color: #666;
+            color: var(--color-light);
             margin-bottom: 2rem;
             font-size: 1.1rem;
         }
@@ -129,31 +140,31 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
             color: white;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 4px 15px rgba(17, 0, 143, 0.4);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+            box-shadow: 0 6px 20px rgba(17, 0, 143, 0.6);
         }
 
         .btn-secondary {
             background: transparent;
-            color: #667eea;
-            border: 2px solid #667eea;
+            color: var(--color-white);
+            border: 2px solid var(--color-light);
         }
 
         .btn-secondary:hover {
-            background: #667eea;
-            color: white;
+            background: var(--color-light);
+            color: var(--color-dark);
             transform: translateY(-3px);
         }
 
         /* Skills Section */
         .skills-section {
-            background: white;
+            background: var(--color-primary);
             padding: 4rem 2rem;
         }
 
@@ -165,7 +176,7 @@
         .section-title {
             text-align: center;
             font-size: 2.5rem;
-            color: #667eea;
+            color: var(--color-white);
             margin-bottom: 3rem;
             position: relative;
         }
@@ -175,7 +186,7 @@
             display: block;
             width: 80px;
             height: 4px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
             margin: 1rem auto;
             border-radius: 2px;
         }
@@ -187,16 +198,17 @@
         }
 
         .skill-item {
-            background: #f8f9ff;
+            background: rgba(255, 255, 255, 0.05);
             padding: 1.5rem;
             border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(184, 184, 217, 0.2);
             transition: transform 0.3s ease;
         }
 
         .skill-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.15);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--color-secondary);
         }
 
         .skill-header {
@@ -208,12 +220,12 @@
 
         .skill-name {
             font-weight: 600;
-            color: #333;
+            color: var(--color-white);
             font-size: 1.1rem;
         }
 
         .skill-level {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
             color: white;
             padding: 0.2rem 0.8rem;
             border-radius: 20px;
@@ -223,14 +235,14 @@
 
         .skill-bar {
             height: 10px;
-            background: #e0e0e0;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             overflow: hidden;
         }
 
         .skill-progress {
             height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
             border-radius: 10px;
             transition: width 1s ease;
             width: 0;
@@ -239,7 +251,7 @@
         /* Works Section */
         .works-section {
             padding: 4rem 2rem;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: var(--color-dark);
         }
 
         .tags {
@@ -251,21 +263,22 @@
         }
 
         .tag {
-            background: white;
-            color: #667eea;
+            background: transparent;
+            color: var(--color-light);
             padding: 0.5rem 1.5rem;
             border-radius: 25px;
             font-weight: 600;
-            border: 2px solid #667eea;
+            border: 2px solid var(--color-secondary);
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         .tag:hover,
         .tag.active {
-            background: #667eea;
+            background: var(--color-secondary);
             color: white;
             transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(17, 0, 143, 0.4);
         }
 
         .works-grid {
@@ -276,22 +289,23 @@
         }
 
         .work-card {
-            background: white;
+            background: var(--color-primary);
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(184, 184, 217, 0.2);
             transition: transform 0.3s ease;
         }
 
         .work-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 15px 40px rgba(17, 0, 143, 0.4);
+            border-color: var(--color-secondary);
         }
 
         .work-image {
             width: 100%;
             height: 250px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -308,10 +322,11 @@
         }
 
         .work-image.placeholder {
-            background: linear-gradient(135deg, #e0e0e0 0%, #f0f0f0 100%);
-            color: #999;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--color-light);
             flex-direction: column;
             gap: 1rem;
+            border: 2px dashed var(--color-light);
         }
 
         .work-image.placeholder::before {
@@ -325,8 +340,13 @@
 
         .work-title {
             font-size: 1.3rem;
-            color: #333;
+            color: var(--color-white);
             margin-bottom: 0.5rem;
+        }
+
+        .work-description {
+            color: var(--color-light);
+            font-size: 0.95rem;
         }
 
         .work-tags {
@@ -337,16 +357,17 @@
         }
 
         .work-tag {
-            background: #f0f0ff;
-            color: #667eea;
+            background: rgba(17, 0, 143, 0.3);
+            color: var(--color-light);
             padding: 0.3rem 0.8rem;
             border-radius: 15px;
             font-size: 0.85rem;
+            border: 1px solid var(--color-secondary);
         }
 
         /* Brands Section */
         .brands-section {
-            background: white;
+            background: var(--color-primary);
             padding: 4rem 2rem;
         }
 
@@ -363,20 +384,23 @@
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: rgba(255, 255, 255, 0.05);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 3rem;
-            color: #667eea;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            color: var(--color-light);
+            border: 2px solid var(--color-secondary);
+            box-shadow: 0 4px 15px rgba(17, 0, 143, 0.3);
             transition: all 0.3s ease;
             cursor: pointer;
         }
 
         .brand-item:hover {
             transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+            background: var(--color-secondary);
+            color: white;
+            box-shadow: 0 6px 20px rgba(17, 0, 143, 0.6);
         }
 
         .brand-item img {
@@ -388,10 +412,75 @@
 
         /* Footer */
         footer {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: var(--color-dark);
+            color: var(--color-white);
             text-align: center;
-            padding: 2rem;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(184, 184, 217, 0.2);
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            border: 3px solid var(--color-light);
+        }
+
+        footer h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-white);
+        }
+
+        .footer-btn {
+            display: inline-block;
+            margin: 1rem 0;
+            padding: 0.8rem 2rem;
+            background: var(--color-white);
+            color: var(--color-dark);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .footer-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .color-palette {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .color-item {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        footer p {
+            color: var(--color-light);
+            margin-top: 1rem;
+            font-size: 0.9rem;
         }
 
         /* Animations */
@@ -454,7 +543,7 @@
         <div class="hero-container">
             <div class="profile-section">
                 <div class="profile-img" id="profileImage">
-                    <!-- Aquí irá tu foto -->
+                    <!-- Aquí irá tu foto - Reemplaza el span con: <img src="tu-imagen.jpg" alt="Carlos Fernández"> -->
                     <span>👤</span>
                 </div>
                 <span class="profile-label">Yo</span>
@@ -544,7 +633,7 @@
                     </div>
                     <div class="work-content">
                         <h3 class="work-title">Trabajo 1</h3>
-                        <p>Auditoría ZMOT y estrategia SEO</p>
+                        <p class="work-description">Auditoría ZMOT y estrategia SEO</p>
                         <div class="work-tags">
                             <span class="work-tag">Análisis</span>
                             <span class="work-tag">SEO</span>
@@ -559,7 +648,7 @@
                     </div>
                     <div class="work-content">
                         <h3 class="work-title">Trabajo 2</h3>
-                        <p>Análisis financiero y métricas</p>
+                        <p class="work-description">Análisis financiero y métricas</p>
                         <div class="work-tags">
                             <span class="work-tag">Finanzas</span>
                             <span class="work-tag">Análisis</span>
@@ -574,7 +663,7 @@
                     </div>
                     <div class="work-content">
                         <h3 class="work-title">Trabajo 3</h3>
-                        <p>Diseño de landing page</p>
+                        <p class="work-description">Diseño de landing page</p>
                         <div class="work-tags">
                             <span class="work-tag">Diseño</span>
                         </div>
@@ -588,7 +677,7 @@
                     </div>
                     <div class="work-content">
                         <h3 class="work-title">Trabajo Rol logos</h3>
-                        <p>Análisis de marca y competencia</p>
+                        <p class="work-description">Análisis de marca y competencia</p>
                         <div class="work-tags">
                             <span class="work-tag">Análisis</span>
                             <span class="work-tag">Branding</span>
@@ -631,8 +720,25 @@
 
     <!-- Footer -->
     <footer id="contacto">
-        <p>&copy; 2026 Carlos Fernández - Todos los derechos reservados</p>
-        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Estratega de Comunicación Analítica & SEO</p>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span>📊</span>
+            </div>
+            <h2>Gracias por llegar hasta aquí</h2>
+            <a href="mailto:tuemail@ejemplo.com" class="footer-btn">Contáctame</a>
+            
+            <div class="color-palette">
+                <div class="color-item" style="background: #000022;" title="#000022"></div>
+                <div class="color-item" style="background: #000048;" title="#000048"></div>
+                <div class="color-item" style="background: #11008f;" title="#11008f"></div>
+                <div class="color-item" style="background: #2d1bff;" title="#2d1bff"></div>
+                <div class="color-item" style="background: #b8b8d9;" title="#b8b8d9"></div>
+                <div class="color-item" style="background: #ffffff;" title="#ffffff"></div>
+            </div>
+            
+            <p>&copy; 2026 Carlos Fernández - Todos los derechos reservados</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">Estratega de Comunicación Analítica & SEO</p>
+        </div>
     </footer>
 
     <script>
@@ -721,9 +827,9 @@
         }
 
         // Ejemplo de cómo agregarías las imágenes cuando las tengas:
-        // addImage('workImage1', 'ruta/de/tu/imagen1.jpg');
-        // addImage('workImage2', 'ruta/de/tu/imagen2.jpg');
-        // addImage('profileImage', 'ruta/de/tu/foto.jpg');
+        // addImage('workImage1', 'imagenes/proyecto1.jpg');
+        // addImage('workImage2', 'imagenes/proyecto2.jpg');
+        // addImage('profileImage', 'imagenes/mi-foto.jpg');
 
         // Efecto de navbar al hacer scroll
         let lastScroll = 0;
@@ -732,7 +838,7 @@
             const hero = document.querySelector('.hero');
             
             if (currentScroll > 100) {
-                hero.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+                hero.style.boxShadow = '0 2px 20px rgba(0,0,0,0.3)';
             } else {
                 hero.style.boxShadow = 'none';
             }
