@@ -238,6 +238,125 @@
             transform: translateY(-3px);
         }
 
+        /* About Section - NUEVA SECCIÓN */
+        .about-section {
+            background: var(--color-primary);
+            padding: 5rem 2rem;
+        }
+
+        .about-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .about-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--color-white);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .about-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1.2fr 1.5fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-personal {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(184, 184, 217, 0.2);
+        }
+
+        .about-personal h3 {
+            color: var(--color-white);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .about-personal p {
+            color: var(--color-light);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .about-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .about-section-block {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(184, 184, 217, 0.2);
+        }
+
+        .about-section-block h3 {
+            color: var(--color-white);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .education-item,
+        .course-item {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            border-left: 3px solid var(--color-secondary);
+        }
+
+        .education-item:last-child,
+        .course-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .education-item h4,
+        .course-item h4 {
+            color: var(--color-white);
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+        }
+
+        .education-item p,
+        .course-item p {
+            color: var(--color-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .education-item .school,
+        .course-item .school {
+            color: var(--color-accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .education-item .years,
+        .course-item .years {
+            color: var(--color-light);
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+
         /* Skills Section */
         .skills-section {
             background: var(--color-primary);
@@ -889,6 +1008,16 @@
                 justify-content: center;
             }
 
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-personal,
+            .about-section-block {
+                padding: 1.5rem;
+            }
+
             .skills-grid,
             .works-grid {
                 grid-template-columns: 1fr;
@@ -941,6 +1070,7 @@
             <a href="#inicio" class="nav-logo">Carlos Fernández</a>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#inicio" class="active">Inicio</a></li>
+                <li><a href="#sobre-mi">Sobre mí</a></li>
                 <li><a href="#habilidades">Habilidades</a></li>
                 <li><a href="#trabajos">Trabajos</a></li>
                 <li><a href="#marcas">Marcas</a></li>
@@ -967,6 +1097,59 @@
                 <div class="cta-buttons">
                     <a href="#contacto" class="btn btn-primary">Contáctame</a>
                     <a href="#trabajos" class="btn btn-secondary">Ver trabajos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section - NUEVA SECCIÓN AGREGADA -->
+    <section class="about-section" id="sobre-mi">
+        <div class="about-container">
+            <h2 class="about-title">Un poco sobre mí</h2>
+            <div class="about-content">
+                <div class="about-personal">
+                    <h3>Soy una persona creativa, calmada y responsable</h3>
+                    <p>
+                        Con buenas relaciones interpersonales, logrando así un buen trabajo en equipo. Siempre tengo la mejor disposición para salir adelante incluso en ámbitos de estrés. Busco mejorar mi comunicación asertiva constantemente.
+                    </p>
+                </div>
+                
+                <div class="about-info">
+                    <div class="about-section-block">
+                        <h3>EDUCACIÓN</h3>
+                        
+                        <div class="education-item">
+                            <h4>Lic Comunicación Social, Mención: Com. Integradas de Mercadeo</h4>
+                            <p class="school">Universidad Católica Andrés Bello</p>
+                            <p class="years">2022 - 2026</p>
+                        </div>
+                        
+                        <div class="education-item">
+                            <h4>Minor en Finanzas</h4>
+                            <p class="school">UCAB</p>
+                            <p class="years">2024 - 2026</p>
+                        </div>
+                        
+                        <div class="education-item">
+                            <h4>Primaria y Bachiller</h4>
+                            <p class="school">U.E.P Colegio San Luis</p>
+                            <p class="years">2008 - 2022</p>
+                        </div>
+                    </div>
+                    
+                    <div class="about-section-block">
+                        <h3>CURSOS / IDIOMAS</h3>
+                        
+                        <div class="course-item">
+                            <h4>Curso de Inglés B2</h4>
+                            <p class="years">2018</p>
+                        </div>
+                        
+                        <div class="course-item">
+                            <h4>Curso de Francés A1</h4>
+                            <p class="years">2021</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1071,8 +1254,8 @@
                 <!-- TRABAJO 1 -->
                 <div class="work-card" data-category="analisis seo">
                     <div class="work-image">
-                        <!-- 👇 REEMPLAZAR "URL_IMAGEN_1" POR EL LINK DE TU IMAGEN 👇 -->
-                        <img src="https://imgur.com/a/beDT9Y1" alt="Auditoría Digital Malta Maltín Polar">
+                        <!-- 👇 REEMPLAZAR "URL_IMAGEN_1" POR EL LINK DE TU IMAGEN  -->
+                        <img src="URL_IMAGEN_1" alt="Auditoría Digital Malta Maltín Polar">
                         <button class="fair-use-btn">FAIR USE</button>
                     </div>
                     <div class="work-content">
@@ -1092,7 +1275,7 @@
                 <!-- TRABAJO 2 -->
                 <div class="work-card" data-category="diseno analisis">
                     <div class="work-image">
-                        <!-- 👇 REEMPLAZAR "URL_IMAGEN_2" POR EL LINK DE TU IMAGEN 👇 -->
+                        <!-- 👇 REEMPLAZAR "URL_IMAGEN_2" POR EL LINK DE TU IMAGEN  -->
                         <img src="URL_IMAGEN_2" alt="Out Context Brand Strategy">
                         <button class="fair-use-btn">FAIR USE</button>
                     </div>
