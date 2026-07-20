@@ -40,7 +40,6 @@
             padding: 1rem 2rem;
             z-index: 1000;
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
         }
 
         .nav-container {
@@ -151,12 +150,9 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto 1.5rem;
-            font-size: 6rem;
-            color: white;
-            box-shadow: 0 10px 30px rgba(17, 0, 143, 0.5);
-            position: relative;
             overflow: hidden;
             border: 4px solid var(--color-light);
+            box-shadow: 0 10px 30px rgba(17, 0, 143, 0.5);
         }
 
         .profile-img img {
@@ -238,7 +234,7 @@
             transform: translateY(-3px);
         }
 
-        /* About Section - NUEVA SECCIÓN */
+        /* About Section */
         .about-section {
             background: var(--color-primary);
             padding: 5rem 2rem;
@@ -443,7 +439,7 @@
             width: 0;
         }
 
-        /* Works Section */
+        /* ============ CARRUSEL DE TRABAJOS ============ */
         .works-section {
             padding: 4rem 2rem;
             background: var(--color-dark);
@@ -476,21 +472,37 @@
             box-shadow: 0 4px 15px rgba(17, 0, 143, 0.4);
         }
 
-        .works-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        /* Contenedor principal del carrusel */
+        .carousel-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        /* Viewport oculta el overflow */
+        .carousel-viewport {
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        /* Track que se mueve */
+        .carousel-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             gap: 2rem;
-            margin-bottom: 3rem;
         }
 
         .work-card {
+            min-width: calc(33.333% - 1.33rem);
             background: var(--color-primary);
             border-radius: 20px;
             overflow: hidden;
             border: 1px solid rgba(184, 184, 217, 0.2);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
+            flex-shrink: 0;
         }
 
         .work-card:hover {
@@ -518,14 +530,6 @@
             object-fit: cover;
         }
 
-        .work-image.placeholder {
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--color-light);
-            flex-direction: column;
-            gap: 1rem;
-            border: 2px dashed var(--color-light);
-        }
-
         .fair-use-btn {
             position: absolute;
             bottom: 1rem;
@@ -549,25 +553,25 @@
         }
 
         .work-content {
-            padding: 2rem;
+            padding: 1.5rem;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
 
         .work-title {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: var(--color-white);
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             font-weight: 700;
             line-height: 1.3;
         }
 
         .work-description {
             color: var(--color-light);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             line-height: 1.6;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             flex-grow: 1;
         }
 
@@ -575,7 +579,7 @@
             display: flex;
             gap: 0.5rem;
             flex-wrap: wrap;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .work-tag {
@@ -583,20 +587,20 @@
             color: var(--color-light);
             padding: 0.3rem 0.8rem;
             border-radius: 15px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             border: 1px solid var(--color-secondary);
         }
 
         .work-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 0.5rem;
             flex-wrap: wrap;
         }
 
         .work-btn {
             flex: 1;
-            min-width: 120px;
-            padding: 0.7rem 1.2rem;
+            min-width: 100px;
+            padding: 0.6rem 1rem;
             border: 2px solid var(--color-light);
             border-radius: 25px;
             background: transparent;
@@ -607,7 +611,7 @@
             text-align: center;
             text-decoration: none;
             display: inline-block;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .work-btn:hover {
@@ -624,6 +628,80 @@
 
         .work-btn.primary:hover {
             background: var(--color-light);
+        }
+
+        /* Botones de navegación del carrusel */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--color-secondary);
+            border: 2px solid var(--color-light);
+            color: var(--color-white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(17, 0, 143, 0.5);
+        }
+
+        .carousel-btn:hover {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: translateY(-50%);
+        }
+
+        .carousel-btn:disabled:hover {
+            background: var(--color-secondary);
+            transform: translateY(-50%);
+        }
+
+        .carousel-btn.prev {
+            left: 0;
+        }
+
+        .carousel-btn.next {
+            right: 0;
+        }
+
+        /* Indicadores (dots) */
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-top: 2rem;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(184, 184, 217, 0.3);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: var(--color-secondary);
+            transform: scale(1.3);
+            box-shadow: 0 0 10px rgba(17, 0, 143, 0.6);
+        }
+
+        .carousel-dot:hover {
+            background: var(--color-accent);
         }
 
         /* Modal Styles */
@@ -962,7 +1040,6 @@
             font-size: 0.9rem;
         }
 
-        /* Animations */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -1013,14 +1090,23 @@
                 gap: 2rem;
             }
 
-            .about-personal,
-            .about-section-block {
-                padding: 1.5rem;
+            .skills-grid {
+                grid-template-columns: 1fr;
             }
 
-            .skills-grid,
-            .works-grid {
-                grid-template-columns: 1fr;
+            /* Carrusel responsive */
+            .work-card {
+                min-width: 100%;
+            }
+
+            .carousel-container {
+                padding: 0 2.5rem;
+            }
+
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
             }
 
             .modal-body {
@@ -1060,6 +1146,13 @@
                 width: 100%;
             }
         }
+
+        /* Tablet: 2 cards */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .work-card {
+                min-width: calc(50% - 1rem);
+            }
+        }
     </style>
 </head>
 <body>
@@ -1084,8 +1177,7 @@
     <section class="hero" id="inicio">
         <div class="hero-container">
             <div class="profile-section">
-                <div class="profile-img" id="profileImage">
-                    <!-- REEMPLAZAR CON LA URL DE LA FOTO DE PERFIL -->
+                <div class="profile-img">
                     <img src="https://i.imgur.com/ghfgZHt.jpeg" alt="Carlos Fernández">
                 </div>
                 <span class="profile-label">Yo</span>
@@ -1102,49 +1194,40 @@
         </div>
     </section>
 
-    <!-- About Section - NUEVA SECCIÓN AGREGADA -->
+    <!-- About Section -->
     <section class="about-section" id="sobre-mi">
         <div class="about-container">
             <h2 class="about-title">Un poco sobre mí</h2>
             <div class="about-content">
                 <div class="about-personal">
                     <h3>Soy una persona creativa, calmada y responsable</h3>
-                    <p>
-                        Con buenas relaciones interpersonales, logrando así un buen trabajo en equipo. Siempre tengo la mejor disposición para salir adelante incluso en ámbitos de estrés. Busco mejorar mi comunicación asertiva constantemente.
-                    </p>
+                    <p>Con buenas relaciones interpersonales, logrando así un buen trabajo en equipo. Siempre tengo la mejor disposición para salir adelante incluso en ámbitos de estrés. Busco mejorar mi comunicación asertiva constantemente.</p>
                 </div>
-                
                 <div class="about-info">
                     <div class="about-section-block">
                         <h3>EDUCACIÓN</h3>
-                        
                         <div class="education-item">
                             <h4>Lic Comunicación Social, Mención: Com. Integradas de Mercadeo</h4>
                             <p class="school">Universidad Católica Andrés Bello</p>
                             <p class="years">2022 - 2026</p>
                         </div>
-                        
                         <div class="education-item">
                             <h4>Minor en Finanzas</h4>
                             <p class="school">UCAB</p>
                             <p class="years">2024 - 2026</p>
                         </div>
-                        
                         <div class="education-item">
                             <h4>Primaria y Bachiller</h4>
                             <p class="school">U.E.P Colegio San Luis</p>
                             <p class="years">2008 - 2022</p>
                         </div>
                     </div>
-                    
                     <div class="about-section-block">
                         <h3>CURSOS / IDIOMAS</h3>
-                        
                         <div class="course-item">
                             <h4>Curso de Inglés B2</h4>
                             <p class="years">2018</p>
                         </div>
-                        
                         <div class="course-item">
                             <h4>Curso de Francés A1</h4>
                             <p class="years">2021</p>
@@ -1167,19 +1250,16 @@
                         <span class="skill-level">5/5</span>
                     </div>
                     <div class="skill-bar"><div class="skill-progress" data-width="100"></div></div>
-                    
                     <div class="skill-header" style="margin-top: 1rem;">
                         <span class="skill-name">Google Analytics</span>
                         <span class="skill-level">5/5</span>
                     </div>
                     <div class="skill-bar"><div class="skill-progress" data-width="100"></div></div>
-
                     <div class="skill-header" style="margin-top: 1rem;">
                         <span class="skill-name">Instagram Insights</span>
                         <span class="skill-level">4.5/5</span>
                     </div>
                     <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
-
                     <div class="skill-header" style="margin-top: 1rem;">
                         <span class="skill-name">Keyword Research</span>
                         <span class="skill-level">4/5</span>
@@ -1194,19 +1274,16 @@
                         <span class="skill-level">4/5</span>
                     </div>
                     <div class="skill-bar"><div class="skill-progress" data-width="80"></div></div>
-                    
                     <div class="skill-header" style="margin-top: 1rem;">
                         <span class="skill-name">Flujo de Caja / Curva S</span>
                         <span class="skill-level">4/5</span>
                     </div>
                     <div class="skill-bar"><div class="skill-progress" data-width="80"></div></div>
-
                     <div class="skill-header" style="margin-top: 1rem;">
                         <span class="skill-name">Análisis CAME/DOFA</span>
                         <span class="skill-level">5/5</span>
                     </div>
                     <div class="skill-bar"><div class="skill-progress" data-width="100"></div></div>
-
                     <div class="skill-header" style="margin-top: 1rem;">
                         <span class="skill-name">Valoración de Empresas (WACC)</span>
                         <span class="skill-level">4.5/5</span>
@@ -1221,13 +1298,11 @@
                         <span class="skill-level">4.5/5</span>
                     </div>
                     <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
-                    
                     <div class="skill-header" style="margin-top: 1rem;">
                         <span class="skill-name">Google Forms (Investigación)</span>
                         <span class="skill-level">4.5/5</span>
                     </div>
                     <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
-
                     <div class="skill-header" style="margin-top: 1rem;">
                         <span class="skill-name">Social Media Planning</span>
                         <span class="skill-level">4/5</span>
@@ -1238,7 +1313,7 @@
         </div>
     </section>
 
-    <!-- Works Section -->
+    <!-- Works Section - CARRUSEL -->
     <section class="works-section" id="trabajos">
         <div class="container">
             <h2 class="section-title">TRABAJOS:</h2>
@@ -1249,119 +1324,126 @@
                 <span class="tag" data-filter="finanzas">Finanzas</span>
                 <span class="tag" data-filter="diseno">Diseño</span>
             </div>
-            <div class="works-grid">
+
+            <div class="carousel-container">
+                <button class="carousel-btn prev" id="carouselPrev" aria-label="Anterior"></button>
                 
-                <!-- TRABAJO 1 -->
-                <div class="work-card" data-category="analisis seo">
-                    <div class="work-image">
-                        <!-- 👇 REEMPLAZAR "URL_IMAGEN_1" POR EL LINK DE TU IMAGEN  -->
-                        <img src="URL_IMAGEN_1" alt="Auditoría Digital Malta Maltín Polar">
-                        <button class="fair-use-btn">FAIR USE</button>
-                    </div>
-                    <div class="work-content">
-                        <h3 class="work-title">Auditoría Digital y Estrategia ZMOT - Malta Maltín Polar</h3>
-                        <p class="work-description">Transformé indicadores de búsqueda en una estrategia de contenido orgánico para Maltín Polar en su Momento Cero de la Verdad (ZMOT), conectando con el mercado nostálgico mediante decisiones basadas 100% en datos.</p>
-                        <div class="work-tags">
-                            <span class="work-tag">Análisis</span>
-                            <span class="work-tag">SEO</span>
-                            <span class="work-tag">ZMOT</span>
+                <div class="carousel-viewport">
+                    <div class="carousel-track" id="carouselTrack">
+                        
+                        <!-- TRABAJO 1 -->
+                        <div class="work-card" data-category="analisis seo">
+                            <div class="work-image">
+                                <img src="URL_IMAGEN_1" alt="Auditoría Digital Malta Maltín Polar">
+                                <button class="fair-use-btn">FAIR USE</button>
+                            </div>
+                            <div class="work-content">
+                                <h3 class="work-title">Auditoría Digital y Estrategia ZMOT - Malta Maltín Polar</h3>
+                                <p class="work-description">Transformé indicadores de búsqueda en una estrategia de contenido orgánico para Maltín Polar en su Momento Cero de la Verdad (ZMOT), conectando con el mercado nostálgico mediante decisiones basadas 100% en datos.</p>
+                                <div class="work-tags">
+                                    <span class="work-tag">Análisis</span>
+                                    <span class="work-tag">SEO</span>
+                                    <span class="work-tag">ZMOT</span>
+                                </div>
+                                <div class="work-buttons">
+                                    <button class="work-btn primary" onclick="openModal('modal1')">Conocer más</button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="work-buttons">
-                            <button class="work-btn primary" onclick="openModal('modal1')">Conocer más</button>
+
+                        <!-- TRABAJO 2 -->
+                        <div class="work-card" data-category="diseno analisis">
+                            <div class="work-image">
+                                <img src="URL_IMAGEN_2" alt="Out Context Brand Strategy">
+                                <button class="fair-use-btn">FAIR USE</button>
+                            </div>
+                            <div class="work-content">
+                                <h3 class="work-title">Out Context: Estilo y comodidad sin límites</h3>
+                                <p class="work-description">Diseño de identidad de marca y estrategia de contenidos para una empresa de ropa athleisure, asegurando una conexión orgánica con la Generación Z y los Millennials.</p>
+                                <div class="work-tags">
+                                    <span class="work-tag">Diseño</span>
+                                    <span class="work-tag">Análisis</span>
+                                    <span class="work-tag">Social Media</span>
+                                </div>
+                                <div class="work-buttons">
+                                    <button class="work-btn primary" onclick="openModal('modal2')">Conocer más</button>
+                                </div>
+                            </div>
                         </div>
+
+                        <!-- TRABAJO 3 -->
+                        <div class="work-card" data-category="finanzas">
+                            <div class="work-image">
+                                <img src="URL_IMAGEN_3" alt="HistorIA VR UCAB">
+                                <button class="fair-use-btn">FAIR USE</button>
+                            </div>
+                            <div class="work-content">
+                                <h3 class="work-title">HistorIA – Experiencia Inmersiva de Realidad Virtual (UCAB)</h3>
+                                <p class="work-description">Gestión financiera y de riesgos para una experiencia educativa de Realidad Virtual e Inteligencia Artificial, permitiendo interactuar con figuras históricas en tiempo real.</p>
+                                <div class="work-tags">
+                                    <span class="work-tag">Finanzas</span>
+                                    <span class="work-tag">Gestión de Riesgos</span>
+                                </div>
+                                <div class="work-buttons">
+                                    <button class="work-btn primary" onclick="openModal('modal3')">Conocer más</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TRABAJO 4 -->
+                        <div class="work-card" data-category="finanzas analisis">
+                            <div class="work-image">
+                                <img src="URL_IMAGEN_4" alt="Valoración Mondelez International">
+                                <button class="fair-use-btn">FAIR USE</button>
+                            </div>
+                            <div class="work-content">
+                                <h3 class="work-title">Valoración Financiera de Mondelez International</h3>
+                                <p class="work-description">Determinación del valor real de la compañía mediante métodos de valoración financiera (WACC, Flujo de Caja Libre) para conocer su solvencia, rentabilidad y capacidad de generación de flujo.</p>
+                                <div class="work-tags">
+                                    <span class="work-tag">Finanzas</span>
+                                    <span class="work-tag">Valoración</span>
+                                    <span class="work-tag">Excel</span>
+                                </div>
+                                <div class="work-buttons">
+                                    <button class="work-btn primary" onclick="openModal('modal4')">Conocer más</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TRABAJO 5 -->
+                        <div class="work-card" data-category="analisis">
+                            <div class="work-image">
+                                <img src="URL_IMAGEN_5" alt="Reporte Cider Lubelski">
+                                <button class="fair-use-btn">FAIR USE</button>
+                            </div>
+                            <div class="work-content">
+                                <h3 class="work-title">Reporte Anual de Rendimiento Digital 2025: Cider Lubelski</h3>
+                                <p class="work-description">Análisis del rendimiento de plataformas sociales de la marca durante 2025 para identificar patrones de crecimiento, efectividad de la pauta y optimizar la tasa de conversión.</p>
+                                <div class="work-tags">
+                                    <span class="work-tag">Análisis</span>
+                                    <span class="work-tag">Meta Business</span>
+                                    <span class="work-tag">KPIs</span>
+                                </div>
+                                <div class="work-buttons">
+                                    <button class="work-btn primary" onclick="openModal('modal5')">Conocer más</button>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
-                <!-- TRABAJO 2 -->
-                <div class="work-card" data-category="diseno analisis">
-                    <div class="work-image">
-                        <!-- 👇 REEMPLAZAR "URL_IMAGEN_2" POR EL LINK DE TU IMAGEN  -->
-                        <img src="URL_IMAGEN_2" alt="Out Context Brand Strategy">
-                        <button class="fair-use-btn">FAIR USE</button>
-                    </div>
-                    <div class="work-content">
-                        <h3 class="work-title">Out Context: Estilo y comodidad sin límites</h3>
-                        <p class="work-description">Diseño de identidad de marca y estrategia de contenidos para una empresa de ropa athleisure, asegurando una conexión orgánica con la Generación Z y los Millennials.</p>
-                        <div class="work-tags">
-                            <span class="work-tag">Diseño</span>
-                            <span class="work-tag">Análisis</span>
-                            <span class="work-tag">Social Media</span>
-                        </div>
-                        <div class="work-buttons">
-                            <button class="work-btn primary" onclick="openModal('modal2')">Conocer más</button>
-                        </div>
-                    </div>
-                </div>
+                <button class="carousel-btn next" id="carouselNext" aria-label="Siguiente">❯</button>
 
-                <!-- TRABAJO 3 -->
-                <div class="work-card" data-category="finanzas">
-                    <div class="work-image">
-                        <!-- 👇 REEMPLAZAR "URL_IMAGEN_3" POR EL LINK DE TU IMAGEN 👇 -->
-                        <img src="URL_IMAGEN_3" alt="HistorIA VR UCAB">
-                        <button class="fair-use-btn">FAIR USE</button>
-                    </div>
-                    <div class="work-content">
-                        <h3 class="work-title">HistorIA – Experiencia Inmersiva de Realidad Virtual (UCAB)</h3>
-                        <p class="work-description">Gestión financiera y de riesgos para una experiencia educativa de Realidad Virtual e Inteligencia Artificial, permitiendo interactuar con figuras históricas en tiempo real.</p>
-                        <div class="work-tags">
-                            <span class="work-tag">Finanzas</span>
-                            <span class="work-tag">Gestión de Riesgos</span>
-                        </div>
-                        <div class="work-buttons">
-                            <button class="work-btn primary" onclick="openModal('modal3')">Conocer más</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TRABAJO 4 -->
-                <div class="work-card" data-category="finanzas analisis">
-                    <div class="work-image">
-                        <!-- 👇 REEMPLAZAR "URL_IMAGEN_4" POR EL LINK DE TU IMAGEN 👇 -->
-                        <img src="URL_IMAGEN_4" alt="Valoración Mondelez International">
-                        <button class="fair-use-btn">FAIR USE</button>
-                    </div>
-                    <div class="work-content">
-                        <h3 class="work-title">Valoración Financiera de Mondelez International</h3>
-                        <p class="work-description">Determinación del valor real de la compañía mediante métodos de valoración financiera (WACC, Flujo de Caja Libre) para conocer su solvencia, rentabilidad y capacidad de generación de flujo.</p>
-                        <div class="work-tags">
-                            <span class="work-tag">Finanzas</span>
-                            <span class="work-tag">Valoración</span>
-                            <span class="work-tag">Excel</span>
-                        </div>
-                        <div class="work-buttons">
-                            <button class="work-btn primary" onclick="openModal('modal4')">Conocer más</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TRABAJO 5 -->
-                <div class="work-card" data-category="analisis">
-                    <div class="work-image">
-                        <!-- 👇 REEMPLAZAR "URL_IMAGEN_5" POR EL LINK DE TU IMAGEN 👇 -->
-                        <img src="URL_IMAGEN_5" alt="Reporte Cider Lubelski">
-                        <button class="fair-use-btn">FAIR USE</button>
-                    </div>
-                    <div class="work-content">
-                        <h3 class="work-title">Reporte Anual de Rendimiento Digital 2025: Cider Lubelski</h3>
-                        <p class="work-description">Análisis del rendimiento de plataformas sociales de la marca durante 2025 para identificar patrones de crecimiento, efectividad de la pauta y optimizar la tasa de conversión.</p>
-                        <div class="work-tags">
-                            <span class="work-tag">Análisis</span>
-                            <span class="work-tag">Meta Business</span>
-                            <span class="work-tag">KPIs</span>
-                        </div>
-                        <div class="work-buttons">
-                            <button class="work-btn primary" onclick="openModal('modal5')">Conocer más</button>
-                        </div>
-                    </div>
-                </div>
-
+                <!-- Indicadores -->
+                <div class="carousel-dots" id="carouselDots"></div>
             </div>
         </div>
     </section>
 
     <!-- ================= MODALES ================= -->
 
-    <!-- MODAL 1: Malta Maltín Polar -->
+    <!-- MODAL 1 -->
     <div class="modal" id="modal1">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal1')">&times;</button>
@@ -1420,7 +1502,7 @@
         </div>
     </div>
 
-    <!-- MODAL 2: Out Context -->
+    <!-- MODAL 2 -->
     <div class="modal" id="modal2">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal2')">&times;</button>
@@ -1482,7 +1564,7 @@
         </div>
     </div>
 
-    <!-- MODAL 3: HistorIA VR -->
+    <!-- MODAL 3 -->
     <div class="modal" id="modal3">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal3')">&times;</button>
@@ -1544,7 +1626,7 @@
         </div>
     </div>
 
-    <!-- MODAL 4: Mondelez International -->
+    <!-- MODAL 4 -->
     <div class="modal" id="modal4">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal4')">&times;</button>
@@ -1606,7 +1688,7 @@
         </div>
     </div>
 
-    <!-- MODAL 5: Cider Lubelski -->
+    <!-- MODAL 5 -->
     <div class="modal" id="modal5">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal5')">&times;</button>
@@ -1677,7 +1759,7 @@
                 <div class="brand-item"><span>🏢</span></div>
                 <div class="brand-item"><span>🏢</span></div>
                 <div class="brand-item"><span>🏢</span></div>
-                <div class="brand-item"><span>🏢</span></div>
+                <div class="brand-item"><span></span></div>
                 <div class="brand-item"><span>🏢</span></div>
                 <div class="brand-item"><span></span></div>
             </div>
@@ -1722,7 +1804,161 @@
     </footer>
 
     <script>
-        // Modal Functions
+        // ============ CARRUSEL LOGIC ============
+        const track = document.getElementById('carouselTrack');
+        const prevBtn = document.getElementById('carouselPrev');
+        const nextBtn = document.getElementById('carouselNext');
+        const dotsContainer = document.getElementById('carouselDots');
+        let currentIndex = 0;
+        let cardsPerView = 3;
+
+        // Calcular cuántas tarjetas se ven según el ancho
+        function updateCardsPerView() {
+            const width = window.innerWidth;
+            if (width <= 768) {
+                cardsPerView = 1;
+            } else if (width <= 1024) {
+                cardsPerView = 2;
+            } else {
+                cardsPerView = 3;
+            }
+        }
+
+        // Obtener tarjetas visibles (las que no están ocultas por filtro)
+        function getVisibleCards() {
+            return Array.from(track.querySelectorAll('.work-card')).filter(card => {
+                return card.style.display !== 'none';
+            });
+        }
+
+        // Calcular total de "páginas" del carrusel
+        function getTotalPages() {
+            const visibleCards = getVisibleCards();
+            return Math.max(1, Math.ceil(visibleCards.length / cardsPerView));
+        }
+
+        // Crear dots indicadores
+        function createDots() {
+            dotsContainer.innerHTML = '';
+            const totalPages = getTotalPages();
+            for (let i = 0; i < totalPages; i++) {
+                const dot = document.createElement('button');
+                dot.classList.add('carousel-dot');
+                dot.setAttribute('aria-label', `Ir a página ${i + 1}`);
+                if (i === currentIndex) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(i));
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        // Actualizar dots activos
+        function updateDots() {
+            const dots = dotsContainer.querySelectorAll('.carousel-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        // Mover el carrusel
+        function updateCarousel() {
+            const visibleCards = getVisibleCards();
+            const totalPages = getTotalPages();
+            
+            // Asegurar que el índice no se pase
+            if (currentIndex >= totalPages) {
+                currentIndex = totalPages - 1;
+            }
+            if (currentIndex < 0) currentIndex = 0;
+
+            // Calcular el desplazamiento
+            const cardWidth = 100 / cardsPerView;
+            const gapOffset = (2 * currentIndex) / cardsPerView; // ajuste por gap
+            const translateX = -(currentIndex * cardWidth) - gapOffset;
+            
+            track.style.transform = `translateX(${translateX}%)`;
+
+            // Actualizar botones
+            prevBtn.disabled = currentIndex === 0;
+            nextBtn.disabled = currentIndex >= totalPages - 1;
+
+            // Actualizar dots
+            updateDots();
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            updateCarousel();
+        }
+
+        function nextSlide() {
+            const totalPages = getTotalPages();
+            if (currentIndex < totalPages - 1) {
+                currentIndex++;
+                updateCarousel();
+            }
+        }
+
+        function prevSlide() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
+        }
+
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
+
+        // Soporte para swipe en móviles
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        track.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        track.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) nextSlide();
+                else prevSlide();
+            }
+        }, { passive: true });
+
+        // Actualizar en resize
+        window.addEventListener('resize', () => {
+            updateCardsPerView();
+            createDots();
+            updateCarousel();
+        });
+
+        // ============ FILTRO DE TRABAJOS ============
+        const tags = document.querySelectorAll('.tag');
+
+        tags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                tags.forEach(t => t.classList.remove('active'));
+                tag.classList.add('active');
+
+                const filter = tag.getAttribute('data-filter');
+                const allCards = track.querySelectorAll('.work-card');
+
+                allCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Reiniciar carrusel al filtrar
+                currentIndex = 0;
+                createDots();
+                updateCarousel();
+            });
+        });
+
+        // ============ MODALES ============
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
             if (modal) {
@@ -1739,7 +1975,6 @@
             }
         }
 
-        // Close modal when clicking outside
         window.onclick = function(event) {
             if (event.target.classList.contains('modal')) {
                 event.target.classList.remove('active');
@@ -1747,26 +1982,19 @@
             }
         }
 
-        // Tab Switching Function (Fixed for multiple modals)
         function switchTab(tabName, modalId, clickedTab) {
             const modal = document.getElementById(modalId);
-            
-            // Remove active class from all tabs in THIS modal
             const tabs = modal.querySelectorAll('.modal-tab');
             tabs.forEach(tab => tab.classList.remove('active'));
-            
-            // Add active class to clicked tab
             clickedTab.classList.add('active');
             
-            // Hide all tab contents in THIS modal
             const contents = modal.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active'));
             
-            // Show selected tab content
             document.getElementById(tabName).classList.add('active');
         }
 
-        // Animación de barras de habilidades al hacer scroll
+        // ============ BARRAS DE HABILIDADES ============
         const observerOptions = {
             threshold: 0.5,
             rootMargin: "0px 0px -100px 0px"
@@ -1785,47 +2013,20 @@
         }, observerOptions);
 
         const skillsSection = document.querySelector('.skills-section');
-        if (skillsSection) {
-            observer.observe(skillsSection);
-        }
+        if (skillsSection) observer.observe(skillsSection);
 
-        // Filtro de trabajos
-        const tags = document.querySelectorAll('.tag');
-        const workCards = document.querySelectorAll('.work-card');
-
-        tags.forEach(tag => {
-            tag.addEventListener('click', () => {
-                tags.forEach(t => t.classList.remove('active'));
-                tag.classList.add('active');
-
-                const filter = tag.getAttribute('data-filter');
-
-                workCards.forEach(card => {
-                    if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
-                        card.style.display = 'flex';
-                        card.style.animation = 'fadeInUp 0.5s ease';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-
-        // Smooth scroll para los botones
+        // ============ SMOOTH SCROLL ============
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
         });
 
-        // Animación de entrada al cargar
+        // ============ ANIMACIÓN HERO ============
         window.addEventListener('load', () => {
             const elements = document.querySelectorAll('.hero-content, .profile-section');
             elements.forEach((el, index) => {
@@ -1839,17 +2040,12 @@
             });
         });
 
-        // Navbar scroll effect
+        // ============ NAVBAR ============
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 100) {
-                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.3)';
-            } else {
-                navbar.style.boxShadow = 'none';
-            }
+            navbar.style.boxShadow = window.pageYOffset > 100 ? '0 2px 20px rgba(0,0,0,0.3)' : 'none';
         });
 
-        // Mobile menu toggle
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
         const navMenu = document.getElementById('navMenu');
 
@@ -1858,7 +2054,6 @@
             mobileMenuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
         });
 
-        // Close mobile menu when clicking on a link
         document.querySelectorAll('.nav-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
@@ -1866,7 +2061,6 @@
             });
         });
 
-        // Active nav link on scroll
         const sections = document.querySelectorAll('section[id]');
         window.addEventListener('scroll', () => {
             let current = '';
@@ -1884,6 +2078,11 @@
                 }
             });
         });
+
+        // ============ INICIALIZAR CARRUSEL ============
+        updateCardsPerView();
+        createDots();
+        updateCarousel();
     </script>
 </body>
 </html>
