@@ -19,6 +19,7 @@
             --color-accent: #2d1bff;
             --color-light: #b8b8d9;
             --color-white: #ffffff;
+            --color-yellow: #FFD700;
         }
 
         body {
@@ -28,13 +29,90 @@
             line-height: 1.6;
         }
 
+        /* Navigation Menu */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 34, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.hidden {
+            transform: translateY(-100%);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-white);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: var(--color-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--color-white);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-yellow);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--color-white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
         /* Header/Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            padding: 6rem 2rem 2rem;
             background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-primary) 100%);
             position: relative;
             overflow: hidden;
@@ -120,6 +198,7 @@
             color: var(--color-light);
             margin-bottom: 2rem;
             font-size: 1.1rem;
+            font-style: italic;
         }
 
         .cta-buttons {
@@ -337,6 +416,27 @@
             font-size: 3rem;
         }
 
+        .fair-use-btn {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-yellow);
+            color: var(--color-dark);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .fair-use-btn:hover {
+            transform: translateX(-50%) translateY(-3px);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+        }
+
         .work-content {
             padding: 2rem;
             flex-grow: 1;
@@ -414,7 +514,7 @@
             background: var(--color-light);
         }
 
-        /* Modal Styles */
+        /* Modal Styles - NEW DESIGN */
         .modal {
             display: none;
             position: fixed;
@@ -422,7 +522,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             z-index: 1000;
             overflow-y: auto;
             padding: 2rem;
@@ -461,6 +561,7 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
+            z-index: 10;
         }
 
         .modal-close:hover {
@@ -468,9 +569,48 @@
             transform: rotate(90deg);
         }
 
+        .modal-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            color: var(--color-white);
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .modal-tab {
+            padding: 0.8rem 2rem;
+            border: 2px solid var(--color-light);
+            border-radius: 25px;
+            background: transparent;
+            color: var(--color-light);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .modal-tab:hover,
+        .modal-tab.active {
+            background: var(--color-white);
+            color: var(--color-dark);
+            border-color: var(--color-white);
+            transform: translateY(-2px);
+        }
+
         .modal-body {
             display: grid;
-            grid-template-columns: 1fr 1.5fr;
+            grid-template-columns: 1fr 2fr;
             gap: 3rem;
             margin-top: 2rem;
         }
@@ -480,6 +620,7 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
         }
 
         .modal-image img {
@@ -488,12 +629,8 @@
             display: block;
         }
 
-        .modal-info h2 {
-            font-size: 2rem;
-            color: var(--color-white);
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid var(--color-secondary);
+        .modal-info {
+            color: var(--color-light);
         }
 
         .modal-section {
@@ -501,8 +638,8 @@
         }
 
         .modal-section h3 {
-            color: var(--color-accent);
-            font-size: 1.3rem;
+            color: var(--color-white);
+            font-size: 1.2rem;
             margin-bottom: 0.8rem;
             font-weight: 600;
         }
@@ -519,7 +656,36 @@
         }
 
         .modal-section li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            list-style: none;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .modal-section li::before {
+            content: '✅';
+            position: absolute;
+            left: 0;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Brands Section */
@@ -707,6 +873,26 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                background: rgba(0, 0, 34, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                transition: left 0.3s ease;
+                gap: 1rem;
+            }
+
+            .nav-menu.active {
+                left: 100%;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
             .hero-container {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -732,6 +918,14 @@
 
             .modal-body {
                 grid-template-columns: 1fr;
+            }
+
+            .modal-tabs {
+                flex-direction: column;
+            }
+
+            .modal-tab {
+                width: 100%;
             }
 
             .contact-content {
@@ -774,6 +968,21 @@
 </head>
 <body>
 
+    <!-- Navigation Menu -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#inicio" class="nav-logo">Carlos Fernández</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#inicio" class="active">Inicio</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#trabajos">Trabajos</a></li>
+                <li><a href="#marcas">Marcas</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+        </div>
+    </nav>
+
     <!-- Hero Section -->
     <section class="hero" id="inicio">
         <div class="hero-container">
@@ -785,8 +994,8 @@
             </div>
             <div class="hero-content">
                 <h1>Hola, Soy Carlos :)</h1>
-                <p class="subtitle">Analista de mercadeo</p>
-                <p>Estratega de Comunicación Analítica & SEO. Especializado en traducir datos en estrategias digitales efectivas.</p>
+                <p class="subtitle">Estratega de Comunicación Analítica & SEO</p>
+                <p>"Traduzco datos e intangibles en estrategias financieras y digitales de alto impacto"</p>
                 <div class="cta-buttons">
                     <a href="#contacto" class="btn btn-primary">Contáctame</a>
                     <a href="#trabajos" class="btn btn-secondary">Leer más</a>
@@ -798,8 +1007,27 @@
     <!-- Skills Section -->
     <section class="skills-section" id="habilidades">
         <div class="container">
-            <h2 class="section-title">Habilidades que manejo</h2>
+            <h2 class="section-title">Habilidades que manejo...</h2>
             <div class="skills-grid">
+                <div class="skill-item">
+                    <h3 style="margin-bottom: 1rem; color: var(--color-white);">Analítica Digital y SEO</h3>
+                    <div class="skill-header">
+                        <span class="skill-name">Meta Business Suite</span>
+                        <span class="skill-level">5/5</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="100"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">Instagram Insights</span>
+                        <span class="skill-level">4.5/5</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="90"></div>
+                    </div>
+                </div>
                 <div class="skill-item">
                     <div class="skill-header">
                         <span class="skill-name">Google Analytics</span>
@@ -811,25 +1039,7 @@
                 </div>
                 <div class="skill-item">
                     <div class="skill-header">
-                        <span class="skill-name">Excel</span>
-                        <span class="skill-level">4.5/5</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-width="90"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-header">
                         <span class="skill-name">Keyword Research</span>
-                        <span class="skill-level">4.5/5</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-width="90"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">Meta Business Suite</span>
                         <span class="skill-level">4/5</span>
                     </div>
                     <div class="skill-bar">
@@ -838,7 +1048,44 @@
                 </div>
                 <div class="skill-item">
                     <div class="skill-header">
-                        <span class="skill-name">Investigación</span>
+                        <span class="skill-name">Google Forms (Investigación)</span>
+                        <span class="skill-level">4.5/5</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="90"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <h3 style="margin-bottom: 1rem; color: var(--color-white);">Analítica Financiera</h3>
+                    <div class="skill-header">
+                        <span class="skill-name">Microsoft Excel (Modelado financiero)</span>
+                        <span class="skill-level">4/5</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="80"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">Flujo de Caja</span>
+                        <span class="skill-level">4/5</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="80"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">Curva S</span>
+                        <span class="skill-level">4/5</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="80"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">Análisis CAME/DOFA</span>
                         <span class="skill-level">5/5</span>
                     </div>
                     <div class="skill-bar">
@@ -852,7 +1099,7 @@
     <!-- Works Section -->
     <section class="works-section" id="trabajos">
         <div class="container">
-            <h2 class="section-title">Mis trabajos</h2>
+            <h2 class="section-title">TRABAJOS:</h2>
             <div class="tags">
                 <span class="tag active" data-filter="all">Todos</span>
                 <span class="tag" data-filter="analisis">Análisis</span>
@@ -861,15 +1108,16 @@
                 <span class="tag" data-filter="diseno">Diseño</span>
             </div>
             <div class="works-grid">
-                <!-- Trabajo 1 - Actualizado -->
+                <!-- Trabajo 1 - Updated with new format -->
                 <div class="work-card" data-category="analisis seo">
                     <div class="work-image" id="workImage1">
                         <img src="https://i.imgur.com/XHx4IL2.png" alt="Auditoría Digital Malta Maltín Polar">
+                        <button class="fair-use-btn">FAIR USE</button>
                     </div>
                     <div class="work-content">
                         <h3 class="work-title">Auditoría Digital y Estrategia ZMOT - Malta Maltín Polar</h3>
                         <p class="work-description">
-                            Como Analista Digital, transformé indicadores de búsqueda en una estrategia de contenido orgánico para Maltín Polar en su Momento Cero de la Verdad (ZMOT). Usando Google Keywords, identifiqué los puntos de dolor del consumidor —especialmente en el mercado nostálgico— para diseñar una Landing Page en Canva que conecta con la identidad venezolana mediante decisiones basadas 100% en datos.
+                            Como Analista Digital, transformé indicadores de búsqueda en una estrategia de contenido orgánico para Maltín Polar en su Momento Cero de la Verdad (ZMOT). Usando Google Keywords, mapeé los puntos de dolor del consumidor (especialmente el mercado nostálgico) para diseñar una Landing Page en Canva que conecta con la identidad venezolana mediante decisiones basadas 100% en datos.
                         </p>
                         <div class="work-tags">
                             <span class="work-tag">Análisis</span>
@@ -942,40 +1190,74 @@
         </div>
     </section>
 
-    <!-- Modal for Trabajo 1 -->
+    <!-- Modal for Trabajo 1 - NEW DESIGN WITH TABS -->
     <div class="modal" id="modal1">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal1')">&times;</button>
+            
+            <div class="modal-header">
+                <h2 class="modal-title">Auditoría Digital y Estrategia ZMOT - Malta Maltín Polar</h2>
+                <div class="modal-tabs">
+                    <button class="modal-tab active" onclick="switchTab('introduccion')">INTRODUCCIÓN</button>
+                    <button class="modal-tab" onclick="switchTab('retos')">RETOS</button>
+                    <button class="modal-tab" onclick="switchTab('resultados')">RESULTADOS</button>
+                </div>
+            </div>
+
             <div class="modal-body">
                 <div class="modal-image">
                     <img src="https://i.imgur.com/XHx4IL2.png" alt="Auditoría Digital Malta Maltín Polar">
+                    <button class="fair-use-btn">FAIR USE</button>
                 </div>
+                
                 <div class="modal-info">
-                    <h2>Auditoría Digital y Estrategia ZMOT - Malta Maltín Polar</h2>
-                    
-                    <div class="modal-section">
-                        <h3>Rol en el trabajo:</h3>
-                        <p>Analista de Mercadeo Digital y Estratega de Contenido</p>
+                    <!-- Tab: Introducción -->
+                    <div class="tab-content active" id="introduccion">
+                        <div class="modal-section">
+                            <h3>Rol en el trabajo:</h3>
+                            <p style="color: var(--color-white); font-size: 1.1rem;">Analista de Mercado Digital y Estratega de Contenido</p>
+                        </div>
+
+                        <div class="modal-section">
+                            <h3>Herramientas usadas:</h3>
+                            <p style="color: var(--color-white);">Canva - Creación de la Landing page. Google - Keyword</p>
+                        </div>
+
+                        <div class="modal-section">
+                            <h3>Objetivo:</h3>
+                            <p>Identificar el comportamiento del consumidor en el Momento Cero de la Verdad (ZMOT) para diseñar una estrategia de contenidos que posicione a Maltín Polar como líder indiscutible en el entorno digital.</p>
+                        </div>
                     </div>
 
-                    <div class="modal-section">
-                        <h3>Herramientas usadas:</h3>
-                        <p>Canva - Creación de la Landing page, Google - Keyword</p>
+                    <!-- Tab: Retos -->
+                    <div class="tab-content" id="retos">
+                        <div class="modal-section">
+                            <h3>Desafíos principales:</h3>
+                            <ul>
+                                <li>Transformar datos de búsqueda en una estrategia accionable sin depender de la intuición.</li>
+                                <li>Conectar con el mercado nostálgico venezolano manteniendo la identidad de marca.</li>
+                                <li>Posicionar la marca en el momento exacto de decisión del consumidor (ZMOT).</li>
+                                <li>Crear contenido orgánico que genere conexiones reales con la audiencia.</li>
+                            </ul>
+                        </div>
+
+                        <div class="modal-section">
+                            <h3>Solución implementada:</h3>
+                            <p>Diseño de una Landing Page en Canva basada 100% en datos de Google Keywords, mapeando los puntos de dolor del consumidor para crear contenido relevante en el momento preciso.</p>
+                        </div>
                     </div>
 
-                    <div class="modal-section">
-                        <h3>Objetivo:</h3>
-                        <p>Identificar el comportamiento del consumidor en el Momento Cero de la Verdad (ZMOT) para crear una estrategia de contenido orgánico que posicione a Malta Polar como líder indiscutible en el entorno digital.</p>
-                    </div>
-
-                    <div class="modal-section">
-                        <h3>Resultados:</h3>
-                        <ul>
-                            <li>✅ Auditoría basada en datos: Logré transformar indicadores de búsqueda en una ruta de contenido accionable, evitando la creación de contenido "por intuición".</li>
-                            <li>✅ Redirección del consumidor: El 46% de la audiencia buscaba información sobre el consumo responsable de Malta Polar, revelando una oportunidad para posicionar el producto como aliado en momentos de estrés.</li>
-                            <li>✅ Conexión cultural: Diseñé una landing page que conecta con la identidad venezolana, utilizando un tono cercano y elementos visuales que reflejan la cultura local.</li>
-                            <li>✅ Estrategia ZMOT: Implementé una estrategia basada en el Momento Cero de la Verdad, asegurando que la marca aparezca en el momento exacto en que el consumidor está buscando activamente.</li>
-                        </ul>
+                    <!-- Tab: Resultados -->
+                    <div class="tab-content" id="resultados">
+                        <div class="modal-section">
+                            <h3>Resultados obtenidos:</h3>
+                            <ul>
+                                <li>Estrategia Basada en Datos: Logré transformar indicadores de búsqueda en una hoja de ruta de contenidos accionable, evitando la creación de contenido "por intuición".</li>
+                                <li>Posicionamiento Orgánico: El plan permite a la marca interceptar al usuario justo cuando tiene una necesidad informativa, convirtiendo las búsquedas en conexiones reales.</li>
+                                <li>Conexión Cultural: La landing page conecta con la identidad venezolana, utilizando un tono cercano y elementos visuales que reflejan la cultura local.</li>
+                                <li>Aprendizaje: Comprendí que la clave del éxito digital no es solo "estar presente", sino ser la respuesta exacta a lo que el consumidor está buscando en su momento de decisión.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1000,13 +1282,13 @@
                     <span>🏢</span>
                 </div>
                 <div class="brand-item" id="brand5">
-                    <span>🏢</span>
+                    <span></span>
                 </div>
                 <div class="brand-item" id="brand6">
                     <span>🏢</span>
                 </div>
                 <div class="brand-item" id="brand7">
-                    <span>🏢</span>
+                    <span></span>
                 </div>
             </div>
         </div>
@@ -1073,6 +1355,23 @@
                 event.target.classList.remove('active');
                 document.body.style.overflow = 'auto';
             }
+        }
+
+        // Tab Switching Function
+        function switchTab(tabName) {
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.modal-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+            
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
         }
 
         // Animación de barras de habilidades al hacer scroll
@@ -1154,7 +1453,7 @@
         function addImage(elementId, imageUrl) {
             const element = document.getElementById(elementId);
             if (element) {
-                element.innerHTML = `<img src="${imageUrl}" alt="Imagen del proyecto">`;
+                element.innerHTML = `<img src="${imageUrl}" alt="Imagen del proyecto"><button class="fair-use-btn">FAIR USE</button>`;
                 element.classList.remove('placeholder');
             }
         }
@@ -1164,19 +1463,58 @@
         // addImage('workImage3', 'imagenes/proyecto3.jpg');
         // addImage('workImage4', 'imagenes/proyecto4.jpg');
 
-        // Efecto de navbar al hacer scroll
+        // Navbar scroll effect
         let lastScroll = 0;
+        const navbar = document.getElementById('navbar');
+        
         window.addEventListener('scroll', () => {
             const currentScroll = window.pageYOffset;
-            const hero = document.querySelector('.hero');
             
             if (currentScroll > 100) {
-                hero.style.boxShadow = '0 2px 20px rgba(0,0,0,0.3)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.3)';
             } else {
-                hero.style.boxShadow = 'none';
+                navbar.style.boxShadow = 'none';
             }
             
             lastScroll = currentScroll;
+        });
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuToggle.textContent = navMenu.classList.contains('active') ? '' : '☰';
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenuToggle.textContent = '☰';
+            });
+        });
+
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section[id]');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
         });
     </script>
 </body>
