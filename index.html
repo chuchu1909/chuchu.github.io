@@ -238,7 +238,7 @@
             transform: translateY(-3px);
         }
 
-        /* About Section - NUEVA SECCIÓN */
+        /* About Section */
         .about-section {
             background: var(--color-primary);
             padding: 5rem 2rem;
@@ -443,7 +443,7 @@
             width: 0;
         }
 
-        /* Works Section */
+        /* ============ CARRUSEL DE TRABAJOS (2 ITEMS) ============ */
         .works-section {
             padding: 4rem 2rem;
             background: var(--color-dark);
@@ -476,21 +476,35 @@
             box-shadow: 0 4px 15px rgba(17, 0, 143, 0.4);
         }
 
-        .works-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        .carousel-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 3.5rem; /* Espacio para las flechas */
+        }
+
+        .carousel-viewport {
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             gap: 2rem;
-            margin-bottom: 3rem;
         }
 
         .work-card {
+            /* EXACTAMENTE 2 TRABAJOS POR VISTA (50% menos el espacio del gap) */
+            min-width: calc(50% - 1rem);
             background: var(--color-primary);
             border-radius: 20px;
             overflow: hidden;
             border: 1px solid rgba(184, 184, 217, 0.2);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
+            flex-shrink: 0;
         }
 
         .work-card:hover {
@@ -518,14 +532,6 @@
             object-fit: cover;
         }
 
-        .work-image.placeholder {
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--color-light);
-            flex-direction: column;
-            gap: 1rem;
-            border: 2px dashed var(--color-light);
-        }
-
         .fair-use-btn {
             position: absolute;
             bottom: 1rem;
@@ -549,25 +555,25 @@
         }
 
         .work-content {
-            padding: 2rem;
+            padding: 1.5rem;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
 
         .work-title {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: var(--color-white);
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             font-weight: 700;
             line-height: 1.3;
         }
 
         .work-description {
             color: var(--color-light);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             line-height: 1.6;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             flex-grow: 1;
         }
 
@@ -575,7 +581,7 @@
             display: flex;
             gap: 0.5rem;
             flex-wrap: wrap;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .work-tag {
@@ -583,20 +589,20 @@
             color: var(--color-light);
             padding: 0.3rem 0.8rem;
             border-radius: 15px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             border: 1px solid var(--color-secondary);
         }
 
         .work-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 0.8rem;
             flex-wrap: wrap;
         }
 
         .work-btn {
             flex: 1;
-            min-width: 120px;
-            padding: 0.7rem 1.2rem;
+            min-width: 100px;
+            padding: 0.7rem 1rem;
             border: 2px solid var(--color-light);
             border-radius: 25px;
             background: transparent;
@@ -607,7 +613,7 @@
             text-align: center;
             text-decoration: none;
             display: inline-block;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .work-btn:hover {
@@ -624,6 +630,85 @@
 
         .work-btn.primary:hover {
             background: var(--color-light);
+        }
+
+        /* Botón específico para Canva */
+        .work-btn.canva-link {
+            border-color: var(--color-yellow);
+            color: var(--color-yellow);
+        }
+        .work-btn.canva-link:hover {
+            background: var(--color-yellow);
+            color: var(--color-dark);
+        }
+
+        /* Botones de navegación del carrusel */
+        .carousel-btn {
+            position: absolute;
+            top: 40%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--color-secondary);
+            border: 2px solid var(--color-light);
+            color: var(--color-white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(17, 0, 143, 0.5);
+        }
+
+        .carousel-btn:hover {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: translateY(-50%);
+        }
+
+        .carousel-btn:disabled:hover {
+            background: var(--color-secondary);
+            transform: translateY(-50%);
+        }
+
+        .carousel-btn.prev { left: 0; }
+        .carousel-btn.next { right: 0; }
+
+        /* Indicadores (dots) */
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-top: 2rem;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(184, 184, 217, 0.3);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: var(--color-secondary);
+            transform: scale(1.3);
+            box-shadow: 0 0 10px rgba(17, 0, 143, 0.6);
+        }
+
+        .carousel-dot:hover {
+            background: var(--color-accent);
         }
 
         /* Modal Styles */
@@ -962,7 +1047,6 @@
             font-size: 0.9rem;
         }
 
-        /* Animations */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -982,83 +1066,43 @@
                 gap: 1rem;
             }
 
-            .nav-menu.active {
-                left: 0;
-            }
-
-            .mobile-menu-toggle {
-                display: block;
-            }
+            .nav-menu.active { left: 0; }
+            .mobile-menu-toggle { display: block; }
 
             .hero-container {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
 
-            .profile-img {
-                width: 250px;
-                height: 250px;
-            }
-
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-
-            .cta-buttons {
-                justify-content: center;
-            }
+            .profile-img { width: 250px; height: 250px; }
+            .hero-content h1 { font-size: 2rem; }
+            .cta-buttons { justify-content: center; }
 
             .about-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
 
-            .about-personal,
-            .about-section-block {
-                padding: 1.5rem;
-            }
+            .skills-grid { grid-template-columns: 1fr; }
 
-            .skills-grid,
-            .works-grid {
-                grid-template-columns: 1fr;
-            }
+            /* Carrusel responsive: 1 item en móvil */
+            .work-card { min-width: 100%; }
+            .carousel-container { padding: 0 2.5rem; }
+            .carousel-btn { width: 40px; height: 40px; font-size: 1.2rem; }
 
-            .modal-body {
-                grid-template-columns: 1fr;
-            }
-
-            .modal-content {
-                padding: 2rem 1.5rem;
-            }
-
-            .modal-tabs {
-                flex-direction: column;
-            }
-
-            .modal-tab {
-                width: 100%;
-            }
+            .modal-body { grid-template-columns: 1fr; }
+            .modal-content { padding: 2rem 1.5rem; }
+            .modal-tabs { flex-direction: column; }
+            .modal-tab { width: 100%; }
 
             .contact-content {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
-
-            .contact-title {
-                font-size: 2rem;
-            }
-
-            .contact-item {
-                justify-content: center;
-            }
-
-            .work-buttons {
-                flex-direction: column;
-            }
-
-            .work-btn {
-                width: 100%;
-            }
+            .contact-title { font-size: 2rem; }
+            .contact-item { justify-content: center; }
+            .work-buttons { flex-direction: column; }
+            .work-btn { width: 100%; }
         }
     </style>
 </head>
@@ -1084,8 +1128,7 @@
     <section class="hero" id="inicio">
         <div class="hero-container">
             <div class="profile-section">
-                <div class="profile-img" id="profileImage">
-                    <!-- REEMPLAZAR CON LA URL DE LA FOTO DE PERFIL -->
+                <div class="profile-img">
                     <img src="https://i.imgur.com/ghfgZHt.jpeg" alt="Carlos Fernández">
                 </div>
                 <span class="profile-label">Yo</span>
@@ -1102,49 +1145,40 @@
         </div>
     </section>
 
-    <!-- About Section - NUEVA SECCIÓN AGREGADA -->
+    <!-- About Section -->
     <section class="about-section" id="sobre-mi">
         <div class="about-container">
             <h2 class="about-title">Un poco sobre mí</h2>
             <div class="about-content">
                 <div class="about-personal">
                     <h3>Soy una persona creativa, calmada y responsable</h3>
-                    <p>
-                        Con buenas relaciones interpersonales, logrando así un buen trabajo en equipo. Siempre tengo la mejor disposición para salir adelante incluso en ámbitos de estrés. Busco mejorar mi comunicación asertiva constantemente.
-                    </p>
+                    <p>Con buenas relaciones interpersonales, logrando así un buen trabajo en equipo. Siempre tengo la mejor disposición para salir adelante incluso en ámbitos de estrés. Busco mejorar mi comunicación asertiva constantemente.</p>
                 </div>
-                
                 <div class="about-info">
                     <div class="about-section-block">
                         <h3>EDUCACIÓN</h3>
-                        
                         <div class="education-item">
                             <h4>Lic Comunicación Social, Mención: Com. Integradas de Mercadeo</h4>
                             <p class="school">Universidad Católica Andrés Bello</p>
                             <p class="years">2022 - 2026</p>
                         </div>
-                        
                         <div class="education-item">
                             <h4>Minor en Finanzas</h4>
                             <p class="school">UCAB</p>
                             <p class="years">2024 - 2026</p>
                         </div>
-                        
                         <div class="education-item">
                             <h4>Primaria y Bachiller</h4>
                             <p class="school">U.E.P Colegio San Luis</p>
                             <p class="years">2008 - 2022</p>
                         </div>
                     </div>
-                    
                     <div class="about-section-block">
                         <h3>CURSOS / IDIOMAS</h3>
-                        
                         <div class="course-item">
                             <h4>Curso de Inglés B2</h4>
                             <p class="years">2018</p>
                         </div>
-                        
                         <div class="course-item">
                             <h4>Curso de Francés A1</h4>
                             <p class="years">2021</p>
@@ -1162,83 +1196,42 @@
             <div class="skills-grid">
                 <div class="skill-item">
                     <h3 style="margin-bottom: 1rem; color: var(--color-white); font-size: 1.2rem;">Analítica Digital y SEO</h3>
-                    <div class="skill-header">
-                        <span class="skill-name">Meta Business Suite</span>
-                        <span class="skill-level">5/5</span>
-                    </div>
+                    <div class="skill-header"><span class="skill-name">Meta Business Suite</span><span class="skill-level">5/5</span></div>
                     <div class="skill-bar"><div class="skill-progress" data-width="100"></div></div>
-                    
-                    <div class="skill-header" style="margin-top: 1rem;">
-                        <span class="skill-name">Google Analytics</span>
-                        <span class="skill-level">5/5</span>
-                    </div>
+                    <div class="skill-header" style="margin-top: 1rem;"><span class="skill-name">Google Analytics</span><span class="skill-level">5/5</span></div>
                     <div class="skill-bar"><div class="skill-progress" data-width="100"></div></div>
-
-                    <div class="skill-header" style="margin-top: 1rem;">
-                        <span class="skill-name">Instagram Insights</span>
-                        <span class="skill-level">4.5/5</span>
-                    </div>
+                    <div class="skill-header" style="margin-top: 1rem;"><span class="skill-name">Instagram Insights</span><span class="skill-level">4.5/5</span></div>
                     <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
-
-                    <div class="skill-header" style="margin-top: 1rem;">
-                        <span class="skill-name">Keyword Research</span>
-                        <span class="skill-level">4/5</span>
-                    </div>
+                    <div class="skill-header" style="margin-top: 1rem;"><span class="skill-name">Keyword Research</span><span class="skill-level">4/5</span></div>
                     <div class="skill-bar"><div class="skill-progress" data-width="80"></div></div>
                 </div>
 
                 <div class="skill-item">
                     <h3 style="margin-bottom: 1rem; color: var(--color-white); font-size: 1.2rem;">Analítica Financiera</h3>
-                    <div class="skill-header">
-                        <span class="skill-name">Microsoft Excel (Modelado)</span>
-                        <span class="skill-level">4/5</span>
-                    </div>
+                    <div class="skill-header"><span class="skill-name">Microsoft Excel (Modelado)</span><span class="skill-level">4/5</span></div>
                     <div class="skill-bar"><div class="skill-progress" data-width="80"></div></div>
-                    
-                    <div class="skill-header" style="margin-top: 1rem;">
-                        <span class="skill-name">Flujo de Caja / Curva S</span>
-                        <span class="skill-level">4/5</span>
-                    </div>
+                    <div class="skill-header" style="margin-top: 1rem;"><span class="skill-name">Flujo de Caja / Curva S</span><span class="skill-level">4/5</span></div>
                     <div class="skill-bar"><div class="skill-progress" data-width="80"></div></div>
-
-                    <div class="skill-header" style="margin-top: 1rem;">
-                        <span class="skill-name">Análisis CAME/DOFA</span>
-                        <span class="skill-level">5/5</span>
-                    </div>
+                    <div class="skill-header" style="margin-top: 1rem;"><span class="skill-name">Análisis CAME/DOFA</span><span class="skill-level">5/5</span></div>
                     <div class="skill-bar"><div class="skill-progress" data-width="100"></div></div>
-
-                    <div class="skill-header" style="margin-top: 1rem;">
-                        <span class="skill-name">Valoración de Empresas (WACC)</span>
-                        <span class="skill-level">4.5/5</span>
-                    </div>
+                    <div class="skill-header" style="margin-top: 1rem;"><span class="skill-name">Valoración de Empresas (WACC)</span><span class="skill-level">4.5/5</span></div>
                     <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
                 </div>
 
                 <div class="skill-item">
                     <h3 style="margin-bottom: 1rem; color: var(--color-white); font-size: 1.2rem;">Creación de Contenido</h3>
-                    <div class="skill-header">
-                        <span class="skill-name">Canva (Diseño)</span>
-                        <span class="skill-level">4.5/5</span>
-                    </div>
+                    <div class="skill-header"><span class="skill-name">Canva (Diseño)</span><span class="skill-level">4.5/5</span></div>
                     <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
-                    
-                    <div class="skill-header" style="margin-top: 1rem;">
-                        <span class="skill-name">Google Forms (Investigación)</span>
-                        <span class="skill-level">4.5/5</span>
-                    </div>
+                    <div class="skill-header" style="margin-top: 1rem;"><span class="skill-name">Google Forms (Investigación)</span><span class="skill-level">4.5/5</span></div>
                     <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
-
-                    <div class="skill-header" style="margin-top: 1rem;">
-                        <span class="skill-name">Social Media Planning</span>
-                        <span class="skill-level">4/5</span>
-                    </div>
+                    <div class="skill-header" style="margin-top: 1rem;"><span class="skill-name">Social Media Planning</span><span class="skill-level">4/5</span></div>
                     <div class="skill-bar"><div class="skill-progress" data-width="80"></div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Works Section -->
+    <!-- Works Section - CARRUSEL DE 2 ITEMS -->
     <section class="works-section" id="trabajos">
         <div class="container">
             <h2 class="section-title">TRABAJOS:</h2>
@@ -1249,119 +1242,129 @@
                 <span class="tag" data-filter="finanzas">Finanzas</span>
                 <span class="tag" data-filter="diseno">Diseño</span>
             </div>
-            <div class="works-grid">
+
+            <div class="carousel-container">
+                <button class="carousel-btn prev" id="carouselPrev" aria-label="Anterior">❮</button>
                 
-                <!-- TRABAJO 1 -->
-                <div class="work-card" data-category="analisis seo">
-                    <div class="work-image">
-                        <!-- 👇 REEMPLAZAR "URL_IMAGEN_1" POR EL LINK DE TU IMAGEN  -->
-                        <img src=https://imgur.com/a/V6W55Oo alt="Auditoría Digital Malta Maltín Polar">
-                        <button class="fair-use-btn">FAIR USE</button>
-                    </div>
-                    <div class="work-content">
-                        <h3 class="work-title">Auditoría Digital y Estrategia ZMOT - Malta Maltín Polar</h3>
-                        <p class="work-description">Transformé indicadores de búsqueda en una estrategia de contenido orgánico para Maltín Polar en su Momento Cero de la Verdad (ZMOT), conectando con el mercado nostálgico mediante decisiones basadas 100% en datos.</p>
-                        <div class="work-tags">
-                            <span class="work-tag">Análisis</span>
-                            <span class="work-tag">SEO</span>
-                            <span class="work-tag">ZMOT</span>
+                <div class="carousel-viewport">
+                    <div class="carousel-track" id="carouselTrack">
+                        
+                        <!-- TRABAJO 1 -->
+                        <div class="work-card" data-category="analisis seo">
+                            <div class="work-image">
+                                <!-- NOTA: Se cambió a formato directo .jpg. Si no carga, leer instrucciones abajo -->
+                                <img src="https://i.imgur.com/V6W55Oo.jpg" alt="Auditoría Digital Malta Maltín Polar">
+                                <button class="fair-use-btn">FAIR USE</button>
+                            </div>
+                            <div class="work-content">
+                                <h3 class="work-title">Auditoría Digital y Estrategia ZMOT - Malta Maltín Polar</h3>
+                                <p class="work-description">Transformé indicadores de búsqueda en una estrategia de contenido orgánico para Maltín Polar en su Momento Cero de la Verdad (ZMOT), conectando con el mercado nostálgico mediante decisiones basadas 100% en datos.</p>
+                                <div class="work-tags">
+                                    <span class="work-tag">Análisis</span>
+                                    <span class="work-tag">SEO</span>
+                                    <span class="work-tag">ZMOT</span>
+                                </div>
+                                <div class="work-buttons">
+                                    <button class="work-btn primary" onclick="openModal('modal1')">Conocer más</button>
+                                    <a href="https://canva.link/qal6nfpnqdi3kak" target="_blank" class="work-btn canva-link">Ver en Canva</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="work-buttons">
-                            <button class="work-btn primary" onclick="openModal('modal1')">Conocer más</button>
+
+                        <!-- TRABAJO 2 -->
+                        <div class="work-card" data-category="diseno analisis">
+                            <div class="work-image">
+                                <img src="https://i.imgur.com/wXMcRia.jpg" alt="Out Context Brand Strategy">
+                                <button class="fair-use-btn">FAIR USE</button>
+                            </div>
+                            <div class="work-content">
+                                <h3 class="work-title">Out Context: Estilo y comodidad sin límites</h3>
+                                <p class="work-description">Diseño de identidad de marca y estrategia de contenidos para una empresa de ropa athleisure, asegurando una conexión orgánica con la Generación Z y los Millennials.</p>
+                                <div class="work-tags">
+                                    <span class="work-tag">Diseño</span>
+                                    <span class="work-tag">Análisis</span>
+                                    <span class="work-tag">Social Media</span>
+                                </div>
+                                <div class="work-buttons">
+                                    <button class="work-btn primary" onclick="openModal('modal2')">Conocer más</button>
+                                    <a href="https://canva.link/6cm7qntppjrfjh0" target="_blank" class="work-btn canva-link">Ver en Canva</a>
+                                </div>
+                            </div>
                         </div>
+
+                        <!-- TRABAJO 3 -->
+                        <div class="work-card" data-category="finanzas">
+                            <div class="work-image">
+                                <img src="https://i.imgur.com/NiErzsM.jpg" alt="HistorIA VR UCAB">
+                                <button class="fair-use-btn">FAIR USE</button>
+                            </div>
+                            <div class="work-content">
+                                <h3 class="work-title">HistorIA – Experiencia Inmersiva de Realidad Virtual (UCAB)</h3>
+                                <p class="work-description">Gestión financiera y de riesgos para una experiencia educativa de Realidad Virtual e Inteligencia Artificial, permitiendo interactuar con figuras históricas en tiempo real.</p>
+                                <div class="work-tags">
+                                    <span class="work-tag">Finanzas</span>
+                                    <span class="work-tag">Gestión de Riesgos</span>
+                                </div>
+                                <div class="work-buttons">
+                                    <button class="work-btn primary" onclick="openModal('modal3')">Conocer más</button>
+                                    <a href="https://canva.link/izqnwzqlymoot7e" target="_blank" class="work-btn canva-link">Ver en Canva</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TRABAJO 4 -->
+                        <div class="work-card" data-category="finanzas analisis">
+                            <div class="work-image">
+                                <img src="https://i.imgur.com/CKkGP1O.jpg" alt="Valoración Mondelez International">
+                                <button class="fair-use-btn">FAIR USE</button>
+                            </div>
+                            <div class="work-content">
+                                <h3 class="work-title">Valoración Financiera de Mondelez International</h3>
+                                <p class="work-description">Determinación del valor real de la compañía mediante métodos de valoración financiera (WACC, Flujo de Caja Libre) para conocer su solvencia, rentabilidad y capacidad de generación de flujo.</p>
+                                <div class="work-tags">
+                                    <span class="work-tag">Finanzas</span>
+                                    <span class="work-tag">Valoración</span>
+                                    <span class="work-tag">Excel</span>
+                                </div>
+                                <div class="work-buttons">
+                                    <button class="work-btn primary" onclick="openModal('modal4')">Conocer más</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TRABAJO 5 -->
+                        <div class="work-card" data-category="analisis">
+                            <div class="work-image">
+                                <img src="https://i.imgur.com/jOE3H45.jpg" alt="Reporte Cider Lubelski">
+                                <button class="fair-use-btn">FAIR USE</button>
+                            </div>
+                            <div class="work-content">
+                                <h3 class="work-title">Reporte Anual de Rendimiento Digital 2025: Cider Lubelski</h3>
+                                <p class="work-description">Análisis del rendimiento de plataformas sociales de la marca durante 2025 para identificar patrones de crecimiento, efectividad de la pauta y optimizar la tasa de conversión.</p>
+                                <div class="work-tags">
+                                    <span class="work-tag">Análisis</span>
+                                    <span class="work-tag">Meta Business</span>
+                                    <span class="work-tag">KPIs</span>
+                                </div>
+                                <div class="work-buttons">
+                                    <button class="work-btn primary" onclick="openModal('modal5')">Conocer más</button>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
-                <!-- TRABAJO 2 -->
-                <div class="work-card" data-category="diseno analisis">
-                    <div class="work-image">
-                        <!-- 👇 REEMPLAZAR "URL_IMAGEN_2" POR EL LINK DE TU IMAGEN  -->
-                        <img src="https://imgur.com/a/wXMcRia" alt="Out Context Brand Strategy">
-                        <button class="fair-use-btn">FAIR USE</button>
-                    </div>
-                    <div class="work-content">
-                        <h3 class="work-title">Out Context: Estilo y comodidad sin límites</h3>
-                        <p class="work-description">Diseño de identidad de marca y estrategia de contenidos para una empresa de ropa athleisure, asegurando una conexión orgánica con la Generación Z y los Millennials.</p>
-                        <div class="work-tags">
-                            <span class="work-tag">Diseño</span>
-                            <span class="work-tag">Análisis</span>
-                            <span class="work-tag">Social Media</span>
-                        </div>
-                        <div class="work-buttons">
-                            <button class="work-btn primary" onclick="openModal('modal2')">Conocer más</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TRABAJO 3 -->
-                <div class="work-card" data-category="finanzas">
-                    <div class="work-image">
-                        <!-- 👇 REEMPLAZAR "URL_IMAGEN_3" POR EL LINK DE TU IMAGEN 👇 -->
-                        <img src="https://imgur.com/a/NiErzsM" alt="HistorIA VR UCAB">
-                        <button class="fair-use-btn">FAIR USE</button>
-                    </div>
-                    <div class="work-content">
-                        <h3 class="work-title">HistorIA – Experiencia Inmersiva de Realidad Virtual (UCAB)</h3>
-                        <p class="work-description">Gestión financiera y de riesgos para una experiencia educativa de Realidad Virtual e Inteligencia Artificial, permitiendo interactuar con figuras históricas en tiempo real.</p>
-                        <div class="work-tags">
-                            <span class="work-tag">Finanzas</span>
-                            <span class="work-tag">Gestión de Riesgos</span>
-                        </div>
-                        <div class="work-buttons">
-                            <button class="work-btn primary" onclick="openModal('modal3')">Conocer más</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TRABAJO 4 -->
-                <div class="work-card" data-category="finanzas analisis">
-                    <div class="work-image">
-                        <!-- 👇 REEMPLAZAR "URL_IMAGEN_4" POR EL LINK DE TU IMAGEN 👇 -->
-                        <img src="https://imgur.com/a/CKkGP1O" alt="Valoración Mondelez International">
-                        <button class="fair-use-btn">FAIR USE</button>
-                    </div>
-                    <div class="work-content">
-                        <h3 class="work-title">Valoración Financiera de Mondelez International</h3>
-                        <p class="work-description">Determinación del valor real de la compañía mediante métodos de valoración financiera (WACC, Flujo de Caja Libre) para conocer su solvencia, rentabilidad y capacidad de generación de flujo.</p>
-                        <div class="work-tags">
-                            <span class="work-tag">Finanzas</span>
-                            <span class="work-tag">Valoración</span>
-                            <span class="work-tag">Excel</span>
-                        </div>
-                        <div class="work-buttons">
-                            <button class="work-btn primary" onclick="openModal('modal4')">Conocer más</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TRABAJO 5 -->
-                <div class="work-card" data-category="analisis">
-                    <div class="work-image">
-                        <!-- 👇 REEMPLAZAR "URL_IMAGEN_5" POR EL LINK DE TU IMAGEN 👇 -->
-                        <img src="https://imgur.com/a/jOE3H45" alt="Reporte Cider Lubelski">
-                        <button class="fair-use-btn">FAIR USE</button>
-                    </div>
-                    <div class="work-content">
-                        <h3 class="work-title">Reporte Anual de Rendimiento Digital 2025: Cider Lubelski</h3>
-                        <p class="work-description">Análisis del rendimiento de plataformas sociales de la marca durante 2025 para identificar patrones de crecimiento, efectividad de la pauta y optimizar la tasa de conversión.</p>
-                        <div class="work-tags">
-                            <span class="work-tag">Análisis</span>
-                            <span class="work-tag">Meta Business</span>
-                            <span class="work-tag">KPIs</span>
-                        </div>
-                        <div class="work-buttons">
-                            <button class="work-btn primary" onclick="openModal('modal5')">Conocer más</button>
-                        </div>
-                    </div>
-                </div>
-
+                <button class="carousel-btn next" id="carouselNext" aria-label="Siguiente">❯</button>
+                <div class="carousel-dots" id="carouselDots"></div>
             </div>
         </div>
     </section>
 
     <!-- ================= MODALES ================= -->
-
-    <!-- MODAL 1: Malta Maltín Polar -->
+    <!-- (Se mantienen iguales, solo se actualizaron los src de las imágenes a formato .jpg) -->
+    
+    <!-- MODAL 1 -->
     <div class="modal" id="modal1">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal1')">&times;</button>
@@ -1375,52 +1378,27 @@
             </div>
             <div class="modal-body">
                 <div class="modal-image">
-                    <img src="URL_IMAGEN_1" alt="Auditoría Digital Malta Maltín Polar">
+                    <img src="https://i.imgur.com/V6W55Oo.jpg" alt="Auditoría Digital Malta Maltín Polar">
                     <button class="fair-use-btn">FAIR USE</button>
                 </div>
                 <div class="modal-info">
                     <div class="tab-content active" id="intro1">
-                        <div class="modal-section">
-                            <h3>Rol en el trabajo:</h3>
-                            <p style="color: var(--color-white);">Analista de Mercadeo Digital y Estratega de Contenido</p>
-                        </div>
-                        <div class="modal-section">
-                            <h3>Herramientas usadas:</h3>
-                            <p style="color: var(--color-white);">Canva (Creación de Landing page), Google (Keyword Research)</p>
-                        </div>
-                        <div class="modal-section">
-                            <h3>Objetivo:</h3>
-                            <p>Identificar el comportamiento del consumidor en el Momento Cero de la Verdad (ZMOT) para crear una estrategia de contenido orgánico que posicione a Malta Polar como líder indiscutible en el entorno digital.</p>
-                        </div>
+                        <div class="modal-section"><h3>Rol en el trabajo:</h3><p style="color: var(--color-white);">Analista de Mercadeo Digital y Estratega de Contenido</p></div>
+                        <div class="modal-section"><h3>Herramientas usadas:</h3><p style="color: var(--color-white);">Canva (Creación de Landing page), Google (Keyword Research)</p></div>
+                        <div class="modal-section"><h3>Objetivo:</h3><p>Identificar el comportamiento del consumidor en el Momento Cero de la Verdad (ZMOT) para crear una estrategia de contenido orgánico que posicione a Malta Polar como líder indiscutible en el entorno digital.</p></div>
                     </div>
                     <div class="tab-content" id="retos1">
-                        <div class="modal-section">
-                            <h3>Proceso de Ejecución:</h3>
-                            <ul>
-                                <li><strong>Investigación del ZMOT:</strong> Analicé las búsquedas de los usuarios, identificando que la marca conecta principalmente a través de la nostalgia, la cultura y la gastronomía.</li>
-                                <li><strong>Brechas de Búsqueda:</strong> Identifiqué cuatro pilares de interés real: cultura nacional, combinaciones gastronómicas, disponibilidad en el exterior e historia de marca.</li>
-                                <li><strong>Estructura SEO:</strong> Diseñé un Topic Cluster con una página pilar y subtemas optimizados (H1, H2, meta descripciones) para mejorar el posicionamiento.</li>
-                                <li><strong>Estrategia para Redes:</strong> Traduje los hallazgos en conceptos y copys específicos para Instagram y TikTok adaptados a las emociones de la audiencia.</li>
-                            </ul>
-                        </div>
+                        <div class="modal-section"><h3>Proceso de Ejecución:</h3><ul><li><strong>Investigación del ZMOT:</strong> Analicé las búsquedas de los usuarios, identificando que la marca conecta principalmente a través de la nostalgia, la cultura y la gastronomía.</li><li><strong>Brechas de Búsqueda:</strong> Identifiqué cuatro pilares de interés real: cultura nacional, combinaciones gastronómicas, disponibilidad en el exterior e historia de marca.</li><li><strong>Estructura SEO:</strong> Diseñé un Topic Cluster con una página pilar y subtemas optimizados (H1, H2, meta descripciones) para mejorar el posicionamiento.</li><li><strong>Estrategia para Redes:</strong> Traduje los hallazgos en conceptos y copys específicos para Instagram y TikTok adaptados a las emociones de la audiencia.</li></ul></div>
                     </div>
                     <div class="tab-content" id="resultados1">
-                        <div class="modal-section">
-                            <h3>Resultados obtenidos:</h3>
-                            <ul>
-                                <li><strong>Auditoría basada en datos:</strong> Logré transformar indicadores de búsqueda en una ruta de contenido accionable, evitando la creación de contenido "por intuición".</li>
-                                <li><strong>Redirección del consumidor:</strong> El 46% de la audiencia buscaba información sobre el consumo responsable, revelando una oportunidad para posicionar el producto como aliado en momentos de estrés.</li>
-                                <li><strong>Conexión cultural:</strong> Diseñé una landing page que conecta con la identidad venezolana, utilizando un tono cercano y elementos visuales que reflejan la cultura local.</li>
-                                <li><strong>Estrategia ZMOT:</strong> Implementé una estrategia basada en el Momento Cero de la Verdad, asegurando que la marca aparezca en el momento exacto en que el consumidor está buscando activamente.</li>
-                            </ul>
-                        </div>
+                        <div class="modal-section"><h3>Resultados obtenidos:</h3><ul><li><strong>Auditoría basada en datos:</strong> Logré transformar indicadores de búsqueda en una ruta de contenido accionable, evitando la creación de contenido "por intuición".</li><li><strong>Redirección del consumidor:</strong> El 46% de la audiencia buscaba información sobre el consumo responsable, revelando una oportunidad para posicionar el producto como aliado en momentos de estrés.</li><li><strong>Conexión cultural:</strong> Diseñé una landing page que conecta con la identidad venezolana, utilizando un tono cercano y elementos visuales que reflejan la cultura local.</li><li><strong>Estrategia ZMOT:</strong> Implementé una estrategia basada en el Momento Cero de la Verdad, asegurando que la marca aparezca en el momento exacto en que el consumidor está buscando activamente.</li></ul></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- MODAL 2: Out Context -->
+    <!-- MODAL 2 -->
     <div class="modal" id="modal2">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal2')">&times;</button>
@@ -1434,55 +1412,28 @@
             </div>
             <div class="modal-body">
                 <div class="modal-image">
-                    <img src="URL_IMAGEN_2" alt="Out Context Brand Strategy">
+                    <img src="https://i.imgur.com/wXMcRia.jpg" alt="Out Context Brand Strategy">
                     <button class="fair-use-btn">FAIR USE</button>
                 </div>
                 <div class="modal-info">
                     <div class="tab-content active" id="intro2">
-                        <div class="modal-section">
-                            <h3>Rol en el trabajo:</h3>
-                            <p style="color: var(--color-white);">Investigador de Mercado y Creación de Contenido</p>
-                        </div>
-                        <div class="modal-section">
-                            <h3>Herramientas usadas:</h3>
-                            <p style="color: var(--color-white);">Google Forms, Análisis de Arquetipos de Marca, Diseño de Buyer Persona, Planificación de Social Media.</p>
-                        </div>
-                        <div class="modal-section">
-                            <h3>Objetivo:</h3>
-                            <p>Diseñar la identidad de marca y la estrategia de contenidos para una empresa de ropa deportiva/casual, asegurando una conexión orgánica con la Generación Z y los Millennials.</p>
-                        </div>
+                        <div class="modal-section"><h3>Rol en el trabajo:</h3><p style="color: var(--color-white);">Investigador de Mercado y Creación de Contenido</p></div>
+                        <div class="modal-section"><h3>Herramientas usadas:</h3><p style="color: var(--color-white);">Google Forms, Análisis de Arquetipos de Marca, Diseño de Buyer Persona, Planificación de Social Media.</p></div>
+                        <div class="modal-section"><h3>Objetivo:</h3><p>Diseñar la identidad de marca y la estrategia de contenidos para una empresa de ropa deportiva/casual, asegurando una conexión orgánica con la Generación Z y los Millennials.</p></div>
                     </div>
                     <div class="tab-content" id="retos2">
-                        <div class="modal-section">
-                            <h3>El Reto:</h3>
-                            <p>Construir una marca desde sus cimientos (arquetipos, Buyer Persona y arquitectura de equipo) y diseñar una estrategia de publicidad que garantice el engagement en plataformas visuales como Instagram y TikTok.</p>
-                        </div>
-                        <div class="modal-section">
-                            <h3>Proceso de Ejecución:</h3>
-                            <ul>
-                                <li><strong>Diagnóstico e Identidad:</strong> Definí el tono, estilo visual y la narrativa central de la propuesta "Out of Context".</li>
-                                <li><strong>Análisis de Tendencias:</strong> Identifiqué formatos dinámicos y pilares temáticos con mayor interacción en plataformas digitales.</li>
-                                <li><strong>Planificación de Contenidos:</strong> Estructuré un calendario editorial enfocado en engagement, viralidad y retención de usuarios.</li>
-                                <li><strong>Producción y Optimización:</strong> Diseñé los hooks, guiones y copys optimizados para capturar la atención en los primeros segundos.</li>
-                            </ul>
-                        </div>
+                        <div class="modal-section"><h3>El Reto:</h3><p>Construir una marca desde sus cimientos (arquetipos, Buyer Persona y arquitectura de equipo) y diseñar una estrategia de publicidad que garantice el engagement en plataformas visuales como Instagram y TikTok.</p></div>
+                        <div class="modal-section"><h3>Proceso de Ejecución:</h3><ul><li><strong>Diagnóstico e Identidad:</strong> Definí el tono, estilo visual y la narrativa central de la propuesta "Out of Context".</li><li><strong>Análisis de Tendencias:</strong> Identifiqué formatos dinámicos y pilares temáticos con mayor interacción en plataformas digitales.</li><li><strong>Planificación de Contenidos:</strong> Estructuré un calendario editorial enfocado en engagement, viralidad y retención de usuarios.</li><li><strong>Producción y Optimización:</strong> Diseñé los hooks, guiones y copys optimizados para capturar la atención en los primeros segundos.</li></ul></div>
                     </div>
                     <div class="tab-content" id="resultados2">
-                        <div class="modal-section">
-                            <h3>Resultados obtenidos:</h3>
-                            <ul>
-                                <li><strong>Toma de Decisiones Basada en Datos:</strong> La construcción del Buyer Persona a través de datos reales permitió diseñar un mensaje publicitario con una tasa de aceptación proyectada mucho mayor.</li>
-                                <li><strong>Visión Integral de Negocio:</strong> Logré integrar la producción de contenido con la gestión de procesos internos, entendiendo que una buena red social requiere un equipo bien coordinado detrás.</li>
-                                <li><strong>Aprendizaje:</strong> Reforcé la importancia de los arquetipos de marca para mantener la coherencia visual y narrativa en todos los puntos de contacto con el cliente.</li>
-                            </ul>
-                        </div>
+                        <div class="modal-section"><h3>Resultados obtenidos:</h3><ul><li><strong>Toma de Decisiones Basada en Datos:</strong> La construcción del Buyer Persona a través de datos reales permitió diseñar un mensaje publicitario con una tasa de aceptación proyectada mucho mayor.</li><li><strong>Visión Integral de Negocio:</strong> Logré integrar la producción de contenido con la gestión de procesos internos, entendiendo que una buena red social requiere un equipo bien coordinado detrás.</li><li><strong>Aprendizaje:</strong> Reforcé la importancia de los arquetipos de marca para mantener la coherencia visual y narrativa en todos los puntos de contacto con el cliente.</li></ul></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- MODAL 3: HistorIA VR -->
+    <!-- MODAL 3 -->
     <div class="modal" id="modal3">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal3')">&times;</button>
@@ -1496,55 +1447,28 @@
             </div>
             <div class="modal-body">
                 <div class="modal-image">
-                    <img src="URL_IMAGEN_3" alt="HistorIA VR UCAB">
+                    <img src="https://i.imgur.com/NiErzsM.jpg" alt="HistorIA VR UCAB">
                     <button class="fair-use-btn">FAIR USE</button>
                 </div>
                 <div class="modal-info">
                     <div class="tab-content active" id="intro3">
-                        <div class="modal-section">
-                            <h3>Rol en el trabajo:</h3>
-                            <p style="color: var(--color-white);">Responsable del Área de Finanzas y Gestión de Riesgos</p>
-                        </div>
-                        <div class="modal-section">
-                            <h3>Herramientas usadas:</h3>
-                            <p style="color: var(--color-white);">Excel (Creación de curva "S" y Matriz de Riesgo)</p>
-                        </div>
-                        <div class="modal-section">
-                            <h3>Objetivo:</h3>
-                            <p>Crear una experiencia educativa y de entretenimiento mediante Realidad Virtual (VR) e Inteligencia Artificial, permitiendo a los usuarios interactuar con avatares de figuras históricas en tiempo real.</p>
-                        </div>
+                        <div class="modal-section"><h3>Rol en el trabajo:</h3><p style="color: var(--color-white);">Responsable del Área de Finanzas y Gestión de Riesgos</p></div>
+                        <div class="modal-section"><h3>Herramientas usadas:</h3><p style="color: var(--color-white);">Excel (Creación de curva "S" y Matriz de Riesgo)</p></div>
+                        <div class="modal-section"><h3>Objetivo:</h3><p>Crear una experiencia educativa y de entretenimiento mediante Realidad Virtual (VR) e Inteligencia Artificial, permitiendo a los usuarios interactuar con avatares de figuras históricas en tiempo real.</p></div>
                     </div>
                     <div class="tab-content" id="retos3">
-                        <div class="modal-section">
-                            <h3>El Reto:</h3>
-                            <p>Ejecutar un evento tecnológico de alta complejidad con un presupuesto de contexto realista, garantizando la estabilidad técnica y financiera en un entorno económico volátil y con riesgos de infraestructura (fallas eléctricas).</p>
-                        </div>
-                        <div class="modal-section">
-                            <h3>Proceso de Ejecución:</h3>
-                            <ul>
-                                <li><strong>Estimación de Presupuesto:</strong> Diseñé la estructura de costos operativos y técnicos para el desarrollo de la experiencia de RV.</li>
-                                <li><strong>Proyección de Curvas de Costo:</strong> Modelé los flujos de inversión según las fases de desarrollo del prototipo.</li>
-                                <li><strong>Análisis y Mapeo de Riesgos:</strong> Identifiqué cuellos de botella tecnológicos, imprevistos financieros y riesgos de ejecución.</li>
-                                <li><strong>Plan de Contingencia:</strong> Desarrollé estrategias de mitigación financiera para proteger la viabilidad técnica del proyecto.</li>
-                            </ul>
-                        </div>
+                        <div class="modal-section"><h3>El Reto:</h3><p>Ejecutar un evento tecnológico de alta complejidad con un presupuesto de contexto realista, garantizando la estabilidad técnica y financiera en un entorno económico volátil y con riesgos de infraestructura (fallas eléctricas).</p></div>
+                        <div class="modal-section"><h3>Proceso de Ejecución:</h3><ul><li><strong>Estimación de Presupuesto:</strong> Diseñé la estructura de costos operativos y técnicos para el desarrollo de la experiencia de RV.</li><li><strong>Proyección de Curvas de Costo:</strong> Modelé los flujos de inversión según las fases de desarrollo del prototipo.</li><li><strong>Análisis y Mapeo de Riesgos:</strong> Identifiqué cuellos de botella tecnológicos, imprevistos financieros y riesgos de ejecución.</li><li><strong>Plan de Contingencia:</strong> Desarrollé estrategias de mitigación financiera para proteger la viabilidad técnica del proyecto.</li></ul></div>
                     </div>
                     <div class="tab-content" id="resultados3">
-                        <div class="modal-section">
-                            <h3>Resultados obtenidos:</h3>
-                            <ul>
-                                <li><strong>Control Total:</strong> Se logró mantener el proyecto dentro del presupuesto inicial a pesar de la volatilidad del entorno.</li>
-                                <li><strong>Mitigación de Crisis:</strong> La identificación temprana de riesgos evitó que problemas técnicos o imprevistos con los visores afectaran la viabilidad financiera.</li>
-                                <li><strong>Aprendizaje:</strong> Comprobé que la viabilidad de una idea creativa depende directamente de un rigor administrativo sólido; sin finanzas claras, la innovación no llega a ejecutarse.</li>
-                            </ul>
-                        </div>
+                        <div class="modal-section"><h3>Resultados obtenidos:</h3><ul><li><strong>Control Total:</strong> Se logró mantener el proyecto dentro del presupuesto inicial a pesar de la volatilidad del entorno.</li><li><strong>Mitigación de Crisis:</strong> La identificación temprana de riesgos evitó que problemas técnicos o imprevistos con los visores afectaran la viabilidad financiera.</li><li><strong>Aprendizaje:</strong> Comprobé que la viabilidad de una idea creativa depende directamente de un rigor administrativo sólido; sin finanzas claras, la innovación no llega a ejecutarse.</li></ul></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- MODAL 4: Mondelez International -->
+    <!-- MODAL 4 -->
     <div class="modal" id="modal4">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal4')">&times;</button>
@@ -1558,55 +1482,28 @@
             </div>
             <div class="modal-body">
                 <div class="modal-image">
-                    <img src="URL_IMAGEN_4" alt="Valoración Mondelez International">
+                    <img src="https://i.imgur.com/CKkGP1O.jpg" alt="Valoración Mondelez International">
                     <button class="fair-use-btn">FAIR USE</button>
                 </div>
                 <div class="modal-info">
                     <div class="tab-content active" id="intro4">
-                        <div class="modal-section">
-                            <h3>Rol en el trabajo:</h3>
-                            <p style="color: var(--color-white);">Valorador de Empresas y Analista Financiero</p>
-                        </div>
-                        <div class="modal-section">
-                            <h3>Herramientas usadas:</h3>
-                            <p style="color: var(--color-white);">Microsoft Excel, Métodos de Valoración (WACC, Flujo de Caja Libre, Múltiplos), Análisis de Estados Financieros (Balance General, G y P).</p>
-                        </div>
-                        <div class="modal-section">
-                            <h3>Objetivo:</h3>
-                            <p>Determinar el valor real de la compañía mediante métodos de valoración financiera para conocer su solvencia, rentabilidad y capacidad de generación de flujo de caja futuro.</p>
-                        </div>
+                        <div class="modal-section"><h3>Rol en el trabajo:</h3><p style="color: var(--color-white);">Valorador de Empresas y Analista Financiero</p></div>
+                        <div class="modal-section"><h3>Herramientas usadas:</h3><p style="color: var(--color-white);">Microsoft Excel, Métodos de Valoración (WACC, Flujo de Caja Libre, Múltiplos), Análisis de Estados Financieros (Balance General, G y P).</p></div>
+                        <div class="modal-section"><h3>Objetivo:</h3><p>Determinar el valor real de la compañía mediante métodos de valoración financiera para conocer su solvencia, rentabilidad y capacidad de generación de flujo de caja futuro.</p></div>
                     </div>
                     <div class="tab-content" id="retos4">
-                        <div class="modal-section">
-                            <h3>El Reto:</h3>
-                            <p>Realizar una valoración exhaustiva utilizando datos históricos (2020-2024) y proyecciones a 10 años, enfrentando la complejidad de las tasas de descuento, el riesgo país y la volatilidad de los mercados donde opera la firma.</p>
-                        </div>
-                        <div class="modal-section">
-                            <h3>Proceso de Ejecución:</h3>
-                            <ul>
-                                <li><strong>Recopilación y Limpieza de Datos:</strong> Extraje estados financieros e información de mercado clave de la empresa.</li>
-                                <li><strong>Análisis Financiero:</strong> Evalué el histórico de ingresos, márgenes de ganancia y estructura de capital.</li>
-                                <li><strong>Modelado y Proyección:</strong> Apliqué métodos de valoración para proyectar flujos de caja y el costo de capital.</li>
-                                <li><strong>Evaluación de Riesgos:</strong> Identifiqué variables macroeconómicas y operativas que impactan el valor de la empresa.</li>
-                            </ul>
-                        </div>
+                        <div class="modal-section"><h3>El Reto:</h3><p>Realizar una valoración exhaustiva utilizando datos históricos (2020-2024) y proyecciones a 10 años, enfrentando la complejidad de las tasas de descuento, el riesgo país y la volatilidad de los mercados donde opera la firma.</p></div>
+                        <div class="modal-section"><h3>Proceso de Ejecución:</h3><ul><li><strong>Recopilación y Limpieza de Datos:</strong> Extraje estados financieros e información de mercado clave de la empresa.</li><li><strong>Análisis Financiero:</strong> Evalué el histórico de ingresos, márgenes de ganancia y estructura de capital.</li><li><strong>Modelado y Proyección:</strong> Apliqué métodos de valoración para proyectar flujos de caja y el costo de capital.</li><li><strong>Evaluación de Riesgos:</strong> Identifiqué variables macroeconómicas y operativas que impactan el valor de la empresa.</li></ul></div>
                     </div>
                     <div class="tab-content" id="resultados4">
-                        <div class="modal-section">
-                            <h3>Resultados obtenidos:</h3>
-                            <ul>
-                                <li><strong>Precisión Analítica:</strong> Determinación técnica del valor de la empresa, fundamentada en premisas de crecimiento y riesgo país verificables.</li>
-                                <li><strong>Diferenciación Profesional:</strong> Este proyecto prueba mi capacidad para "aterrizar" la comunicación en el lenguaje del dinero, permitiéndome dialogar con directivos y stakeholders desde una base numérica sólida.</li>
-                                <li><strong>Aprendizaje:</strong> Reforcé la importancia de las premisas de proyección; una estrategia de comunicación solo es efectiva si el flujo de caja de la empresa puede respaldarla.</li>
-                            </ul>
-                        </div>
+                        <div class="modal-section"><h3>Resultados obtenidos:</h3><ul><li><strong>Precisión Analítica:</strong> Determinación técnica del valor de la empresa, fundamentada en premisas de crecimiento y riesgo país verificables.</li><li><strong>Diferenciación Profesional:</strong> Este proyecto prueba mi capacidad para "aterrizar" la comunicación en el lenguaje del dinero, permitiéndome dialogar con directivos y stakeholders desde una base numérica sólida.</li><li><strong>Aprendizaje:</strong> Reforcé la importancia de las premisas de proyección; una estrategia de comunicación solo es efectiva si el flujo de caja de la empresa puede respaldarla.</li></ul></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- MODAL 5: Cider Lubelski -->
+    <!-- MODAL 5 -->
     <div class="modal" id="modal5">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal('modal5')">&times;</button>
@@ -1620,48 +1517,21 @@
             </div>
             <div class="modal-body">
                 <div class="modal-image">
-                    <img src="URL_IMAGEN_5" alt="Reporte Cider Lubelski">
+                    <img src="https://i.imgur.com/jOE3H45.jpg" alt="Reporte Cider Lubelski">
                     <button class="fair-use-btn">FAIR USE</button>
                 </div>
                 <div class="modal-info">
                     <div class="tab-content active" id="intro5">
-                        <div class="modal-section">
-                            <h3>Rol en el trabajo:</h3>
-                            <p style="color: var(--color-white);">Analista de Datos de Redes Sociales</p>
-                        </div>
-                        <div class="modal-section">
-                            <h3>Herramientas usadas:</h3>
-                            <p style="color: var(--color-white);">Instagram Insights, Meta Business Suite</p>
-                        </div>
-                        <div class="modal-section">
-                            <h3>Objetivo:</h3>
-                            <p>Analizar el rendimiento de las plataformas sociales de la marca durante el año 2025 para identificar patrones de crecimiento, efectividad de la pauta (Ads) y optimizar la tasa de conversión de seguidores.</p>
-                        </div>
+                        <div class="modal-section"><h3>Rol en el trabajo:</h3><p style="color: var(--color-white);">Analista de Datos de Redes Sociales</p></div>
+                        <div class="modal-section"><h3>Herramientas usadas:</h3><p style="color: var(--color-white);">Instagram Insights, Meta Business Suite</p></div>
+                        <div class="modal-section"><h3>Objetivo:</h3><p>Analizar el rendimiento de las plataformas sociales de la marca durante el año 2025 para identificar patrones de crecimiento, efectividad de la pauta (Ads) y optimizar la tasa de conversión de seguidores.</p></div>
                     </div>
                     <div class="tab-content" id="retos5">
-                        <div class="modal-section">
-                            <h3>El Reto:</h3>
-                            <p>Interpretar fluctuaciones drásticas en la interacción (picos de hasta 6,000 interacciones mensuales) y determinar por qué ciertas campañas pagadas logran atraer visitas al perfil pero no necesariamente seguidores o engagement a largo plazo.</p>
-                        </div>
-                        <div class="modal-section">
-                            <h3>Proceso de Ejecución:</h3>
-                            <ul>
-                                <li><strong>Análisis de Categoría y Competencia:</strong> Evalué el mercado de sidras y bebidas de baja graduación alcohólica para identificar el posicionamiento de Cider Lubelski.</li>
-                                <li><strong>Evaluación de la Cadena de Valor:</strong> Analicé la percepción de la marca frente a distribuidores y consumidores finales.</li>
-                                <li><strong>Mapeo del Consumidor Target:</strong> Identifiqué hábitos de consumo, momentos de compra y barreras de entrada en el segmento objetivo.</li>
-                                <li><strong>Detección de Oportunidades:</strong> Reconocí brechas de comunicación y canales no explotados para diferenciar la marca.</li>
-                            </ul>
-                        </div>
+                        <div class="modal-section"><h3>El Reto:</h3><p>Interpretar fluctuaciones drásticas en la interacción (picos de hasta 6,000 interacciones mensuales) y determinar por qué ciertas campañas pagadas logran atraer visitas al perfil pero no necesariamente seguidores o engagement a largo plazo.</p></div>
+                        <div class="modal-section"><h3>Proceso de Ejecución:</h3><ul><li><strong>Análisis de Categoría y Competencia:</strong> Evalué el mercado de sidras y bebidas de baja graduación alcohólica para identificar el posicionamiento de Cider Lubelski.</li><li><strong>Evaluación de la Cadena de Valor:</strong> Analicé la percepción de la marca frente a distribuidores y consumidores finales.</li><li><strong>Mapeo del Consumidor Target:</strong> Identifiqué hábitos de consumo, momentos de compra y barreras de entrada en el segmento objetivo.</li><li><strong>Detección de Oportunidades:</strong> Reconocí brechas de comunicación y canales no explotados para diferenciar la marca.</li></ul></div>
                     </div>
                     <div class="tab-content" id="resultados5">
-                        <div class="modal-section">
-                            <h3>Resultados obtenidos:</h3>
-                            <ul>
-                                <li><strong>Crecimiento Sostenido:</strong> Identificación de las "mejores publicaciones" por mes para replicar los formatos exitosos (fotografía de producto vs. contenido humano).</li>
-                                <li><strong>Estrategia de Conversión:</strong> Propuesta de un embudo de ventas más agresivo para transformar el alcance masivo en una comunidad participativa.</li>
-                                <li><strong>Aprendizaje:</strong> Confirmé que la analítica digital es el puente entre la inversión en publicidad y la rentabilidad de la marca; sin datos, la inversión es solo una apuesta.</li>
-                            </ul>
-                        </div>
+                        <div class="modal-section"><h3>Resultados obtenidos:</h3><ul><li><strong>Crecimiento Sostenido:</strong> Identificación de las "mejores publicaciones" por mes para replicar los formatos exitosos (fotografía de producto vs. contenido humano).</li><li><strong>Estrategia de Conversión:</strong> Propuesta de un embudo de ventas más agresivo para transformar el alcance masivo en una comunidad participativa.</li><li><strong>Aprendizaje:</strong> Confirmé que la analítica digital es el puente entre la inversión en publicidad y la rentabilidad de la marca; sin datos, la inversión es solo una apuesta.</li></ul></div>
                     </div>
                 </div>
             </div>
@@ -1690,18 +1560,9 @@
             <h2 class="contact-title">¡Contáctame!</h2>
             <div class="contact-content">
                 <div class="contact-info">
-                    <div class="contact-item">
-                        <span>Correo: </span>
-                        <a href="mailto:Carlosdaniefernandez@gmail.com">Carlosdaniefernandez@gmail.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <span>Tel: </span>
-                        <a href="tel:+584122530972">+58 412-2530972</a>
-                    </div>
-                    <div class="contact-item">
-                        <span>LinkedIn: </span>
-                        <a href="https://linkedin.com/in/carlosfernandez" target="_blank">Carlos Fernández</a>
-                    </div>
+                    <div class="contact-item"><span>Correo: </span><a href="mailto:Carlosdaniefernandez@gmail.com">Carlosdaniefernandez@gmail.com</a></div>
+                    <div class="contact-item"><span>Tel: </span><a href="tel:+584122530972">+58 412-2530972</a></div>
+                    <div class="contact-item"><span>LinkedIn: </span><a href="https://linkedin.com/in/carlosfernandez" target="_blank">Carlos Fernández</a></div>
                     <a href="#" class="contact-btn" onclick="alert('Función de descarga de CV próximamente')">Descarga CV</a>
                 </div>
                 <div class="contact-logo">
@@ -1722,7 +1583,137 @@
     </footer>
 
     <script>
-        // Modal Functions
+        // ============ CARRUSEL LOGIC (FORZADO A 2 ITEMS) ============
+        const track = document.getElementById('carouselTrack');
+        const prevBtn = document.getElementById('carouselPrev');
+        const nextBtn = document.getElementById('carouselNext');
+        const dotsContainer = document.getElementById('carouselDots');
+        let currentIndex = 0;
+        let cardsPerView = 2; // FORZADO A 2 COMO SE SOLICITÓ
+
+        function updateCardsPerView() {
+            const width = window.innerWidth;
+            if (width <= 768) {
+                cardsPerView = 1; // 1 en móvil para que se vea bien
+            } else {
+                cardsPerView = 2; // 2 en desktop/tablet
+            }
+        }
+
+        function getVisibleCards() {
+            return Array.from(track.querySelectorAll('.work-card')).filter(card => card.style.display !== 'none');
+        }
+
+        function getTotalPages() {
+            const visibleCards = getVisibleCards();
+            return Math.max(1, Math.ceil(visibleCards.length / cardsPerView));
+        }
+
+        function createDots() {
+            dotsContainer.innerHTML = '';
+            const totalPages = getTotalPages();
+            for (let i = 0; i < totalPages; i++) {
+                const dot = document.createElement('button');
+                dot.classList.add('carousel-dot');
+                dot.setAttribute('aria-label', `Ir a página ${i + 1}`);
+                if (i === currentIndex) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(i));
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function updateDots() {
+            const dots = dotsContainer.querySelectorAll('.carousel-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        function updateCarousel() {
+            const visibleCards = getVisibleCards();
+            const totalPages = getTotalPages();
+            
+            if (currentIndex >= totalPages) currentIndex = totalPages - 1;
+            if (currentIndex < 0) currentIndex = 0;
+
+            const cardWidth = 100 / cardsPerView;
+            const gapOffset = (2 * currentIndex) / cardsPerView;
+            const translateX = -(currentIndex * cardWidth) - gapOffset;
+            
+            track.style.transform = `translateX(${translateX}%)`;
+
+            prevBtn.disabled = currentIndex === 0;
+            nextBtn.disabled = currentIndex >= totalPages - 1;
+            updateDots();
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            updateCarousel();
+        }
+
+        function nextSlide() {
+            const totalPages = getTotalPages();
+            if (currentIndex < totalPages - 1) {
+                currentIndex++;
+                updateCarousel();
+            }
+        }
+
+        function prevSlide() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
+        }
+
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
+
+        // Soporte para swipe en móviles
+        let touchStartX = 0;
+        let touchEndX = 0;
+        track.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+        track.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) nextSlide();
+                else prevSlide();
+            }
+        }, { passive: true });
+
+        window.addEventListener('resize', () => {
+            updateCardsPerView();
+            createDots();
+            updateCarousel();
+        });
+
+        // ============ FILTRO DE TRABAJOS ============
+        const tags = document.querySelectorAll('.tag');
+        tags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                tags.forEach(t => t.classList.remove('active'));
+                tag.classList.add('active');
+
+                const filter = tag.getAttribute('data-filter');
+                const allCards = track.querySelectorAll('.work-card');
+
+                allCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                currentIndex = 0;
+                createDots();
+                updateCarousel();
+            });
+        });
+
+        // ============ MODALES ============
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
             if (modal) {
@@ -1739,7 +1730,6 @@
             }
         }
 
-        // Close modal when clicking outside
         window.onclick = function(event) {
             if (event.target.classList.contains('modal')) {
                 event.target.classList.remove('active');
@@ -1747,85 +1737,43 @@
             }
         }
 
-        // Tab Switching Function (Fixed for multiple modals)
         function switchTab(tabName, modalId, clickedTab) {
             const modal = document.getElementById(modalId);
-            
-            // Remove active class from all tabs in THIS modal
             const tabs = modal.querySelectorAll('.modal-tab');
             tabs.forEach(tab => tab.classList.remove('active'));
-            
-            // Add active class to clicked tab
             clickedTab.classList.add('active');
             
-            // Hide all tab contents in THIS modal
             const contents = modal.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active'));
             
-            // Show selected tab content
             document.getElementById(tabName).classList.add('active');
         }
 
-        // Animación de barras de habilidades al hacer scroll
-        const observerOptions = {
-            threshold: 0.5,
-            rootMargin: "0px 0px -100px 0px"
-        };
-
+        // ============ BARRAS DE HABILIDADES ============
+        const observerOptions = { threshold: 0.5, rootMargin: "0px 0px -100px 0px" };
         const observer = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const progressBars = entry.target.querySelectorAll('.skill-progress');
                     progressBars.forEach(bar => {
-                        const width = bar.getAttribute('data-width');
-                        bar.style.width = width + '%';
+                        bar.style.width = bar.getAttribute('data-width') + '%';
                     });
                 }
             });
         }, observerOptions);
 
         const skillsSection = document.querySelector('.skills-section');
-        if (skillsSection) {
-            observer.observe(skillsSection);
-        }
+        if (skillsSection) observer.observe(skillsSection);
 
-        // Filtro de trabajos
-        const tags = document.querySelectorAll('.tag');
-        const workCards = document.querySelectorAll('.work-card');
-
-        tags.forEach(tag => {
-            tag.addEventListener('click', () => {
-                tags.forEach(t => t.classList.remove('active'));
-                tag.classList.add('active');
-
-                const filter = tag.getAttribute('data-filter');
-
-                workCards.forEach(card => {
-                    if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
-                        card.style.display = 'flex';
-                        card.style.animation = 'fadeInUp 0.5s ease';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-
-        // Smooth scroll para los botones
+        // ============ SMOOTH SCROLL & NAVBAR ============
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
 
-        // Animación de entrada al cargar
         window.addEventListener('load', () => {
             const elements = document.querySelectorAll('.hero-content, .profile-section');
             elements.forEach((el, index) => {
@@ -1839,26 +1787,18 @@
             });
         });
 
-        // Navbar scroll effect
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 100) {
-                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.3)';
-            } else {
-                navbar.style.boxShadow = 'none';
-            }
+            navbar.style.boxShadow = window.pageYOffset > 100 ? '0 2px 20px rgba(0,0,0,0.3)' : 'none';
         });
 
-        // Mobile menu toggle
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
         const navMenu = document.getElementById('navMenu');
-
         mobileMenuToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
             mobileMenuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
         });
 
-        // Close mobile menu when clicking on a link
         document.querySelectorAll('.nav-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
@@ -1866,24 +1806,22 @@
             });
         });
 
-        // Active nav link on scroll
         const sections = document.querySelectorAll('section[id]');
         window.addEventListener('scroll', () => {
             let current = '';
             sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
+                if (pageYOffset >= section.offsetTop - 200) current = section.getAttribute('id');
             });
-
             document.querySelectorAll('.nav-menu a').forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href').slice(1) === current) {
-                    link.classList.add('active');
-                }
+                if (link.getAttribute('href').slice(1) === current) link.classList.add('active');
             });
         });
+
+        // Inicializar carrusel
+        updateCardsPerView();
+        createDots();
+        updateCarousel();
     </script>
 </body>
 </html>
