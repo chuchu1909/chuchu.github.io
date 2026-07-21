@@ -1,1 +1,1610 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carlos Fernández - Portafolio Profesional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        :root {
+            --color-dark: #000022;
+            --color-primary: #000048;
+            --color-secondary: #11008f;
+            --color-accent: #2d1bff;
+            --color-light: #b8b8d9;
+            --color-white: #ffffff;
+            --color-yellow: #FFD700;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--color-dark);
+            color: var(--color-white);
+            line-height: 1.6;
+        }
+
+        /* Navigation Menu */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 34, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-white);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: var(--color-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--color-white);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-yellow);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--color-white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem 2rem;
+            background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-primary) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--color-secondary) 0%, transparent 70%);
+            opacity: 0.3;
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-section {
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            overflow: hidden;
+            border: 4px solid var(--color-light);
+            box-shadow: 0 10px 30px rgba(17, 0, 143, 0.5);
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .profile-label {
+            background: var(--color-secondary);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            color: var(--color-white);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.3rem;
+            color: var(--color-light);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .hero-content p {
+            color: var(--color-light);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(17, 0, 143, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(17, 0, 143, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-white);
+            border: 2px solid var(--color-light);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-light);
+            color: var(--color-dark);
+            transform: translateY(-3px);
+        }
+
+        /* About Section */
+        .about-section {
+            background: var(--color-primary);
+            padding: 5rem 2rem;
+        }
+
+        .about-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .about-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--color-white);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .about-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1.2fr 1.5fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-personal {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(184, 184, 217, 0.2);
+        }
+
+        .about-personal h3 {
+            color: var(--color-white);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .about-personal p {
+            color: var(--color-light);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .about-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .about-section-block {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(184, 184, 217, 0.2);
+        }
+
+        .about-section-block h3 {
+            color: var(--color-white);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .education-item,
+        .course-item {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            border-left: 3px solid var(--color-secondary);
+        }
+
+        .education-item:last-child,
+        .course-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .education-item h4,
+        .course-item h4 {
+            color: var(--color-white);
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+        }
+
+        .education-item p,
+        .course-item p {
+            color: var(--color-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .education-item .school,
+        .course-item .school {
+            color: var(--color-accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .education-item .years,
+        .course-item .years {
+            color: var(--color-light);
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            background: var(--color-primary);
+            padding: 4rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--color-white);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(184, 184, 217, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--color-secondary);
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            color: var(--color-white);
+            font-size: 1.1rem;
+        }
+
+        .skill-level {
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .skill-bar {
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
+            border-radius: 10px;
+            transition: width 1s ease;
+            width: 0;
+        }
+
+        /* ============ WORKS SECTION - GRILLA SIMPLE ============ */
+        .works-section {
+            padding: 4rem 2rem;
+            background: var(--color-dark);
+        }
+
+        .tags {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: transparent;
+            color: var(--color-light);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            border: 2px solid var(--color-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover,
+        .tag.active {
+            background: var(--color-secondary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(17, 0, 143, 0.4);
+        }
+
+        /* GRILLA: 2 COLUMNAS EN DESKTOP, 1 EN MÓVIL */
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .work-card {
+            background: var(--color-primary);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(184, 184, 217, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .work-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(17, 0, 143, 0.4);
+            border-color: var(--color-secondary);
+        }
+
+        .work-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .work-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .fair-use-btn {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-yellow);
+            color: var(--color-dark);
+            padding: 0.4rem 1.2rem;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            border: none;
+            cursor: pointer;
+            letter-spacing: 1px;
+        }
+
+        .work-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .work-title {
+            font-size: 1.2rem;
+            color: var(--color-white);
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .work-description {
+            color: var(--color-light);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .work-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .work-tag {
+            background: rgba(17, 0, 143, 0.3);
+            color: var(--color-light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            border: 1px solid var(--color-secondary);
+        }
+
+        /* BOTONES EN COLUMNA (UNO DEBAJO DEL OTRO) */
+        .work-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .work-btn {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid var(--color-light);
+            border-radius: 25px;
+            background: transparent;
+            color: var(--color-white);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+
+        .work-btn:hover {
+            background: var(--color-secondary);
+            border-color: var(--color-secondary);
+            transform: translateY(-2px);
+        }
+
+        .work-btn.primary {
+            background: var(--color-white);
+            color: var(--color-dark);
+            border-color: var(--color-white);
+        }
+
+        .work-btn.primary:hover {
+            background: var(--color-light);
+        }
+
+        .work-btn.canva-link {
+            border-color: var(--color-yellow);
+            color: var(--color-yellow);
+        }
+
+        .work-btn.canva-link:hover {
+            background: var(--color-yellow);
+            color: var(--color-dark);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--color-primary);
+            border-radius: 20px;
+            max-width: 1100px;
+            width: 100%;
+            padding: 3rem;
+            position: relative;
+            border: 2px solid var(--color-secondary);
+            box-shadow: 0 20px 60px rgba(17, 0, 143, 0.5);
+            margin: 2rem 0;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--color-secondary);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background: var(--color-accent);
+            transform: rotate(90deg);
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            color: var(--color-white);
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .modal-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .modal-tab {
+            padding: 0.7rem 1.8rem;
+            border: 2px solid var(--color-light);
+            border-radius: 25px;
+            background: transparent;
+            color: var(--color-light);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .modal-tab:hover,
+        .modal-tab.active {
+            background: var(--color-white);
+            color: var(--color-dark);
+            border-color: var(--color-white);
+            transform: translateY(-2px);
+        }
+
+        .modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1.8fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .modal-image {
+            width: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .modal-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .modal-info {
+            color: var(--color-light);
+        }
+
+        .modal-section {
+            margin-bottom: 1.8rem;
+        }
+
+        .modal-section h3 {
+            color: var(--color-white);
+            font-size: 1.1rem;
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+        }
+
+        .modal-section p {
+            color: var(--color-light);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .modal-section ul {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .modal-section li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.8rem;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .modal-section li::before {
+            content: '✅';
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Brands Section */
+        .brands-section {
+            background: var(--color-primary);
+            padding: 4rem 2rem;
+        }
+
+        .brands-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .brand-item {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--color-light);
+            border: 2px solid var(--color-secondary);
+            box-shadow: 0 4px 15px rgba(17, 0, 143, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .brand-item:hover {
+            transform: scale(1.1) rotate(5deg);
+            background: var(--color-secondary);
+            color: white;
+            box-shadow: 0 6px 20px rgba(17, 0, 143, 0.6);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--color-dark);
+            padding: 5rem 2rem;
+        }
+
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: var(--color-white);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.1rem;
+            color: var(--color-white);
+        }
+
+        .contact-item::before {
+            content: '•';
+            color: var(--color-accent);
+            font-size: 2rem;
+            line-height: 0;
+        }
+
+        .contact-item a {
+            color: var(--color-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--color-accent);
+        }
+
+        .contact-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 1rem 2.5rem;
+            background: var(--color-white);
+            color: var(--color-dark);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+        }
+
+        .contact-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-circle {
+            width: 200px;
+            height: 200px;
+            border: 3px solid var(--color-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .logo-inner {
+            width: 140px;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(184, 184, 217, 0.2);
+        }
+
+        footer p {
+            color: var(--color-light);
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                background: rgba(0, 0, 34, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                transition: left 0.3s ease;
+                gap: 1rem;
+            }
+
+            .nav-menu.active { left: 0; }
+            .mobile-menu-toggle { display: block; }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .profile-img { width: 250px; height: 250px; }
+            .hero-content h1 { font-size: 2rem; }
+            .cta-buttons { justify-content: center; }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .skills-grid { grid-template-columns: 1fr; }
+
+            /* GRILLA: 1 COLUMNA EN MÓVIL */
+            .works-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-body { grid-template-columns: 1fr; }
+            .modal-content { padding: 2rem 1.5rem; }
+            .modal-tabs { flex-direction: column; }
+            .modal-tab { width: 100%; }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .contact-title { font-size: 2rem; }
+            .contact-item { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Menu -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#inicio" class="nav-logo">Carlos Fernández</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#inicio" class="active">Inicio</a></li>
+                <li><a href="#sobre-mi">Sobre mí</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#trabajos">Trabajos</a></li>
+                <li><a href="#marcas">Marcas</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-container">
+            <div class="profile-section">
+                <div class="profile-img">
+                    <img src="https://i.imgur.com/ghfgZHt.jpeg" alt="Carlos Fernández">
+                </div>
+                <span class="profile-label">Yo</span>
+            </div>
+            <div class="hero-content">
+                <h1>Hola, Soy Carlos :)</h1>
+                <p class="subtitle">Estratega de Comunicación Analítica & SEO</p>
+                <p>"Traduzco datos e intangibles en estrategias financieras y digitales de alto impacto"</p>
+                <div class="cta-buttons">
+                    <a href="#contacto" class="btn btn-primary">Contáctame</a>
+                    <a href="#trabajos" class="btn btn-secondary">Ver trabajos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="sobre-mi">
+        <div class="about-container">
+            <h2 class="about-title">Un poco sobre mí</h2>
+            <div class="about-content">
+                <div class="about-personal">
+                    <h3>Soy una persona creativa, calmada y responsable</h3>
+                    <p>Con buenas relaciones interpersonales, logrando así un buen trabajo en equipo. Siempre tengo la mejor disposición para salir adelante incluso en ámbitos de estrés. Busco mejorar mi comunicación asertiva constantemente.</p>
+                </div>
+                <div class="about-info">
+                    <div class="about-section-block">
+                        <h3>EDUCACIÓN</h3>
+                        <div class="education-item">
+                            <h4>Lic Comunicación Social, Mención: Com. Integradas de Mercadeo</h4>
+                            <p class="school">Universidad Católica Andrés Bello</p>
+                            <p class="years">2022 - 2026</p>
+                        </div>
+                        <div class="education-item">
+                            <h4>Minor en Finanzas</h4>
+                            <p class="school">UCAB</p>
+                            <p class="years">2024 - 2026</p>
+                        </div>
+                        <div class="education-item">
+                            <h4>Primaria y Bachiller</h4>
+                            <p class="school">U.E.P Colegio San Luis</p>
+                            <p class="years">2008 - 2022</p>
+                        </div>
+                    </div>
+                    <div class="about-section-block">
+                        <h3>CURSOS / IDIOMAS</h3>
+                        <div class="course-item">
+                            <h4>Curso de Inglés B2</h4>
+                            <p class="years">2018</p>
+                        </div>
+                        <div class="course-item">
+                            <h4>Curso de Francés A1</h4>
+                            <p class="years">2021</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills-section" id="habilidades">
+        <div class="container">
+            <h2 class="section-title">Habilidades que manejo...</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <h3 style="margin-bottom: 1rem; color: var(--color-white); font-size: 1.2rem;">Analítica Digital y SEO</h3>
+                    <div class="skill-header"><span class="skill-name">Meta Business Suite</span><span class="skill-level">5/5</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-width="100"></div></div>
+                    <div class="skill-header" style="margin-top: 1rem;"><span class="skill-name">Google Analytics</span><span class="skill-level">5/5</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-width="100"></div></div>
+                    <div class="skill-header" style="margin-top: 1rem;"><span class="skill-name">Instagram Insights</span><span class="skill-level">4.5/5</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
+                    <div class="skill-header" style="margin-top: 1rem;"><span class="skill-name">Keyword Research</span><span class="skill-level">4/5</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-width="80"></div></div>
+                </div>
+
+                <div class="skill-item">
+                    <h3 style="margin-bottom: 1rem; color: var(--color-white); font-size: 1.2rem;">Analítica Financiera</h3>
+                    <div class="skill-header"><span class="skill-name">Microsoft Excel (Modelado)</span><span class="skill-level">4/5</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-width="80"></div></div>
+                    <div class="skill-header" style="margin-top: 1rem;"><span class="skill-name">Flujo de Caja / Curva S</span><span class="skill-level">4/5</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-width="80"></div></div>
+                    <div class="skill-header" style="margin-top: 1rem;"><span class="skill-name">Análisis CAME/DOFA</span><span class="skill-level">5/5</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-width="100"></div></div>
+                    <div class="skill-header" style="margin-top: 1rem;"><span class="skill-name">Valoración de Empresas (WACC)</span><span class="skill-level">4.5/5</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
+                </div>
+
+                <div class="skill-item">
+                    <h3 style="margin-bottom: 1rem; color: var(--color-white); font-size: 1.2rem;">Creación de Contenido</h3>
+                    <div class="skill-header"><span class="skill-name">Canva (Diseño)</span><span class="skill-level">4.5/5</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
+                    <div class="skill-header" style="margin-top: 1rem;"><span class="skill-name">Google Forms (Investigación)</span><span class="skill-level">4.5/5</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
+                    <div class="skill-header" style="margin-top: 1rem;"><span class="skill-name">Social Media Planning</span><span class="skill-level">4/5</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-width="80"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Works Section - GRILLA SIMPLE -->
+    <section class="works-section" id="trabajos">
+        <div class="container">
+            <h2 class="section-title">TRABAJOS:</h2>
+            <div class="tags">
+                <span class="tag active" data-filter="all">Todos</span>
+                <span class="tag" data-filter="analisis">Análisis</span>
+                <span class="tag" data-filter="seo">SEO</span>
+                <span class="tag" data-filter="finanzas">Finanzas</span>
+                <span class="tag" data-filter="diseno">Diseño</span>
+            </div>
+
+            <div class="works-grid">
+                
+                <!-- TRABAJO 1 -->
+                <div class="work-card" data-category="analisis seo">
+                    <div class="work-image">
+                        <img src="https://via.placeholder.com/600x400/11008f/FFFFFF?text=Malta+Polar" alt="Malta Polar">
+                        <button class="fair-use-btn">FAIR USE</button>
+                    </div>
+                    <div class="work-content">
+                        <h3 class="work-title">Auditoría Digital y Estrategia ZMOT - Malta Maltín Polar</h3>
+                        <p class="work-description">Transformé indicadores de búsqueda en una estrategia de contenido orgánico para Maltín Polar en su Momento Cero de la Verdad (ZMOT), conectando con el mercado nostálgico mediante decisiones basadas 100% en datos.</p>
+                        <div class="work-tags">
+                            <span class="work-tag">Análisis</span>
+                            <span class="work-tag">SEO</span>
+                            <span class="work-tag">ZMOT</span>
+                        </div>
+                        <div class="work-buttons">
+                            <button class="work-btn primary" onclick="openModal('modal1')">Conocer más</button>
+                            <a href="https://canva.link/qal6nfpnqdi3kak" target="_blank" class="work-btn canva-link">Ver en Canva</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TRABAJO 2 -->
+                <div class="work-card" data-category="diseno analisis">
+                    <div class="work-image">
+                        <img src="https://via.placeholder.com/600x400/2d1bff/FFFFFF?text=Out+Context" alt="Out Context">
+                        <button class="fair-use-btn">FAIR USE</button>
+                    </div>
+                    <div class="work-content">
+                        <h3 class="work-title">Out Context: Estilo y comodidad sin límites</h3>
+                        <p class="work-description">Diseño de identidad de marca y estrategia de contenidos para una empresa de ropa athleisure, asegurando una conexión orgánica con la Generación Z y los Millennials.</p>
+                        <div class="work-tags">
+                            <span class="work-tag">Diseño</span>
+                            <span class="work-tag">Análisis</span>
+                            <span class="work-tag">Social Media</span>
+                        </div>
+                        <div class="work-buttons">
+                            <button class="work-btn primary" onclick="openModal('modal2')">Conocer más</button>
+                            <a href="https://canva.link/6cm7qntppjrfjh0" target="_blank" class="work-btn canva-link">Ver en Canva</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TRABAJO 3 -->
+                <div class="work-card" data-category="finanzas">
+                    <div class="work-image">
+                        <img src="https://via.placeholder.com/600x400/11008f/FFFFFF?text=HistorIA+VR" alt="HistorIA VR">
+                        <button class="fair-use-btn">FAIR USE</button>
+                    </div>
+                    <div class="work-content">
+                        <h3 class="work-title">HistorIA – Experiencia Inmersiva de Realidad Virtual (UCAB)</h3>
+                        <p class="work-description">Gestión financiera y de riesgos para una experiencia educativa de Realidad Virtual e Inteligencia Artificial, permitiendo interactuar con figuras históricas en tiempo real.</p>
+                        <div class="work-tags">
+                            <span class="work-tag">Finanzas</span>
+                            <span class="work-tag">Gestión de Riesgos</span>
+                        </div>
+                        <div class="work-buttons">
+                            <button class="work-btn primary" onclick="openModal('modal3')">Conocer más</button>
+                            <a href="https://canva.link/izqnwzqlymoot7e" target="_blank" class="work-btn canva-link">Ver en Canva</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TRABAJO 4 -->
+                <div class="work-card" data-category="finanzas analisis">
+                    <div class="work-image">
+                        <img src="https://via.placeholder.com/600x400/2d1bff/FFFFFF?text=Mondelez" alt="Mondelez">
+                        <button class="fair-use-btn">FAIR USE</button>
+                    </div>
+                    <div class="work-content">
+                        <h3 class="work-title">Valoración Financiera de Mondelez International</h3>
+                        <p class="work-description">Determinación del valor real de la compañía mediante métodos de valoración financiera (WACC, Flujo de Caja Libre) para conocer su solvencia, rentabilidad y capacidad de generación de flujo.</p>
+                        <div class="work-tags">
+                            <span class="work-tag">Finanzas</span>
+                            <span class="work-tag">Valoración</span>
+                            <span class="work-tag">Excel</span>
+                        </div>
+                        <div class="work-buttons">
+                            <button class="work-btn primary" onclick="openModal('modal4')">Conocer más</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TRABAJO 5 -->
+                <div class="work-card" data-category="analisis">
+                    <div class="work-image">
+                        <img src="https://via.placeholder.com/600x400/11008f/FFFFFF?text=Cider+Lubelski" alt="Cider Lubelski">
+                        <button class="fair-use-btn">FAIR USE</button>
+                    </div>
+                    <div class="work-content">
+                        <h3 class="work-title">Reporte Anual de Rendimiento Digital 2025: Cider Lubelski</h3>
+                        <p class="work-description">Análisis del rendimiento de plataformas sociales de la marca durante 2025 para identificar patrones de crecimiento, efectividad de la pauta y optimizar la tasa de conversión.</p>
+                        <div class="work-tags">
+                            <span class="work-tag">Análisis</span>
+                            <span class="work-tag">Meta Business</span>
+                            <span class="work-tag">KPIs</span>
+                        </div>
+                        <div class="work-buttons">
+                            <button class="work-btn primary" onclick="openModal('modal5')">Conocer más</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= MODALES ================= -->
+
+    <!-- MODAL 1 -->
+    <div class="modal" id="modal1">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal1')">&times;</button>
+            <div class="modal-header">
+                <h2 class="modal-title">Auditoría Digital y Estrategia ZMOT - Malta Maltín Polar</h2>
+                <div class="modal-tabs">
+                    <button class="modal-tab active" onclick="switchTab('intro1', 'modal1', this)">INTRODUCCIÓN</button>
+                    <button class="modal-tab" onclick="switchTab('retos1', 'modal1', this)">RETOS</button>
+                    <button class="modal-tab" onclick="switchTab('resultados1', 'modal1', this)">RESULTADOS</button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="https://via.placeholder.com/600x400/11008f/FFFFFF?text=Malta+Polar" alt="Malta">
+                    <button class="fair-use-btn">FAIR USE</button>
+                </div>
+                <div class="modal-info">
+                    <div class="tab-content active" id="intro1">
+                        <div class="modal-section"><h3>Rol en el trabajo:</h3><p style="color: var(--color-white);">Analista de Mercadeo Digital y Estratega de Contenido</p></div>
+                        <div class="modal-section"><h3>Herramientas usadas:</h3><p style="color: var(--color-white);">Canva (Creación de Landing page), Google (Keyword Research)</p></div>
+                        <div class="modal-section"><h3>Objetivo:</h3><p>Identificar el comportamiento del consumidor en el Momento Cero de la Verdad (ZMOT) para crear una estrategia de contenido orgánico que posicione a Malta Polar como líder indiscutible en el entorno digital.</p></div>
+                    </div>
+                    <div class="tab-content" id="retos1">
+                        <div class="modal-section"><h3>Proceso de Ejecución:</h3><ul><li><strong>Investigación del ZMOT:</strong> Analicé las búsquedas de los usuarios, identificando que la marca conecta principalmente a través de la nostalgia, la cultura y la gastronomía.</li><li><strong>Brechas de Búsqueda:</strong> Identifiqué cuatro pilares de interés real: cultura nacional, combinaciones gastronómicas, disponibilidad en el exterior e historia de marca.</li><li><strong>Estructura SEO:</strong> Diseñé un Topic Cluster con una página pilar y subtemas optimizados (H1, H2, meta descripciones) para mejorar el posicionamiento.</li><li><strong>Estrategia para Redes:</strong> Traduje los hallazgos en conceptos y copys específicos para Instagram y TikTok adaptados a las emociones de la audiencia.</li></ul></div>
+                    </div>
+                    <div class="tab-content" id="resultados1">
+                        <div class="modal-section"><h3>Resultados obtenidos:</h3><ul><li><strong>Auditoría basada en datos:</strong> Logré transformar indicadores de búsqueda en una ruta de contenido accionable, evitando la creación de contenido "por intuición".</li><li><strong>Redirección del consumidor:</strong> El 46% de la audiencia buscaba información sobre el consumo responsable, revelando una oportunidad para posicionar el producto como aliado en momentos de estrés.</li><li><strong>Conexión cultural:</strong> Diseñé una landing page que conecta con la identidad venezolana, utilizando un tono cercano y elementos visuales que reflejan la cultura local.</li><li><strong>Estrategia ZMOT:</strong> Implementé una estrategia basada en el Momento Cero de la Verdad, asegurando que la marca aparezca en el momento exacto en que el consumidor está buscando activamente.</li></ul></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2 -->
+    <div class="modal" id="modal2">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal2')">&times;</button>
+            <div class="modal-header">
+                <h2 class="modal-title">Out Context: Estilo y comodidad sin límites</h2>
+                <div class="modal-tabs">
+                    <button class="modal-tab active" onclick="switchTab('intro2', 'modal2', this)">INTRODUCCIÓN</button>
+                    <button class="modal-tab" onclick="switchTab('retos2', 'modal2', this)">RETOS</button>
+                    <button class="modal-tab" onclick="switchTab('resultados2', 'modal2', this)">RESULTADOS</button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="https://via.placeholder.com/600x400/2d1bff/FFFFFF?text=Out+Context" alt="Out Context">
+                    <button class="fair-use-btn">FAIR USE</button>
+                </div>
+                <div class="modal-info">
+                    <div class="tab-content active" id="intro2">
+                        <div class="modal-section"><h3>Rol en el trabajo:</h3><p style="color: var(--color-white);">Investigador de Mercado y Creación de Contenido</p></div>
+                        <div class="modal-section"><h3>Herramientas usadas:</h3><p style="color: var(--color-white);">Google Forms, Análisis de Arquetipos de Marca, Diseño de Buyer Persona, Planificación de Social Media.</p></div>
+                        <div class="modal-section"><h3>Objetivo:</h3><p>Diseñar la identidad de marca y la estrategia de contenidos para una empresa de ropa deportiva/casual, asegurando una conexión orgánica con la Generación Z y los Millennials.</p></div>
+                    </div>
+                    <div class="tab-content" id="retos2">
+                        <div class="modal-section"><h3>El Reto:</h3><p>Construir una marca desde sus cimientos (arquetipos, Buyer Persona y arquitectura de equipo) y diseñar una estrategia de publicidad que garantice el engagement en plataformas visuales como Instagram y TikTok.</p></div>
+                        <div class="modal-section"><h3>Proceso de Ejecución:</h3><ul><li><strong>Diagnóstico e Identidad:</strong> Definí el tono, estilo visual y la narrativa central de la propuesta "Out of Context".</li><li><strong>Análisis de Tendencias:</strong> Identifiqué formatos dinámicos y pilares temáticos con mayor interacción en plataformas digitales.</li><li><strong>Planificación de Contenidos:</strong> Estructuré un calendario editorial enfocado en engagement, viralidad y retención de usuarios.</li><li><strong>Producción y Optimización:</strong> Diseñé los hooks, guiones y copys optimizados para capturar la atención en los primeros segundos.</li></ul></div>
+                    </div>
+                    <div class="tab-content" id="resultados2">
+                        <div class="modal-section"><h3>Resultados obtenidos:</h3><ul><li><strong>Toma de Decisiones Basada en Datos:</strong> La construcción del Buyer Persona a través de datos reales permitió diseñar un mensaje publicitario con una tasa de aceptación proyectada mucho mayor.</li><li><strong>Visión Integral de Negocio:</strong> Logré integrar la producción de contenido con la gestión de procesos internos, entendiendo que una buena red social requiere un equipo bien coordinado detrás.</li><li><strong>Aprendizaje:</strong> Reforcé la importancia de los arquetipos de marca para mantener la coherencia visual y narrativa en todos los puntos de contacto con el cliente.</li></ul></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3 -->
+    <div class="modal" id="modal3">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal3')">&times;</button>
+            <div class="modal-header">
+                <h2 class="modal-title">HistorIA – Experiencia Inmersiva de Realidad Virtual (UCAB)</h2>
+                <div class="modal-tabs">
+                    <button class="modal-tab active" onclick="switchTab('intro3', 'modal3', this)">INTRODUCCIÓN</button>
+                    <button class="modal-tab" onclick="switchTab('retos3', 'modal3', this)">RETOS</button>
+                    <button class="modal-tab" onclick="switchTab('resultados3', 'modal3', this)">RESULTADOS</button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="https://via.placeholder.com/600x400/11008f/FFFFFF?text=HistorIA+VR" alt="HistorIA VR">
+                    <button class="fair-use-btn">FAIR USE</button>
+                </div>
+                <div class="modal-info">
+                    <div class="tab-content active" id="intro3">
+                        <div class="modal-section"><h3>Rol en el trabajo:</h3><p style="color: var(--color-white);">Responsable del Área de Finanzas y Gestión de Riesgos</p></div>
+                        <div class="modal-section"><h3>Herramientas usadas:</h3><p style="color: var(--color-white);">Excel (Creación de curva "S" y Matriz de Riesgo)</p></div>
+                        <div class="modal-section"><h3>Objetivo:</h3><p>Crear una experiencia educativa y de entretenimiento mediante Realidad Virtual (VR) e Inteligencia Artificial, permitiendo a los usuarios interactuar con avatares de figuras históricas en tiempo real.</p></div>
+                    </div>
+                    <div class="tab-content" id="retos3">
+                        <div class="modal-section"><h3>El Reto:</h3><p>Ejecutar un evento tecnológico de alta complejidad con un presupuesto de contexto realista, garantizando la estabilidad técnica y financiera en un entorno económico volátil y con riesgos de infraestructura (fallas eléctricas).</p></div>
+                        <div class="modal-section"><h3>Proceso de Ejecución:</h3><ul><li><strong>Estimación de Presupuesto:</strong> Diseñé la estructura de costos operativos y técnicos para el desarrollo de la experiencia de RV.</li><li><strong>Proyección de Curvas de Costo:</strong> Modelé los flujos de inversión según las fases de desarrollo del prototipo.</li><li><strong>Análisis y Mapeo de Riesgos:</strong> Identifiqué cuellos de botella tecnológicos, imprevistos financieros y riesgos de ejecución.</li><li><strong>Plan de Contingencia:</strong> Desarrollé estrategias de mitigación financiera para proteger la viabilidad técnica del proyecto.</li></ul></div>
+                    </div>
+                    <div class="tab-content" id="resultados3">
+                        <div class="modal-section"><h3>Resultados obtenidos:</h3><ul><li><strong>Control Total:</strong> Se logró mantener el proyecto dentro del presupuesto inicial a pesar de la volatilidad del entorno.</li><li><strong>Mitigación de Crisis:</strong> La identificación temprana de riesgos evitó que problemas técnicos o imprevistos con los visores afectaran la viabilidad financiera.</li><li><strong>Aprendizaje:</strong> Comprobé que la viabilidad de una idea creativa depende directamente de un rigor administrativo sólido; sin finanzas claras, la innovación no llega a ejecutarse.</li></ul></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 4 -->
+    <div class="modal" id="modal4">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal4')">&times;</button>
+            <div class="modal-header">
+                <h2 class="modal-title">Valoración Financiera de Mondelez International</h2>
+                <div class="modal-tabs">
+                    <button class="modal-tab active" onclick="switchTab('intro4', 'modal4', this)">INTRODUCCIÓN</button>
+                    <button class="modal-tab" onclick="switchTab('retos4', 'modal4', this)">RETOS</button>
+                    <button class="modal-tab" onclick="switchTab('resultados4', 'modal4', this)">RESULTADOS</button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="https://via.placeholder.com/600x400/2d1bff/FFFFFF?text=Mondelez" alt="Mondelez">
+                    <button class="fair-use-btn">FAIR USE</button>
+                </div>
+                <div class="modal-info">
+                    <div class="tab-content active" id="intro4">
+                        <div class="modal-section"><h3>Rol en el trabajo:</h3><p style="color: var(--color-white);">Valorador de Empresas y Analista Financiero</p></div>
+                        <div class="modal-section"><h3>Herramientas usadas:</h3><p style="color: var(--color-white);">Microsoft Excel, Métodos de Valoración (WACC, Flujo de Caja Libre, Múltiplos), Análisis de Estados Financieros (Balance General, G y P).</p></div>
+                        <div class="modal-section"><h3>Objetivo:</h3><p>Determinar el valor real de la compañía mediante métodos de valoración financiera para conocer su solvencia, rentabilidad y capacidad de generación de flujo de caja futuro.</p></div>
+                    </div>
+                    <div class="tab-content" id="retos4">
+                        <div class="modal-section"><h3>El Reto:</h3><p>Realizar una valoración exhaustiva utilizando datos históricos (2020-2024) y proyecciones a 10 años, enfrentando la complejidad de las tasas de descuento, el riesgo país y la volatilidad de los mercados donde opera la firma.</p></div>
+                        <div class="modal-section"><h3>Proceso de Ejecución:</h3><ul><li><strong>Recopilación y Limpieza de Datos:</strong> Extraje estados financieros e información de mercado clave de la empresa.</li><li><strong>Análisis Financiero:</strong> Evalué el histórico de ingresos, márgenes de ganancia y estructura de capital.</li><li><strong>Modelado y Proyección:</strong> Apliqué métodos de valoración para proyectar flujos de caja y el costo de capital.</li><li><strong>Evaluación de Riesgos:</strong> Identifiqué variables macroeconómicas y operativas que impactan el valor de la empresa.</li></ul></div>
+                    </div>
+                    <div class="tab-content" id="resultados4">
+                        <div class="modal-section"><h3>Resultados obtenidos:</h3><ul><li><strong>Precisión Analítica:</strong> Determinación técnica del valor de la empresa, fundamentada en premisas de crecimiento y riesgo país verificables.</li><li><strong>Diferenciación Profesional:</strong> Este proyecto prueba mi capacidad para "aterrizar" la comunicación en el lenguaje del dinero, permitiéndome dialogar con directivos y stakeholders desde una base numérica sólida.</li><li><strong>Aprendizaje:</strong> Reforcé la importancia de las premisas de proyección; una estrategia de comunicación solo es efectiva si el flujo de caja de la empresa puede respaldarla.</li></ul></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 5 -->
+    <div class="modal" id="modal5">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal5')">&times;</button>
+            <div class="modal-header">
+                <h2 class="modal-title">Reporte Anual de Rendimiento Digital 2025: Cider Lubelski</h2>
+                <div class="modal-tabs">
+                    <button class="modal-tab active" onclick="switchTab('intro5', 'modal5', this)">INTRODUCCIÓN</button>
+                    <button class="modal-tab" onclick="switchTab('retos5', 'modal5', this)">RETOS</button>
+                    <button class="modal-tab" onclick="switchTab('resultados5', 'modal5', this)">RESULTADOS</button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="https://via.placeholder.com/600x400/11008f/FFFFFF?text=Cider+Lubelski" alt="Cider Lubelski">
+                    <button class="fair-use-btn">FAIR USE</button>
+                </div>
+                <div class="modal-info">
+                    <div class="tab-content active" id="intro5">
+                        <div class="modal-section"><h3>Rol en el trabajo:</h3><p style="color: var(--color-white);">Analista de Datos de Redes Sociales</p></div>
+                        <div class="modal-section"><h3>Herramientas usadas:</h3><p style="color: var(--color-white);">Instagram Insights, Meta Business Suite</p></div>
+                        <div class="modal-section"><h3>Objetivo:</h3><p>Analizar el rendimiento de las plataformas sociales de la marca durante el año 2025 para identificar patrones de crecimiento, efectividad de la pauta (Ads) y optimizar la tasa de conversión de seguidores.</p></div>
+                    </div>
+                    <div class="tab-content" id="retos5">
+                        <div class="modal-section"><h3>El Reto:</h3><p>Interpretar fluctuaciones drásticas en la interacción (picos de hasta 6,000 interacciones mensuales) y determinar por qué ciertas campañas pagadas logran atraer visitas al perfil pero no necesariamente seguidores o engagement a largo plazo.</p></div>
+                        <div class="modal-section"><h3>Proceso de Ejecución:</h3><ul><li><strong>Análisis de Categoría y Competencia:</strong> Evalué el mercado de sidras y bebidas de baja graduación alcohólica para identificar el posicionamiento de Cider Lubelski.</li><li><strong>Evaluación de la Cadena de Valor:</strong> Analicé la percepción de la marca frente a distribuidores y consumidores finales.</li><li><strong>Mapeo del Consumidor Target:</strong> Identifiqué hábitos de consumo, momentos de compra y barreras de entrada en el segmento objetivo.</li><li><strong>Detección de Oportunidades:</strong> Reconocí brechas de comunicación y canales no explotados para diferenciar la marca.</li></ul></div>
+                    </div>
+                    <div class="tab-content" id="resultados5">
+                        <div class="modal-section"><h3>Resultados obtenidos:</h3><ul><li><strong>Crecimiento Sostenido:</strong> Identificación de las "mejores publicaciones" por mes para replicar los formatos exitosos (fotografía de producto vs. contenido humano).</li><li><strong>Estrategia de Conversión:</strong> Propuesta de un embudo de ventas más agresivo para transformar el alcance masivo en una comunidad participativa.</li><li><strong>Aprendizaje:</strong> Confirmé que la analítica digital es el puente entre la inversión en publicidad y la rentabilidad de la marca; sin datos, la inversión es solo una apuesta.</li></ul></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Brands Section -->
+    <section class="brands-section" id="marcas">
+        <div class="container">
+            <h2 class="section-title">Marcas</h2>
+            <div class="brands-grid">
+                <div class="brand-item"><span>🏢</span></div>
+                <div class="brand-item"><span>🏢</span></div>
+                <div class="brand-item"><span></span></div>
+                <div class="brand-item"><span>🏢</span></div>
+                <div class="brand-item"><span>🏢</span></div>
+                <div class="brand-item"><span>🏢</span></div>
+                <div class="brand-item"><span></span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contacto">
+        <div class="contact-container">
+            <h2 class="contact-title">¡Contáctame!</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item"><span>Correo: </span><a href="mailto:Carlosdaniefernandez@gmail.com">Carlosdaniefernandez@gmail.com</a></div>
+                    <div class="contact-item"><span>Tel: </span><a href="tel:+584122530972">+58 412-2530972</a></div>
+                    <div class="contact-item"><span>LinkedIn: </span><a href="https://linkedin.com/in/carlosfernandez" target="_blank">Carlos Fernández</a></div>
+                    <a href="#" class="contact-btn" onclick="alert('Función de descarga de CV próximamente')">Descarga CV</a>
+                </div>
+                <div class="contact-logo">
+                    <div class="logo-circle">
+                        <div class="logo-inner">
+                            <img src="https://i.imgur.com/WeTt3y5.png" alt="Logo Carlos Fernández">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Carlos Fernández - Todos los derechos reservados</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Estratega de Comunicación Analítica & SEO</p>
+    </footer>
+
+    <script>
+        // ============ FILTRO DE TRABAJOS ============
+        const tags = document.querySelectorAll('.tag');
+        const workCards = document.querySelectorAll('.work-card');
+
+        tags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                tags.forEach(t => t.classList.remove('active'));
+                tag.classList.add('active');
+
+                const filter = tag.getAttribute('data-filter');
+
+                workCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // ============ MODALES ============
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function switchTab(tabName, modalId, clickedTab) {
+            const modal = document.getElementById(modalId);
+            const tabs = modal.querySelectorAll('.modal-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            clickedTab.classList.add('active');
+            
+            const contents = modal.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            document.getElementById(tabName).classList.add('active');
+        }
+
+        // ============ BARRAS DE HABILIDADES ============
+        const observerOptions = { threshold: 0.5, rootMargin: "0px 0px -100px 0px" };
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBars = entry.target.querySelectorAll('.skill-progress');
+                    progressBars.forEach(bar => {
+                        bar.style.width = bar.getAttribute('data-width') + '%';
+                    });
+                }
+            });
+        }, observerOptions);
+
+        const skillsSection = document.querySelector('.skills-section');
+        if (skillsSection) observer.observe(skillsSection);
+
+        // ============ SMOOTH SCROLL ============
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // ============ ANIMACIÓN HERO ============
+        window.addEventListener('load', () => {
+            const elements = document.querySelectorAll('.hero-content, .profile-section');
+            elements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    el.style.transition = 'all 0.8s ease';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+        });
+
+        // ============ NAVBAR ============
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.style.boxShadow = window.pageYOffset > 100 ? '0 2px 20px rgba(0,0,0,0.3)' : 'none';
+        });
+
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+        });
+
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenuToggle.textContent = '';
+            });
+        });
+
+        const sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                if (pageYOffset >= section.offsetTop - 200) current = section.getAttribute('id');
+            });
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) link.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
